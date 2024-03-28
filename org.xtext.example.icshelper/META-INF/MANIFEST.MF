@@ -1,0 +1,28 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: org.xtext.example.icshelper
+Bundle-ManifestVersion: 2
+Bundle-Name: org.xtext.example.icshelper
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.xtext.example.icshelper; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.16.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.34.0",
+ org.eclipse.emf.common,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Export-Package: org.xtext.example.icshelper,
+ org.xtext.example.icshelper.generator,
+ org.xtext.example.icshelper.parser.antlr.internal,
+ org.xtext.example.icshelper.icsHelper.impl,
+ org.xtext.example.icshelper.serializer,
+ org.xtext.example.icshelper.validation,
+ org.xtext.example.icshelper.icsHelper,
+ org.xtext.example.icshelper.services,
+ org.xtext.example.icshelper.parser.antlr,
+ org.xtext.example.icshelper.scoping,
+ org.xtext.example.icshelper.icsHelper.util
+Import-Package: org.apache.log4j
