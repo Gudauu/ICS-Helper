@@ -1,0 +1,9 @@
+create schedule easter_dinner {
+	event pickup from '2024-03-31 14:30' to '2024-03-31 15:00' 
+	at 'home'
+	link 'abcdefg'
+	
+	event dinner from '2024-03-31 15:10' to '2024-03-31 16:00' 
+	description 'yummy yummy eat eat eat'
+	link '12345'
+}

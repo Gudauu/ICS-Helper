@@ -1,0 +1,28 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: ics.helper
+Bundle-ManifestVersion: 2
+Bundle-Name: ics.helper
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: ics.helper; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.16.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.34.0",
+ org.eclipse.emf.common,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Export-Package: ics.helper.validation,
+ ics.helper.helperDSL.impl,
+ ics.helper,
+ ics.helper.helperDSL,
+ ics.helper.serializer,
+ ics.helper.helperDSL.util,
+ ics.helper.parser.antlr.internal,
+ ics.helper.services,
+ ics.helper.parser.antlr,
+ ics.helper.scoping,
+ ics.helper.generator
+Import-Package: org.apache.log4j
