@@ -60,6 +60,15 @@ public interface HelperDSLFactory extends EFactory
   Event createEvent();
 
   /**
+   * Returns a new object of class '<em>Days Of Week</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Days Of Week</em>'.
+   * @generated
+   */
+  DaysOfWeek createDaysOfWeek();
+
+  /**
    * Returns a new object of class '<em>Schedule</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

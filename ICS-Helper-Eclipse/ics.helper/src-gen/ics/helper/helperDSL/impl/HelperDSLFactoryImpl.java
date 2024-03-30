@@ -6,6 +6,7 @@ package ics.helper.helperDSL.impl;
 import ics.helper.helperDSL.*;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -69,12 +70,47 @@ public class HelperDSLFactoryImpl extends EFactoryImpl implements HelperDSLFacto
       case HelperDSLPackage.COMMAND: return createCommand();
       case HelperDSLPackage.CREATE_COMMAND: return createCreateCommand();
       case HelperDSLPackage.EVENT: return createEvent();
+      case HelperDSLPackage.DAYS_OF_WEEK: return createDaysOfWeek();
       case HelperDSLPackage.SCHEDULE: return createSchedule();
       case HelperDSLPackage.SPLIT_COMMAND: return createSplitCommand();
       case HelperDSLPackage.MERGE_COMMAND: return createMergeCommand();
       case HelperDSLPackage.MODIFY_COMMAND: return createModifyCommand();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object createFromString(EDataType eDataType, String initialValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+      case HelperDSLPackage.RECUR_RULE:
+        return createRecurRuleFromString(eDataType, initialValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String convertToString(EDataType eDataType, Object instanceValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+      case HelperDSLPackage.RECUR_RULE:
+        return convertRecurRuleToString(eDataType, instanceValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
   }
 
@@ -132,6 +168,18 @@ public class HelperDSLFactoryImpl extends EFactoryImpl implements HelperDSLFacto
    * @generated
    */
   @Override
+  public DaysOfWeek createDaysOfWeek()
+  {
+    DaysOfWeekImpl daysOfWeek = new DaysOfWeekImpl();
+    return daysOfWeek;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Schedule createSchedule()
   {
     ScheduleImpl schedule = new ScheduleImpl();
@@ -172,6 +220,28 @@ public class HelperDSLFactoryImpl extends EFactoryImpl implements HelperDSLFacto
   {
     ModifyCommandImpl modifyCommand = new ModifyCommandImpl();
     return modifyCommand;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public RecurRule createRecurRuleFromString(EDataType eDataType, String initialValue)
+  {
+    RecurRule result = RecurRule.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertRecurRuleToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**

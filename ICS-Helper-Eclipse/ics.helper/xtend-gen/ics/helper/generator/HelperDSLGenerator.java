@@ -6,12 +6,18 @@ package ics.helper.generator;
 import com.google.common.collect.Iterables;
 import ics.helper.helperDSL.CreateCommand;
 import ics.helper.helperDSL.Event;
+import ics.helper.helperDSL.RecurRule;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 
 /**
@@ -19,6 +25,10 @@ import org.eclipse.xtext.xbase.lib.IteratorExtensions;
  */
 @SuppressWarnings("all")
 public class HelperDSLGenerator extends AbstractGenerator {
+  private final DateTimeFormatter userInputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+
+  private final DateTimeFormatter icsFormatter = DateTimeFormatter.ofPattern("yyyyMMdd\'T\'HHmmss\'Z\'").withZone(ZoneId.of("UTC"));
+
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
     Iterable<CreateCommand> _filter = Iterables.<CreateCommand>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), CreateCommand.class);
@@ -40,12 +50,12 @@ public class HelperDSLGenerator extends AbstractGenerator {
         String _plus = ("SUMMARY:" + _name);
         String _plus_1 = (_plus + "\n");
         icsContent.append(_plus_1);
-        String _startTime = event.getStartTime();
-        String _plus_2 = ("DTSTART:" + _startTime);
+        String _convertToICSTimeFormat = this.convertToICSTimeFormat(event.getStartTime());
+        String _plus_2 = ("DTSTART:" + _convertToICSTimeFormat);
         String _plus_3 = (_plus_2 + "\n");
         icsContent.append(_plus_3);
-        String _endTime = event.getEndTime();
-        String _plus_4 = ("DTEND:" + _endTime);
+        String _convertToICSTimeFormat_1 = this.convertToICSTimeFormat(event.getEndTime());
+        String _plus_4 = ("DTEND:" + _convertToICSTimeFormat_1);
         String _plus_5 = (_plus_4 + "\n");
         icsContent.append(_plus_5);
         String _location = event.getLocation();
@@ -72,6 +82,13 @@ public class HelperDSLGenerator extends AbstractGenerator {
           String _plus_11 = (_plus_10 + "\n");
           icsContent.append(_plus_11);
         }
+        RecurRule _recur = event.getRecur();
+        boolean _tripleNotEquals_3 = (_recur != null);
+        if (_tripleNotEquals_3) {
+          String _generateRecurRule = this.generateRecurRule(event.getRecur());
+          String _plus_12 = (_generateRecurRule + "\n");
+          icsContent.append(_plus_12);
+        }
         icsContent.append("END:VEVENT\n");
       }
     }
@@ -80,5 +97,45 @@ public class HelperDSLGenerator extends AbstractGenerator {
     String _plus = ("ics-gen/" + _name);
     final String fileName = (_plus + ".ics");
     fsa.generateFile(fileName, icsContent.toString());
+  }
+
+  public String generateRecurRule(final RecurRule recur) {
+    String _switchResult = null;
+    if (recur != null) {
+      switch (recur) {
+        case DAILY:
+          _switchResult = "RRULE:FREQ=DAILY";
+          break;
+        case WEEKLY:
+          _switchResult = "RRULE:FREQ=WEEKLY";
+          break;
+        case MONTHLY:
+          _switchResult = "RRULE:FREQ=MONTHLY";
+          break;
+        case YEARLY:
+          _switchResult = "RRULE:FREQ=YEARLY";
+          break;
+        default:
+          _switchResult = "";
+          break;
+      }
+    } else {
+      _switchResult = "";
+    }
+    return _switchResult;
+  }
+
+  public String convertToICSTimeFormat(final String userInputTime) {
+    try {
+      final LocalDateTime dateTime = LocalDateTime.parse(userInputTime, this.userInputFormatter);
+      return this.icsFormatter.format(dateTime);
+    } catch (final Throwable _t) {
+      if (_t instanceof DateTimeParseException) {
+        System.err.println(("Failed to parse date time: " + userInputTime));
+        return "";
+      } else {
+        throw Exceptions.sneakyThrow(_t);
+      }
+    }
   }
 }

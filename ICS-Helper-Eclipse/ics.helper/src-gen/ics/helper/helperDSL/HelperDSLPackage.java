@@ -5,6 +5,7 @@ package ics.helper.helperDSL;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -206,13 +207,50 @@ public interface HelperDSLPackage extends EPackage
   int EVENT__LINK = 5;
 
   /**
+   * The feature id for the '<em><b>Recur</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EVENT__RECUR = 6;
+
+  /**
    * The number of structural features of the '<em>Event</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EVENT_FEATURE_COUNT = 6;
+  int EVENT_FEATURE_COUNT = 7;
+
+  /**
+   * The meta object id for the '{@link ics.helper.helperDSL.impl.DaysOfWeekImpl <em>Days Of Week</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see ics.helper.helperDSL.impl.DaysOfWeekImpl
+   * @see ics.helper.helperDSL.impl.HelperDSLPackageImpl#getDaysOfWeek()
+   * @generated
+   */
+  int DAYS_OF_WEEK = 4;
+
+  /**
+   * The feature id for the '<em><b>Day</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DAYS_OF_WEEK__DAY = 0;
+
+  /**
+   * The number of structural features of the '<em>Days Of Week</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DAYS_OF_WEEK_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link ics.helper.helperDSL.impl.ScheduleImpl <em>Schedule</em>}' class.
@@ -222,7 +260,7 @@ public interface HelperDSLPackage extends EPackage
    * @see ics.helper.helperDSL.impl.HelperDSLPackageImpl#getSchedule()
    * @generated
    */
-  int SCHEDULE = 4;
+  int SCHEDULE = 5;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -250,7 +288,7 @@ public interface HelperDSLPackage extends EPackage
    * @see ics.helper.helperDSL.impl.HelperDSLPackageImpl#getSplitCommand()
    * @generated
    */
-  int SPLIT_COMMAND = 5;
+  int SPLIT_COMMAND = 6;
 
   /**
    * The feature id for the '<em><b>Schedule</b></em>' reference.
@@ -287,7 +325,7 @@ public interface HelperDSLPackage extends EPackage
    * @see ics.helper.helperDSL.impl.HelperDSLPackageImpl#getMergeCommand()
    * @generated
    */
-  int MERGE_COMMAND = 6;
+  int MERGE_COMMAND = 7;
 
   /**
    * The feature id for the '<em><b>Schedules</b></em>' reference list.
@@ -324,7 +362,7 @@ public interface HelperDSLPackage extends EPackage
    * @see ics.helper.helperDSL.impl.HelperDSLPackageImpl#getModifyCommand()
    * @generated
    */
-  int MODIFY_COMMAND = 7;
+  int MODIFY_COMMAND = 8;
 
   /**
    * The feature id for the '<em><b>Schedule</b></em>' reference.
@@ -370,6 +408,16 @@ public interface HelperDSLPackage extends EPackage
    * @ordered
    */
   int MODIFY_COMMAND_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 4;
+
+  /**
+   * The meta object id for the '{@link ics.helper.helperDSL.RecurRule <em>Recur Rule</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see ics.helper.helperDSL.RecurRule
+   * @see ics.helper.helperDSL.impl.HelperDSLPackageImpl#getRecurRule()
+   * @generated
+   */
+  int RECUR_RULE = 9;
 
 
   /**
@@ -512,6 +560,38 @@ public interface HelperDSLPackage extends EPackage
   EAttribute getEvent_Link();
 
   /**
+   * Returns the meta object for the attribute '{@link ics.helper.helperDSL.Event#getRecur <em>Recur</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Recur</em>'.
+   * @see ics.helper.helperDSL.Event#getRecur()
+   * @see #getEvent()
+   * @generated
+   */
+  EAttribute getEvent_Recur();
+
+  /**
+   * Returns the meta object for class '{@link ics.helper.helperDSL.DaysOfWeek <em>Days Of Week</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Days Of Week</em>'.
+   * @see ics.helper.helperDSL.DaysOfWeek
+   * @generated
+   */
+  EClass getDaysOfWeek();
+
+  /**
+   * Returns the meta object for the attribute '{@link ics.helper.helperDSL.DaysOfWeek#getDay <em>Day</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Day</em>'.
+   * @see ics.helper.helperDSL.DaysOfWeek#getDay()
+   * @see #getDaysOfWeek()
+   * @generated
+   */
+  EAttribute getDaysOfWeek_Day();
+
+  /**
    * Returns the meta object for class '{@link ics.helper.helperDSL.Schedule <em>Schedule</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -651,6 +731,16 @@ public interface HelperDSLPackage extends EPackage
   EAttribute getModifyCommand_Value();
 
   /**
+   * Returns the meta object for enum '{@link ics.helper.helperDSL.RecurRule <em>Recur Rule</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Recur Rule</em>'.
+   * @see ics.helper.helperDSL.RecurRule
+   * @generated
+   */
+  EEnum getRecurRule();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -786,6 +876,32 @@ public interface HelperDSLPackage extends EPackage
     EAttribute EVENT__LINK = eINSTANCE.getEvent_Link();
 
     /**
+     * The meta object literal for the '<em><b>Recur</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EVENT__RECUR = eINSTANCE.getEvent_Recur();
+
+    /**
+     * The meta object literal for the '{@link ics.helper.helperDSL.impl.DaysOfWeekImpl <em>Days Of Week</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see ics.helper.helperDSL.impl.DaysOfWeekImpl
+     * @see ics.helper.helperDSL.impl.HelperDSLPackageImpl#getDaysOfWeek()
+     * @generated
+     */
+    EClass DAYS_OF_WEEK = eINSTANCE.getDaysOfWeek();
+
+    /**
+     * The meta object literal for the '<em><b>Day</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DAYS_OF_WEEK__DAY = eINSTANCE.getDaysOfWeek_Day();
+
+    /**
      * The meta object literal for the '{@link ics.helper.helperDSL.impl.ScheduleImpl <em>Schedule</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -896,6 +1012,16 @@ public interface HelperDSLPackage extends EPackage
      * @generated
      */
     EAttribute MODIFY_COMMAND__VALUE = eINSTANCE.getModifyCommand_Value();
+
+    /**
+     * The meta object literal for the '{@link ics.helper.helperDSL.RecurRule <em>Recur Rule</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see ics.helper.helperDSL.RecurRule
+     * @see ics.helper.helperDSL.impl.HelperDSLPackageImpl#getRecurRule()
+     * @generated
+     */
+    EEnum RECUR_RULE = eINSTANCE.getRecurRule();
 
   }
 

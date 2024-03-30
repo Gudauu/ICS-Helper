@@ -23,6 +23,7 @@ import org.eclipse.xtext.parser.*;
 import org.eclipse.xtext.parser.impl.*;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.xtext.parser.antlr.AbstractInternalAntlrParser;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream.HiddenTokens;
@@ -376,6 +377,31 @@ ruleEvent returns [EObject current=null]
 				)
 			)
 		)?
+		(
+			otherlv_12='recur'
+			{
+				newLeafNode(otherlv_12, grammarAccess.getEventAccess().getRecurKeyword_9_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getEventAccess().getRecurRecurRuleEnumRuleCall_9_1_0());
+					}
+					lv_recur_13_0=ruleRecurRule
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getEventRule());
+						}
+						set(
+							$current,
+							"recur",
+							lv_recur_13_0,
+							"ics.helper.HelperDSL.RecurRule");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)?
 	)
 ;
 
@@ -645,6 +671,57 @@ ruleModifyCommand returns [EObject current=null]
 					)
 				)
 			)
+		)
+	)
+;
+
+// Rule RecurRule
+ruleRecurRule returns [Enumerator current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			enumLiteral_0='daily'
+			{
+				$current = grammarAccess.getRecurRuleAccess().getDAILYEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getRecurRuleAccess().getDAILYEnumLiteralDeclaration_0());
+			}
+		)
+		    |
+		(
+			enumLiteral_1='weekly'
+			{
+				$current = grammarAccess.getRecurRuleAccess().getWEEKLYEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getRecurRuleAccess().getWEEKLYEnumLiteralDeclaration_1());
+			}
+		)
+		    |
+		(
+			enumLiteral_2='monthly'
+			{
+				$current = grammarAccess.getRecurRuleAccess().getMONTHLYEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_2, grammarAccess.getRecurRuleAccess().getMONTHLYEnumLiteralDeclaration_2());
+			}
+		)
+		    |
+		(
+			enumLiteral_3='yearly'
+			{
+				$current = grammarAccess.getRecurRuleAccess().getYEARLYEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_3, grammarAccess.getRecurRuleAccess().getYEARLYEnumLiteralDeclaration_3());
+			}
+		)
+		    |
+		(
+			enumLiteral_4='on'
+			{
+				$current = grammarAccess.getRecurRuleAccess().getBYDAYEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_4, grammarAccess.getRecurRuleAccess().getBYDAYEnumLiteralDeclaration_4());
+			}
 		)
 	)
 ;

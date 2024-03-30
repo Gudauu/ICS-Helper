@@ -224,6 +224,22 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+// Rule RecurRule
+ruleRecurRule
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getRecurRuleAccess().getAlternatives()); }
+		(rule__RecurRule__Alternatives)
+		{ after(grammarAccess.getRecurRuleAccess().getAlternatives()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 rule__Command__Alternatives
 	@init {
 		int stackSize = keepStackSize();
@@ -299,6 +315,45 @@ rule__ModifyCommand__Alternatives_3
 		{ before(grammarAccess.getModifyCommandAccess().getGroup_3_2()); }
 		(rule__ModifyCommand__Group_3_2__0)
 		{ after(grammarAccess.getModifyCommandAccess().getGroup_3_2()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__RecurRule__Alternatives
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getRecurRuleAccess().getDAILYEnumLiteralDeclaration_0()); }
+		('daily')
+		{ after(grammarAccess.getRecurRuleAccess().getDAILYEnumLiteralDeclaration_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getRecurRuleAccess().getWEEKLYEnumLiteralDeclaration_1()); }
+		('weekly')
+		{ after(grammarAccess.getRecurRuleAccess().getWEEKLYEnumLiteralDeclaration_1()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getRecurRuleAccess().getMONTHLYEnumLiteralDeclaration_2()); }
+		('monthly')
+		{ after(grammarAccess.getRecurRuleAccess().getMONTHLYEnumLiteralDeclaration_2()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getRecurRuleAccess().getYEARLYEnumLiteralDeclaration_3()); }
+		('yearly')
+		{ after(grammarAccess.getRecurRuleAccess().getYEARLYEnumLiteralDeclaration_3()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getRecurRuleAccess().getBYDAYEnumLiteralDeclaration_4()); }
+		('on')
+		{ after(grammarAccess.getRecurRuleAccess().getBYDAYEnumLiteralDeclaration_4()); }
 	)
 ;
 finally {
@@ -689,6 +744,7 @@ rule__Event__Group__8
 	}
 :
 	rule__Event__Group__8__Impl
+	rule__Event__Group__9
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -703,6 +759,32 @@ rule__Event__Group__8__Impl
 	{ before(grammarAccess.getEventAccess().getGroup_8()); }
 	(rule__Event__Group_8__0)?
 	{ after(grammarAccess.getEventAccess().getGroup_8()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Event__Group__9
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Event__Group__9__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Event__Group__9__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getEventAccess().getGroup_9()); }
+	(rule__Event__Group_9__0)?
+	{ after(grammarAccess.getEventAccess().getGroup_9()); }
 )
 ;
 finally {
@@ -865,6 +947,60 @@ rule__Event__Group_8__1__Impl
 	{ before(grammarAccess.getEventAccess().getLinkAssignment_8_1()); }
 	(rule__Event__LinkAssignment_8_1)
 	{ after(grammarAccess.getEventAccess().getLinkAssignment_8_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__Event__Group_9__0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Event__Group_9__0__Impl
+	rule__Event__Group_9__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Event__Group_9__0__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getEventAccess().getRecurKeyword_9_0()); }
+	'recur'
+	{ after(grammarAccess.getEventAccess().getRecurKeyword_9_0()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Event__Group_9__1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Event__Group_9__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Event__Group_9__1__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getEventAccess().getRecurAssignment_9_1()); }
+	(rule__Event__RecurAssignment_9_1)
+	{ after(grammarAccess.getEventAccess().getRecurAssignment_9_1()); }
 )
 ;
 finally {
@@ -1602,6 +1738,21 @@ rule__Event__LinkAssignment_8_1
 		{ before(grammarAccess.getEventAccess().getLinkSTRINGTerminalRuleCall_8_1_0()); }
 		RULE_STRING
 		{ after(grammarAccess.getEventAccess().getLinkSTRINGTerminalRuleCall_8_1_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Event__RecurAssignment_9_1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getEventAccess().getRecurRecurRuleEnumRuleCall_9_1_0()); }
+		ruleRecurRule
+		{ after(grammarAccess.getEventAccess().getRecurRecurRuleEnumRuleCall_9_1_0()); }
 	)
 ;
 finally {

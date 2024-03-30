@@ -5,6 +5,7 @@ package ics.helper.helperDSL.impl;
 
 import ics.helper.helperDSL.Event;
 import ics.helper.helperDSL.HelperDSLPackage;
+import ics.helper.helperDSL.RecurRule;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -27,6 +28,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link ics.helper.helperDSL.impl.EventImpl#getLocation <em>Location</em>}</li>
  *   <li>{@link ics.helper.helperDSL.impl.EventImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link ics.helper.helperDSL.impl.EventImpl#getLink <em>Link</em>}</li>
+ *   <li>{@link ics.helper.helperDSL.impl.EventImpl#getRecur <em>Recur</em>}</li>
  * </ul>
  *
  * @generated
@@ -152,6 +154,26 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
    * @ordered
    */
   protected String link = LINK_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getRecur() <em>Recur</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRecur()
+   * @generated
+   * @ordered
+   */
+  protected static final RecurRule RECUR_EDEFAULT = RecurRule.DAILY;
+
+  /**
+   * The cached value of the '{@link #getRecur() <em>Recur</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRecur()
+   * @generated
+   * @ordered
+   */
+  protected RecurRule recur = RECUR_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -330,6 +352,31 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
    * @generated
    */
   @Override
+  public RecurRule getRecur()
+  {
+    return recur;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setRecur(RecurRule newRecur)
+  {
+    RecurRule oldRecur = recur;
+    recur = newRecur == null ? RECUR_EDEFAULT : newRecur;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, HelperDSLPackage.EVENT__RECUR, oldRecur, recur));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
@@ -346,6 +393,8 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
         return getDescription();
       case HelperDSLPackage.EVENT__LINK:
         return getLink();
+      case HelperDSLPackage.EVENT__RECUR:
+        return getRecur();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -377,6 +426,9 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
         return;
       case HelperDSLPackage.EVENT__LINK:
         setLink((String)newValue);
+        return;
+      case HelperDSLPackage.EVENT__RECUR:
+        setRecur((RecurRule)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -410,6 +462,9 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
       case HelperDSLPackage.EVENT__LINK:
         setLink(LINK_EDEFAULT);
         return;
+      case HelperDSLPackage.EVENT__RECUR:
+        setRecur(RECUR_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -436,6 +491,8 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
         return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
       case HelperDSLPackage.EVENT__LINK:
         return LINK_EDEFAULT == null ? link != null : !LINK_EDEFAULT.equals(link);
+      case HelperDSLPackage.EVENT__RECUR:
+        return recur != RECUR_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -463,6 +520,8 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
     result.append(description);
     result.append(", link: ");
     result.append(link);
+    result.append(", recur: ");
+    result.append(recur);
     result.append(')');
     return result.toString();
   }

@@ -5,17 +5,20 @@ package ics.helper.helperDSL.impl;
 
 import ics.helper.helperDSL.Command;
 import ics.helper.helperDSL.CreateCommand;
+import ics.helper.helperDSL.DaysOfWeek;
 import ics.helper.helperDSL.Event;
 import ics.helper.helperDSL.HelperDSLFactory;
 import ics.helper.helperDSL.HelperDSLPackage;
 import ics.helper.helperDSL.MergeCommand;
 import ics.helper.helperDSL.Model;
 import ics.helper.helperDSL.ModifyCommand;
+import ics.helper.helperDSL.RecurRule;
 import ics.helper.helperDSL.Schedule;
 import ics.helper.helperDSL.SplitCommand;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -62,6 +65,13 @@ public class HelperDSLPackageImpl extends EPackageImpl implements HelperDSLPacka
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass daysOfWeekEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass scheduleEClass = null;
 
   /**
@@ -84,6 +94,13 @@ public class HelperDSLPackageImpl extends EPackageImpl implements HelperDSLPacka
    * @generated
    */
   private EClass modifyCommandEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum recurRuleEEnum = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -296,6 +313,39 @@ public class HelperDSLPackageImpl extends EPackageImpl implements HelperDSLPacka
    * @generated
    */
   @Override
+  public EAttribute getEvent_Recur()
+  {
+    return (EAttribute)eventEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getDaysOfWeek()
+  {
+    return daysOfWeekEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDaysOfWeek_Day()
+  {
+    return (EAttribute)daysOfWeekEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getSchedule()
   {
     return scheduleEClass;
@@ -439,6 +489,17 @@ public class HelperDSLPackageImpl extends EPackageImpl implements HelperDSLPacka
    * @generated
    */
   @Override
+  public EEnum getRecurRule()
+  {
+    return recurRuleEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public HelperDSLFactory getHelperDSLFactory()
   {
     return (HelperDSLFactory)getEFactoryInstance();
@@ -480,6 +541,10 @@ public class HelperDSLPackageImpl extends EPackageImpl implements HelperDSLPacka
     createEAttribute(eventEClass, EVENT__LOCATION);
     createEAttribute(eventEClass, EVENT__DESCRIPTION);
     createEAttribute(eventEClass, EVENT__LINK);
+    createEAttribute(eventEClass, EVENT__RECUR);
+
+    daysOfWeekEClass = createEClass(DAYS_OF_WEEK);
+    createEAttribute(daysOfWeekEClass, DAYS_OF_WEEK__DAY);
 
     scheduleEClass = createEClass(SCHEDULE);
     createEAttribute(scheduleEClass, SCHEDULE__NAME);
@@ -497,6 +562,9 @@ public class HelperDSLPackageImpl extends EPackageImpl implements HelperDSLPacka
     createEReference(modifyCommandEClass, MODIFY_COMMAND__EVENT);
     createEAttribute(modifyCommandEClass, MODIFY_COMMAND__TIME);
     createEAttribute(modifyCommandEClass, MODIFY_COMMAND__VALUE);
+
+    // Create enums
+    recurRuleEEnum = createEEnum(RECUR_RULE);
   }
 
   /**
@@ -550,6 +618,10 @@ public class HelperDSLPackageImpl extends EPackageImpl implements HelperDSLPacka
     initEAttribute(getEvent_Location(), ecorePackage.getEString(), "location", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getEvent_Description(), ecorePackage.getEString(), "description", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getEvent_Link(), ecorePackage.getEString(), "link", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getEvent_Recur(), this.getRecurRule(), "recur", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(daysOfWeekEClass, DaysOfWeek.class, "DaysOfWeek", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getDaysOfWeek_Day(), ecorePackage.getEString(), "day", null, 0, 1, DaysOfWeek.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(scheduleEClass, Schedule.class, "Schedule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getSchedule_Name(), ecorePackage.getEString(), "name", null, 0, 1, Schedule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -567,6 +639,14 @@ public class HelperDSLPackageImpl extends EPackageImpl implements HelperDSLPacka
     initEReference(getModifyCommand_Event(), this.getEvent(), null, "event", null, 0, 1, ModifyCommand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getModifyCommand_Time(), ecorePackage.getEString(), "time", null, 0, 1, ModifyCommand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getModifyCommand_Value(), ecorePackage.getEString(), "value", null, 0, 1, ModifyCommand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    // Initialize enums and add enum literals
+    initEEnum(recurRuleEEnum, RecurRule.class, "RecurRule");
+    addEEnumLiteral(recurRuleEEnum, RecurRule.DAILY);
+    addEEnumLiteral(recurRuleEEnum, RecurRule.WEEKLY);
+    addEEnumLiteral(recurRuleEEnum, RecurRule.MONTHLY);
+    addEEnumLiteral(recurRuleEEnum, RecurRule.YEARLY);
+    addEEnumLiteral(recurRuleEEnum, RecurRule.BYDAY);
 
     // Create resource
     createResource(eNS_URI);

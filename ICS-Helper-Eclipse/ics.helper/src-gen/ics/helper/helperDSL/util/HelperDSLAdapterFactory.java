@@ -96,6 +96,11 @@ public class HelperDSLAdapterFactory extends AdapterFactoryImpl
         return createEventAdapter();
       }
       @Override
+      public Adapter caseDaysOfWeek(DaysOfWeek object)
+      {
+        return createDaysOfWeekAdapter();
+      }
+      @Override
       public Adapter caseSchedule(Schedule object)
       {
         return createScheduleAdapter();
@@ -193,6 +198,21 @@ public class HelperDSLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createEventAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link ics.helper.helperDSL.DaysOfWeek <em>Days Of Week</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see ics.helper.helperDSL.DaysOfWeek
+   * @generated
+   */
+  public Adapter createDaysOfWeekAdapter()
   {
     return null;
   }

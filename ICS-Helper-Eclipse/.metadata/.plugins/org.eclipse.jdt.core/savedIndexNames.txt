@@ -6,7 +6,6 @@ INDEX VERSION 1.134+/home/gudau/Documents/work/School/year5/fall/courses/winter_
 4266340319.index
 3027897865.index
 3286432671.index
-2006747893.index
 168276055.index
 2409094210.index
 3303022497.index
@@ -34,7 +33,6 @@ INDEX VERSION 1.134+/home/gudau/Documents/work/School/year5/fall/courses/winter_
 4084871083.index
 3508654594.index
 2879266423.index
-1847325709.index
 1983085461.index
 1553075539.index
 2889853003.index
@@ -79,8 +77,6 @@ INDEX VERSION 1.134+/home/gudau/Documents/work/School/year5/fall/courses/winter_
 1061084003.index
 3671471490.index
 2002729128.index
-3176617607.index
-1444992394.index
 1074463417.index
 1893532051.index
 1389501453.index
@@ -92,7 +88,6 @@ INDEX VERSION 1.134+/home/gudau/Documents/work/School/year5/fall/courses/winter_
 277155781.index
 1284804290.index
 1632679972.index
-1114838248.index
 1842291599.index
 3926428038.index
 3500082408.index

@@ -6,6 +6,13 @@
     copyrightFields="false" runtimeVersion="2.29">
   <genPackages prefix="HelperDSL" basePackage="ics.helper" disposableProviderFactory="true"
       fileExtensions="icsdsl" ecorePackage="HelperDSL.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="HelperDSL.ecore#//RecurRule">
+      <genEnumLiterals ecoreEnumLiteral="HelperDSL.ecore#//RecurRule/DAILY"/>
+      <genEnumLiterals ecoreEnumLiteral="HelperDSL.ecore#//RecurRule/WEEKLY"/>
+      <genEnumLiterals ecoreEnumLiteral="HelperDSL.ecore#//RecurRule/MONTHLY"/>
+      <genEnumLiterals ecoreEnumLiteral="HelperDSL.ecore#//RecurRule/YEARLY"/>
+      <genEnumLiterals ecoreEnumLiteral="HelperDSL.ecore#//RecurRule/BYDAY"/>
+    </genEnums>
     <genClasses ecoreClass="HelperDSL.ecore#//Model">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference HelperDSL.ecore#//Model/commands"/>
     </genClasses>
@@ -21,6 +28,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute HelperDSL.ecore#//Event/location"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute HelperDSL.ecore#//Event/description"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute HelperDSL.ecore#//Event/link"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute HelperDSL.ecore#//Event/recur"/>
+    </genClasses>
+    <genClasses ecoreClass="HelperDSL.ecore#//DaysOfWeek">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute HelperDSL.ecore#//DaysOfWeek/day"/>
     </genClasses>
     <genClasses ecoreClass="HelperDSL.ecore#//Schedule">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute HelperDSL.ecore#//Schedule/name"/>

@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link ics.helper.helperDSL.Event#getLocation <em>Location</em>}</li>
  *   <li>{@link ics.helper.helperDSL.Event#getDescription <em>Description</em>}</li>
  *   <li>{@link ics.helper.helperDSL.Event#getLink <em>Link</em>}</li>
+ *   <li>{@link ics.helper.helperDSL.Event#getRecur <em>Recur</em>}</li>
  * </ul>
  *
  * @see ics.helper.helperDSL.HelperDSLPackage#getEvent()
@@ -159,5 +160,30 @@ public interface Event extends EObject
    * @generated
    */
   void setLink(String value);
+
+  /**
+   * Returns the value of the '<em><b>Recur</b></em>' attribute.
+   * The literals are from the enumeration {@link ics.helper.helperDSL.RecurRule}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Recur</em>' attribute.
+   * @see ics.helper.helperDSL.RecurRule
+   * @see #setRecur(RecurRule)
+   * @see ics.helper.helperDSL.HelperDSLPackage#getEvent_Recur()
+   * @model
+   * @generated
+   */
+  RecurRule getRecur();
+
+  /**
+   * Sets the value of the '{@link ics.helper.helperDSL.Event#getRecur <em>Recur</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Recur</em>' attribute.
+   * @see ics.helper.helperDSL.RecurRule
+   * @see #getRecur()
+   * @generated
+   */
+  void setRecur(RecurRule value);
 
 } // Event

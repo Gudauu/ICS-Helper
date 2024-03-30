@@ -18,6 +18,17 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="location" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="link" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="recur" eType="#//RecurRule"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RecurRule">
+    <eLiterals name="DAILY" literal="daily"/>
+    <eLiterals name="WEEKLY" value="1" literal="weekly"/>
+    <eLiterals name="MONTHLY" value="2" literal="monthly"/>
+    <eLiterals name="YEARLY" value="3" literal="yearly"/>
+    <eLiterals name="BYDAY" value="4" literal="on"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DaysOfWeek">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="day" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Schedule">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

@@ -5,6 +5,7 @@ package ics.helper.serializer;
 
 import com.google.inject.Inject;
 import ics.helper.helperDSL.CreateCommand;
+import ics.helper.helperDSL.DaysOfWeek;
 import ics.helper.helperDSL.Event;
 import ics.helper.helperDSL.HelperDSLPackage;
 import ics.helper.helperDSL.MergeCommand;
@@ -40,6 +41,9 @@ public class HelperDSLSemanticSequencer extends AbstractDelegatingSemanticSequen
 			switch (semanticObject.eClass().getClassifierID()) {
 			case HelperDSLPackage.CREATE_COMMAND:
 				sequence_CreateCommand(context, (CreateCommand) semanticObject); 
+				return; 
+			case HelperDSLPackage.DAYS_OF_WEEK:
+				sequence_DaysOfWeek(context, (DaysOfWeek) semanticObject); 
 				return; 
 			case HelperDSLPackage.EVENT:
 				sequence_Event(context, (Event) semanticObject); 
@@ -82,6 +86,20 @@ public class HelperDSLSemanticSequencer extends AbstractDelegatingSemanticSequen
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     DaysOfWeek returns DaysOfWeek
+	 *
+	 * Constraint:
+	 *     (day=ID day=ID*)
+	 * </pre>
+	 */
+	protected void sequence_DaysOfWeek(ISerializationContext context, DaysOfWeek semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     Event returns Event
 	 *
 	 * Constraint:
@@ -91,7 +109,8 @@ public class HelperDSLSemanticSequencer extends AbstractDelegatingSemanticSequen
 	 *         endTime=STRING 
 	 *         location=STRING? 
 	 *         description=STRING? 
-	 *         link=STRING?
+	 *         link=STRING? 
+	 *         recur=RecurRule?
 	 *     )
 	 * </pre>
 	 */
