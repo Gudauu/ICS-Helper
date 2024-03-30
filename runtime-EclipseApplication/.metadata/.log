@@ -1,0 +1,42 @@
+!SESSION 2024-03-29 21:07:09.170 -----------------------------------------------
+eclipse.buildId=4.31.0.20240307-1200
+java.version=17.0.10
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.dsl.product
+Command-line arguments:  -product org.eclipse.epp.package.dsl.product -data /home/gudau/Documents/work/School/year5/fall/courses/winter_2024/CAS703/project/ics/ICS-Helper-Eclipse/../runtime-EclipseApplication -dev file:/home/gudau/Documents/work/School/year5/fall/courses/winter_2024/CAS703/project/ics/ICS-Helper-Eclipse/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os linux -ws gtk -arch x86_64 -consoleLog
+
+!ENTRY org.apache.log4j 4 0 2024-03-29 21:07:20.454
+!MESSAGE org.eclipse.xtext.builder.BuilderParticipant  - Error during compilation of 'platform:/resource/ics.helper.playground/specs/spec1.icsdsl'.
+
+!STACK 0
+java.lang.NullPointerException: Cannot invoke "ics.helper.helperDSL.DaysOfWeek.getDays()" because the return value of "ics.helper.helperDSL.Event.getDaysOfWeek()" is null
+	at ics.helper.generator.HelperDSLGenerator.generateRecurRule(HelperDSLGenerator.java:123)
+	at ics.helper.generator.HelperDSLGenerator.generateICSFile(HelperDSLGenerator.java:89)
+	at ics.helper.generator.HelperDSLGenerator.doGenerate(HelperDSLGenerator.java:37)
+	at org.eclipse.xtext.generator.GeneratorDelegate.doGenerate(GeneratorDelegate.java:44)
+	at org.eclipse.xtext.generator.GeneratorDelegate.generate(GeneratorDelegate.java:35)
+	at org.eclipse.xtext.builder.BuilderParticipant.handleChangedContents(BuilderParticipant.java:597)
+	at org.eclipse.xtext.builder.BuilderParticipant.handleChangedContents(BuilderParticipant.java:578)
+	at org.eclipse.xtext.builder.BuilderParticipant.doGenerate(BuilderParticipant.java:563)
+	at org.eclipse.xtext.builder.BuilderParticipant.doBuild(BuilderParticipant.java:303)
+	at org.eclipse.xtext.builder.BuilderParticipant.build(BuilderParticipant.java:265)
+	at org.eclipse.xtext.builder.impl.RegistryBuilderParticipant$DeferredBuilderParticipant.build(RegistryBuilderParticipant.java:164)
+	at org.eclipse.xtext.builder.impl.RegistryBuilderParticipant.build(RegistryBuilderParticipant.java:70)
+	at org.eclipse.xtext.builder.impl.XtextBuilder.doBuild(XtextBuilder.java:526)
+	at org.eclipse.xtext.builder.impl.XtextBuilder.addInfosFromTaskAndBuild(XtextBuilder.java:456)
+	at org.eclipse.xtext.builder.impl.XtextBuilder.incrementalBuild(XtextBuilder.java:437)
+	at org.eclipse.xtext.builder.impl.XtextBuilder.build(XtextBuilder.java:340)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1077)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:296)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:352)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:441)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:444)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:555)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:503)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:585)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:207)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:300)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)

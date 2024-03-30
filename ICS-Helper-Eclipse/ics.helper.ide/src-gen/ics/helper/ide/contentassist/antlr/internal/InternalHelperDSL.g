@@ -149,6 +149,31 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+// Entry rule entryRuleDaysOfWeek
+entryRuleDaysOfWeek
+:
+{ before(grammarAccess.getDaysOfWeekRule()); }
+	 ruleDaysOfWeek
+{ after(grammarAccess.getDaysOfWeekRule()); } 
+	 EOF 
+;
+
+// Rule DaysOfWeek
+ruleDaysOfWeek 
+	@init {
+		int stackSize = keepStackSize();
+	}
+	:
+	(
+		{ before(grammarAccess.getDaysOfWeekAccess().getGroup()); }
+		(rule__DaysOfWeek__Group__0)
+		{ after(grammarAccess.getDaysOfWeekAccess().getGroup()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 // Entry rule entryRuleSplitCommand
 entryRuleSplitCommand
 :
@@ -234,6 +259,22 @@ ruleRecurRule
 		{ before(grammarAccess.getRecurRuleAccess().getAlternatives()); }
 		(rule__RecurRule__Alternatives)
 		{ after(grammarAccess.getRecurRuleAccess().getAlternatives()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+// Rule WEEKDAY
+ruleWEEKDAY
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getWEEKDAYAccess().getAlternatives()); }
+		(rule__WEEKDAY__Alternatives)
+		{ after(grammarAccess.getWEEKDAYAccess().getAlternatives()); }
 	)
 ;
 finally {
@@ -354,6 +395,57 @@ rule__RecurRule__Alternatives
 		{ before(grammarAccess.getRecurRuleAccess().getBYDAYEnumLiteralDeclaration_4()); }
 		('on')
 		{ after(grammarAccess.getRecurRuleAccess().getBYDAYEnumLiteralDeclaration_4()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__WEEKDAY__Alternatives
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getWEEKDAYAccess().getMOEnumLiteralDeclaration_0()); }
+		('Monday')
+		{ after(grammarAccess.getWEEKDAYAccess().getMOEnumLiteralDeclaration_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getWEEKDAYAccess().getTUEnumLiteralDeclaration_1()); }
+		('Tuesday')
+		{ after(grammarAccess.getWEEKDAYAccess().getTUEnumLiteralDeclaration_1()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getWEEKDAYAccess().getWEEnumLiteralDeclaration_2()); }
+		('Wednesday')
+		{ after(grammarAccess.getWEEKDAYAccess().getWEEnumLiteralDeclaration_2()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getWEEKDAYAccess().getTHEnumLiteralDeclaration_3()); }
+		('Thursday')
+		{ after(grammarAccess.getWEEKDAYAccess().getTHEnumLiteralDeclaration_3()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getWEEKDAYAccess().getFREnumLiteralDeclaration_4()); }
+		('Friday')
+		{ after(grammarAccess.getWEEKDAYAccess().getFREnumLiteralDeclaration_4()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getWEEKDAYAccess().getSAEnumLiteralDeclaration_5()); }
+		('Saturday')
+		{ after(grammarAccess.getWEEKDAYAccess().getSAEnumLiteralDeclaration_5()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getWEEKDAYAccess().getSUEnumLiteralDeclaration_6()); }
+		('Sunday')
+		{ after(grammarAccess.getWEEKDAYAccess().getSUEnumLiteralDeclaration_6()); }
 	)
 ;
 finally {
@@ -987,6 +1079,7 @@ rule__Event__Group_9__1
 	}
 :
 	rule__Event__Group_9__1__Impl
+	rule__Event__Group_9__2
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -1001,6 +1094,140 @@ rule__Event__Group_9__1__Impl
 	{ before(grammarAccess.getEventAccess().getRecurAssignment_9_1()); }
 	(rule__Event__RecurAssignment_9_1)
 	{ after(grammarAccess.getEventAccess().getRecurAssignment_9_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Event__Group_9__2
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Event__Group_9__2__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Event__Group_9__2__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getEventAccess().getDaysOfWeekAssignment_9_2()); }
+	(rule__Event__DaysOfWeekAssignment_9_2)?
+	{ after(grammarAccess.getEventAccess().getDaysOfWeekAssignment_9_2()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__DaysOfWeek__Group__0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__DaysOfWeek__Group__0__Impl
+	rule__DaysOfWeek__Group__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DaysOfWeek__Group__0__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getDaysOfWeekAccess().getDaysAssignment_0()); }
+	(rule__DaysOfWeek__DaysAssignment_0)
+	{ after(grammarAccess.getDaysOfWeekAccess().getDaysAssignment_0()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DaysOfWeek__Group__1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__DaysOfWeek__Group__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DaysOfWeek__Group__1__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getDaysOfWeekAccess().getGroup_1()); }
+	(rule__DaysOfWeek__Group_1__0)*
+	{ after(grammarAccess.getDaysOfWeekAccess().getGroup_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__DaysOfWeek__Group_1__0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__DaysOfWeek__Group_1__0__Impl
+	rule__DaysOfWeek__Group_1__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DaysOfWeek__Group_1__0__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getDaysOfWeekAccess().getCommaKeyword_1_0()); }
+	','
+	{ after(grammarAccess.getDaysOfWeekAccess().getCommaKeyword_1_0()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DaysOfWeek__Group_1__1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__DaysOfWeek__Group_1__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DaysOfWeek__Group_1__1__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getDaysOfWeekAccess().getDaysAssignment_1_1()); }
+	(rule__DaysOfWeek__DaysAssignment_1_1)
+	{ after(grammarAccess.getDaysOfWeekAccess().getDaysAssignment_1_1()); }
 )
 ;
 finally {
@@ -1753,6 +1980,51 @@ rule__Event__RecurAssignment_9_1
 		{ before(grammarAccess.getEventAccess().getRecurRecurRuleEnumRuleCall_9_1_0()); }
 		ruleRecurRule
 		{ after(grammarAccess.getEventAccess().getRecurRecurRuleEnumRuleCall_9_1_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Event__DaysOfWeekAssignment_9_2
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getEventAccess().getDaysOfWeekDaysOfWeekParserRuleCall_9_2_0()); }
+		ruleDaysOfWeek
+		{ after(grammarAccess.getEventAccess().getDaysOfWeekDaysOfWeekParserRuleCall_9_2_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DaysOfWeek__DaysAssignment_0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getDaysOfWeekAccess().getDaysWEEKDAYEnumRuleCall_0_0()); }
+		ruleWEEKDAY
+		{ after(grammarAccess.getDaysOfWeekAccess().getDaysWEEKDAYEnumRuleCall_0_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__DaysOfWeek__DaysAssignment_1_1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getDaysOfWeekAccess().getDaysWEEKDAYEnumRuleCall_1_1_0()); }
+		ruleWEEKDAY
+		{ after(grammarAccess.getDaysOfWeekAccess().getDaysWEEKDAYEnumRuleCall_1_1_0()); }
 	)
 ;
 finally {

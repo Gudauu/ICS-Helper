@@ -3,6 +3,8 @@
  */
 package ics.helper.helperDSL;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -14,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link ics.helper.helperDSL.DaysOfWeek#getDay <em>Day</em>}</li>
+ *   <li>{@link ics.helper.helperDSL.DaysOfWeek#getDays <em>Days</em>}</li>
  * </ul>
  *
  * @see ics.helper.helperDSL.HelperDSLPackage#getDaysOfWeek()
@@ -24,25 +26,17 @@ import org.eclipse.emf.ecore.EObject;
 public interface DaysOfWeek extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Day</b></em>' attribute.
+   * Returns the value of the '<em><b>Days</b></em>' attribute list.
+   * The list contents are of type {@link ics.helper.helperDSL.WEEKDAY}.
+   * The literals are from the enumeration {@link ics.helper.helperDSL.WEEKDAY}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Day</em>' attribute.
-   * @see #setDay(String)
-   * @see ics.helper.helperDSL.HelperDSLPackage#getDaysOfWeek_Day()
-   * @model
+   * @return the value of the '<em>Days</em>' attribute list.
+   * @see ics.helper.helperDSL.WEEKDAY
+   * @see ics.helper.helperDSL.HelperDSLPackage#getDaysOfWeek_Days()
+   * @model unique="false"
    * @generated
    */
-  String getDay();
-
-  /**
-   * Sets the value of the '{@link ics.helper.helperDSL.DaysOfWeek#getDay <em>Day</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Day</em>' attribute.
-   * @see #getDay()
-   * @generated
-   */
-  void setDay(String value);
+  EList<WEEKDAY> getDays();
 
 } // DaysOfWeek

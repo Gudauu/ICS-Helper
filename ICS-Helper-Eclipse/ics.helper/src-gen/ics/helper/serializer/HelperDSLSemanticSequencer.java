@@ -89,7 +89,7 @@ public class HelperDSLSemanticSequencer extends AbstractDelegatingSemanticSequen
 	 *     DaysOfWeek returns DaysOfWeek
 	 *
 	 * Constraint:
-	 *     (day=ID day=ID*)
+	 *     (days+=WEEKDAY days+=WEEKDAY*)
 	 * </pre>
 	 */
 	protected void sequence_DaysOfWeek(ISerializationContext context, DaysOfWeek semanticObject) {
@@ -110,7 +110,7 @@ public class HelperDSLSemanticSequencer extends AbstractDelegatingSemanticSequen
 	 *         location=STRING? 
 	 *         description=STRING? 
 	 *         link=STRING? 
-	 *         recur=RecurRule?
+	 *         (recur=RecurRule daysOfWeek=DaysOfWeek?)?
 	 *     )
 	 * </pre>
 	 */

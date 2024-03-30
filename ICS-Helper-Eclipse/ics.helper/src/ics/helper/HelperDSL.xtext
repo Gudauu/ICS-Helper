@@ -20,7 +20,7 @@ Event:
     ('at' location=STRING)?
     ('description' description=STRING)?
     ('link' link=STRING)?
-    ('recur' recur=RecurRule)?;
+    ('recur' recur=RecurRule (daysOfWeek=DaysOfWeek)?)?;
     
 enum RecurRule:
     DAILY = 'daily' |
@@ -29,7 +29,17 @@ enum RecurRule:
     YEARLY = 'yearly'|
     BYDAY = 'on';
 
-DaysOfWeek: day=ID (',' day=ID)*; // Example: "on Monday,Wednesday,Friday"
+DaysOfWeek: days+=WEEKDAY (',' days+=WEEKDAY)*; // Example: "on Monday,Wednesday,Friday"
+
+enum WEEKDAY:
+	MO = 'Monday' |
+	TU = 'Tuesday' |
+	WE = 'Wednesday' |
+	TH = 'Thursday' |
+	FR = 'Friday' |
+	SA = 'Saturday' |
+	SU = 'Sunday'
+;
  
 LoadAllICSCommand:
     'loadAllICS';

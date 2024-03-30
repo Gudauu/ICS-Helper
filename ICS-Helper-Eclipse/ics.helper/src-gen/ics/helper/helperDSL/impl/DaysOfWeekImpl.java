@@ -5,13 +5,17 @@ package ics.helper.helperDSL.impl;
 
 import ics.helper.helperDSL.DaysOfWeek;
 import ics.helper.helperDSL.HelperDSLPackage;
+import ics.helper.helperDSL.WEEKDAY;
 
-import org.eclipse.emf.common.notify.Notification;
+import java.util.Collection;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EDataTypeEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +25,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link ics.helper.helperDSL.impl.DaysOfWeekImpl#getDay <em>Day</em>}</li>
+ *   <li>{@link ics.helper.helperDSL.impl.DaysOfWeekImpl#getDays <em>Days</em>}</li>
  * </ul>
  *
  * @generated
@@ -29,24 +33,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class DaysOfWeekImpl extends MinimalEObjectImpl.Container implements DaysOfWeek
 {
   /**
-   * The default value of the '{@link #getDay() <em>Day</em>}' attribute.
+   * The cached value of the '{@link #getDays() <em>Days</em>}' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getDay()
+   * @see #getDays()
    * @generated
    * @ordered
    */
-  protected static final String DAY_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getDay() <em>Day</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getDay()
-   * @generated
-   * @ordered
-   */
-  protected String day = DAY_EDEFAULT;
+  protected EList<WEEKDAY> days;
 
   /**
    * <!-- begin-user-doc -->
@@ -75,23 +69,13 @@ public class DaysOfWeekImpl extends MinimalEObjectImpl.Container implements Days
    * @generated
    */
   @Override
-  public String getDay()
+  public EList<WEEKDAY> getDays()
   {
-    return day;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setDay(String newDay)
-  {
-    String oldDay = day;
-    day = newDay;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, HelperDSLPackage.DAYS_OF_WEEK__DAY, oldDay, day));
+    if (days == null)
+    {
+      days = new EDataTypeEList<WEEKDAY>(WEEKDAY.class, this, HelperDSLPackage.DAYS_OF_WEEK__DAYS);
+    }
+    return days;
   }
 
   /**
@@ -104,8 +88,8 @@ public class DaysOfWeekImpl extends MinimalEObjectImpl.Container implements Days
   {
     switch (featureID)
     {
-      case HelperDSLPackage.DAYS_OF_WEEK__DAY:
-        return getDay();
+      case HelperDSLPackage.DAYS_OF_WEEK__DAYS:
+        return getDays();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -115,13 +99,15 @@ public class DaysOfWeekImpl extends MinimalEObjectImpl.Container implements Days
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case HelperDSLPackage.DAYS_OF_WEEK__DAY:
-        setDay((String)newValue);
+      case HelperDSLPackage.DAYS_OF_WEEK__DAYS:
+        getDays().clear();
+        getDays().addAll((Collection<? extends WEEKDAY>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -137,8 +123,8 @@ public class DaysOfWeekImpl extends MinimalEObjectImpl.Container implements Days
   {
     switch (featureID)
     {
-      case HelperDSLPackage.DAYS_OF_WEEK__DAY:
-        setDay(DAY_EDEFAULT);
+      case HelperDSLPackage.DAYS_OF_WEEK__DAYS:
+        getDays().clear();
         return;
     }
     super.eUnset(featureID);
@@ -154,8 +140,8 @@ public class DaysOfWeekImpl extends MinimalEObjectImpl.Container implements Days
   {
     switch (featureID)
     {
-      case HelperDSLPackage.DAYS_OF_WEEK__DAY:
-        return DAY_EDEFAULT == null ? day != null : !DAY_EDEFAULT.equals(day);
+      case HelperDSLPackage.DAYS_OF_WEEK__DAYS:
+        return days != null && !days.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -171,8 +157,8 @@ public class DaysOfWeekImpl extends MinimalEObjectImpl.Container implements Days
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (day: ");
-    result.append(day);
+    result.append(" (days: ");
+    result.append(days);
     result.append(')');
     return result.toString();
   }

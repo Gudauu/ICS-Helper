@@ -401,7 +401,89 @@ ruleEvent returns [EObject current=null]
 					}
 				)
 			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getEventAccess().getDaysOfWeekDaysOfWeekParserRuleCall_9_2_0());
+					}
+					lv_daysOfWeek_14_0=ruleDaysOfWeek
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getEventRule());
+						}
+						set(
+							$current,
+							"daysOfWeek",
+							lv_daysOfWeek_14_0,
+							"ics.helper.HelperDSL.DaysOfWeek");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)?
 		)?
+	)
+;
+
+// Entry rule entryRuleDaysOfWeek
+entryRuleDaysOfWeek returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getDaysOfWeekRule()); }
+	iv_ruleDaysOfWeek=ruleDaysOfWeek
+	{ $current=$iv_ruleDaysOfWeek.current; }
+	EOF;
+
+// Rule DaysOfWeek
+ruleDaysOfWeek returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getDaysOfWeekAccess().getDaysWEEKDAYEnumRuleCall_0_0());
+				}
+				lv_days_0_0=ruleWEEKDAY
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getDaysOfWeekRule());
+					}
+					add(
+						$current,
+						"days",
+						lv_days_0_0,
+						"ics.helper.HelperDSL.WEEKDAY");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			otherlv_1=','
+			{
+				newLeafNode(otherlv_1, grammarAccess.getDaysOfWeekAccess().getCommaKeyword_1_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getDaysOfWeekAccess().getDaysWEEKDAYEnumRuleCall_1_1_0());
+					}
+					lv_days_2_0=ruleWEEKDAY
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getDaysOfWeekRule());
+						}
+						add(
+							$current,
+							"days",
+							lv_days_2_0,
+							"ics.helper.HelperDSL.WEEKDAY");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)*
 	)
 ;
 
@@ -721,6 +803,73 @@ ruleRecurRule returns [Enumerator current=null]
 			{
 				$current = grammarAccess.getRecurRuleAccess().getBYDAYEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
 				newLeafNode(enumLiteral_4, grammarAccess.getRecurRuleAccess().getBYDAYEnumLiteralDeclaration_4());
+			}
+		)
+	)
+;
+
+// Rule WEEKDAY
+ruleWEEKDAY returns [Enumerator current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			enumLiteral_0='Monday'
+			{
+				$current = grammarAccess.getWEEKDAYAccess().getMOEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getWEEKDAYAccess().getMOEnumLiteralDeclaration_0());
+			}
+		)
+		    |
+		(
+			enumLiteral_1='Tuesday'
+			{
+				$current = grammarAccess.getWEEKDAYAccess().getTUEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getWEEKDAYAccess().getTUEnumLiteralDeclaration_1());
+			}
+		)
+		    |
+		(
+			enumLiteral_2='Wednesday'
+			{
+				$current = grammarAccess.getWEEKDAYAccess().getWEEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_2, grammarAccess.getWEEKDAYAccess().getWEEnumLiteralDeclaration_2());
+			}
+		)
+		    |
+		(
+			enumLiteral_3='Thursday'
+			{
+				$current = grammarAccess.getWEEKDAYAccess().getTHEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_3, grammarAccess.getWEEKDAYAccess().getTHEnumLiteralDeclaration_3());
+			}
+		)
+		    |
+		(
+			enumLiteral_4='Friday'
+			{
+				$current = grammarAccess.getWEEKDAYAccess().getFREnumLiteralDeclaration_4().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_4, grammarAccess.getWEEKDAYAccess().getFREnumLiteralDeclaration_4());
+			}
+		)
+		    |
+		(
+			enumLiteral_5='Saturday'
+			{
+				$current = grammarAccess.getWEEKDAYAccess().getSAEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_5, grammarAccess.getWEEKDAYAccess().getSAEnumLiteralDeclaration_5());
+			}
+		)
+		    |
+		(
+			enumLiteral_6='Sunday'
+			{
+				$current = grammarAccess.getWEEKDAYAccess().getSUEnumLiteralDeclaration_6().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_6, grammarAccess.getWEEKDAYAccess().getSUEnumLiteralDeclaration_6());
 			}
 		)
 	)

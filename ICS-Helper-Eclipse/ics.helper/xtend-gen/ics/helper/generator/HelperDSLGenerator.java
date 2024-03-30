@@ -5,8 +5,10 @@ package ics.helper.generator;
 
 import com.google.common.collect.Iterables;
 import ics.helper.helperDSL.CreateCommand;
+import ics.helper.helperDSL.DaysOfWeek;
 import ics.helper.helperDSL.Event;
 import ics.helper.helperDSL.RecurRule;
+import ics.helper.helperDSL.WEEKDAY;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -18,7 +20,10 @@ import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import org.eclipse.xtext.xbase.lib.ListExtensions;
 
 /**
  * Generates ICS files from your model files on save.
@@ -85,7 +90,7 @@ public class HelperDSLGenerator extends AbstractGenerator {
         RecurRule _recur = event.getRecur();
         boolean _tripleNotEquals_3 = (_recur != null);
         if (_tripleNotEquals_3) {
-          String _generateRecurRule = this.generateRecurRule(event.getRecur());
+          String _generateRecurRule = this.generateRecurRule(event);
           String _plus_12 = (_generateRecurRule + "\n");
           icsContent.append(_plus_12);
         }
@@ -99,10 +104,11 @@ public class HelperDSLGenerator extends AbstractGenerator {
     fsa.generateFile(fileName, icsContent.toString());
   }
 
-  public String generateRecurRule(final RecurRule recur) {
+  public String generateRecurRule(final Event event) {
     String _switchResult = null;
-    if (recur != null) {
-      switch (recur) {
+    RecurRule _recur = event.getRecur();
+    if (_recur != null) {
+      switch (_recur) {
         case DAILY:
           _switchResult = "RRULE:FREQ=DAILY";
           break;
@@ -115,6 +121,49 @@ public class HelperDSLGenerator extends AbstractGenerator {
         case YEARLY:
           _switchResult = "RRULE:FREQ=YEARLY";
           break;
+        case BYDAY:
+          DaysOfWeek _daysOfWeek = event.getDaysOfWeek();
+          boolean _tripleNotEquals = (_daysOfWeek != null);
+          if (_tripleNotEquals) {
+            final Function1<WEEKDAY, String> _function = (WEEKDAY day) -> {
+              String _switchResult_1 = null;
+              if (day != null) {
+                switch (day) {
+                  case MO:
+                    _switchResult_1 = "MO";
+                    break;
+                  case TU:
+                    _switchResult_1 = "TU";
+                    break;
+                  case WE:
+                    _switchResult_1 = "WE";
+                    break;
+                  case TH:
+                    _switchResult_1 = "TH";
+                    break;
+                  case FR:
+                    _switchResult_1 = "FR";
+                    break;
+                  case SA:
+                    _switchResult_1 = "SA";
+                    break;
+                  case SU:
+                    _switchResult_1 = "SU";
+                    break;
+                  default:
+                    _switchResult_1 = "";
+                    break;
+                }
+              } else {
+                _switchResult_1 = "";
+              }
+              return _switchResult_1;
+            };
+            final String days = IterableExtensions.join(ListExtensions.<WEEKDAY, String>map(event.getDaysOfWeek().getDays(), _function), ",");
+            return ("RRULE:FREQ=WEEKLY;BYDAY=" + days);
+          } else {
+            return "";
+          }
         default:
           _switchResult = "";
           break;

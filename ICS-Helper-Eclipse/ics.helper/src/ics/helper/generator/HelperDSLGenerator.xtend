@@ -8,6 +8,7 @@ import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import ics.helper.helperDSL.CreateCommand
+import ics.helper.helperDSL.Event
 import ics.helper.helperDSL.RecurRule
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -15,7 +16,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.ZoneId;
 import java.time.format.DateTimeParseException;
-
+import ics.helper.helperDSL.WEEKDAY
 
 /**
  * Generates ICS files from your model files on save.
@@ -51,7 +52,7 @@ class HelperDSLGenerator extends AbstractGenerator {
                 icsContent.append("LINK:" + event.link + "\n")
             }
             if (event.recur !== null) {
-                icsContent.append(generateRecurRule(event.recur) + "\n")
+                icsContent.append(generateRecurRule(event) + "\n")
             }
             icsContent.append("END:VEVENT\n")
         }
@@ -63,20 +64,36 @@ class HelperDSLGenerator extends AbstractGenerator {
         fsa.generateFile(fileName, icsContent.toString)
     }
     
-    def String generateRecurRule(RecurRule recur) {
-    	switch recur {
+    def String generateRecurRule(Event event) {
+    	switch event.recur {
             case RecurRule::DAILY: "RRULE:FREQ=DAILY"
             case RecurRule::WEEKLY: "RRULE:FREQ=WEEKLY"
             case RecurRule::MONTHLY: "RRULE:FREQ=MONTHLY"
             case RecurRule::YEARLY: "RRULE:FREQ=YEARLY"
-//            case BYDAY: {
-//                val days = recur.daysOfWeek.day.join(",")
-//                "RRULE:FREQ=WEEKLY;BYDAY=" + days.toUpperCase
-//            }
-            default: ""
+            case RecurRule::BYDAY: {
+            // and mapping each WEEKDAY enum to its name (which are already the abbreviations you want).
+            // Then join them with a comma for the RRULE string.
+            if (event.daysOfWeek !== null) {
+                val days = event.daysOfWeek.days.map[
+                	day | 
+				    switch (day) {
+				        case WEEKDAY::MO: "MO"
+				        case WEEKDAY::TU: "TU"
+				        case WEEKDAY::WE: "WE"
+				        case WEEKDAY::TH: "TH"
+				        case WEEKDAY::FR: "FR"
+				        case WEEKDAY::SA: "SA"
+				        case WEEKDAY::SU: "SU"
+				        default: ""
+				    }
+                ].join(",")
+                return "RRULE:FREQ=WEEKLY;BYDAY=" + days
+            } else {
+                return ""
+            }
         }
-    	
-        
+            default: ""
+        }   
     }
     def String convertToICSTimeFormat(String userInputTime) {
         try {

@@ -19,6 +19,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="link" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="recur" eType="#//RecurRule"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="daysOfWeek" eType="#//DaysOfWeek"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="RecurRule">
     <eLiterals name="DAILY" literal="daily"/>
@@ -28,7 +30,17 @@
     <eLiterals name="BYDAY" value="4" literal="on"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DaysOfWeek">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="day" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="days" unique="false" upperBound="-1"
+        eType="#//WEEKDAY"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="WEEKDAY">
+    <eLiterals name="MO" literal="Monday"/>
+    <eLiterals name="TU" value="1" literal="Tuesday"/>
+    <eLiterals name="WE" value="2" literal="Wednesday"/>
+    <eLiterals name="TH" value="3" literal="Thursday"/>
+    <eLiterals name="FR" value="4" literal="Friday"/>
+    <eLiterals name="SA" value="5" literal="Saturday"/>
+    <eLiterals name="SU" value="6" literal="Sunday"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Schedule">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

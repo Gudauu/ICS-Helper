@@ -142,6 +142,8 @@ public class HelperDSLGrammarAccess extends AbstractElementFinder.AbstractGramma
 		private final Keyword cRecurKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
 		private final Assignment cRecurAssignment_9_1 = (Assignment)cGroup_9.eContents().get(1);
 		private final RuleCall cRecurRecurRuleEnumRuleCall_9_1_0 = (RuleCall)cRecurAssignment_9_1.eContents().get(0);
+		private final Assignment cDaysOfWeekAssignment_9_2 = (Assignment)cGroup_9.eContents().get(2);
+		private final RuleCall cDaysOfWeekDaysOfWeekParserRuleCall_9_2_0 = (RuleCall)cDaysOfWeekAssignment_9_2.eContents().get(0);
 		
 		//Event:
 		//    'event' name=ID
@@ -150,7 +152,7 @@ public class HelperDSLGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//    ('at' location=STRING)?
 		//    ('description' description=STRING)?
 		//    ('link' link=STRING)?
-		//    ('recur' recur=RecurRule)?;
+		//    ('recur' recur=RecurRule (daysOfWeek=DaysOfWeek)?)?;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'event' name=ID
@@ -159,7 +161,7 @@ public class HelperDSLGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//('at' location=STRING)?
 		//('description' description=STRING)?
 		//('link' link=STRING)?
-		//('recur' recur=RecurRule)?
+		//('recur' recur=RecurRule (daysOfWeek=DaysOfWeek)?)?
 		public Group getGroup() { return cGroup; }
 		
 		//'event'
@@ -225,7 +227,7 @@ public class HelperDSLGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//STRING
 		public RuleCall getLinkSTRINGTerminalRuleCall_8_1_0() { return cLinkSTRINGTerminalRuleCall_8_1_0; }
 		
-		//('recur' recur=RecurRule)?
+		//('recur' recur=RecurRule (daysOfWeek=DaysOfWeek)?)?
 		public Group getGroup_9() { return cGroup_9; }
 		
 		//'recur'
@@ -236,46 +238,51 @@ public class HelperDSLGrammarAccess extends AbstractElementFinder.AbstractGramma
 		
 		//RecurRule
 		public RuleCall getRecurRecurRuleEnumRuleCall_9_1_0() { return cRecurRecurRuleEnumRuleCall_9_1_0; }
+		
+		//(daysOfWeek=DaysOfWeek)?
+		public Assignment getDaysOfWeekAssignment_9_2() { return cDaysOfWeekAssignment_9_2; }
+		
+		//DaysOfWeek
+		public RuleCall getDaysOfWeekDaysOfWeekParserRuleCall_9_2_0() { return cDaysOfWeekDaysOfWeekParserRuleCall_9_2_0; }
 	}
 	public class DaysOfWeekElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ics.helper.HelperDSL.DaysOfWeek");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cDayAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cDayIDTerminalRuleCall_0_0 = (RuleCall)cDayAssignment_0.eContents().get(0);
+		private final Assignment cDaysAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cDaysWEEKDAYEnumRuleCall_0_0 = (RuleCall)cDaysAssignment_0.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Keyword cCommaKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Assignment cDayAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cDayIDTerminalRuleCall_1_1_0 = (RuleCall)cDayAssignment_1_1.eContents().get(0);
+		private final Assignment cDaysAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cDaysWEEKDAYEnumRuleCall_1_1_0 = (RuleCall)cDaysAssignment_1_1.eContents().get(0);
 		
-		//DaysOfWeek: day=ID (',' day=ID)*;
+		//DaysOfWeek: days+=WEEKDAY (',' days+=WEEKDAY)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//day=ID (',' day=ID)*
+		//days+=WEEKDAY (',' days+=WEEKDAY)*
 		public Group getGroup() { return cGroup; }
 		
-		//day=ID
-		public Assignment getDayAssignment_0() { return cDayAssignment_0; }
+		//days+=WEEKDAY
+		public Assignment getDaysAssignment_0() { return cDaysAssignment_0; }
 		
-		//ID
-		public RuleCall getDayIDTerminalRuleCall_0_0() { return cDayIDTerminalRuleCall_0_0; }
+		//WEEKDAY
+		public RuleCall getDaysWEEKDAYEnumRuleCall_0_0() { return cDaysWEEKDAYEnumRuleCall_0_0; }
 		
-		//(',' day=ID)*
+		//(',' days+=WEEKDAY)*
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//','
 		public Keyword getCommaKeyword_1_0() { return cCommaKeyword_1_0; }
 		
-		//day=ID
-		public Assignment getDayAssignment_1_1() { return cDayAssignment_1_1; }
+		//days+=WEEKDAY
+		public Assignment getDaysAssignment_1_1() { return cDaysAssignment_1_1; }
 		
-		//ID
-		public RuleCall getDayIDTerminalRuleCall_1_1_0() { return cDayIDTerminalRuleCall_1_1_0; }
+		//WEEKDAY
+		public RuleCall getDaysWEEKDAYEnumRuleCall_1_1_0() { return cDaysWEEKDAYEnumRuleCall_1_1_0; }
 	}
 	public class LoadAllICSCommandElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ics.helper.HelperDSL.LoadAllICSCommand");
 		private final Keyword cLoadAllICSKeyword = (Keyword)rule.eContents().get(1);
 		
-		// // Example: "on Monday,Wednesday,Friday"
 		//LoadAllICSCommand:
 		//    'loadAllICS';
 		@Override public ParserRule getRule() { return rule; }
@@ -555,6 +562,87 @@ public class HelperDSLGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//'on'
 		public Keyword getBYDAYOnKeyword_4_0() { return cBYDAYOnKeyword_4_0; }
 	}
+	public class WEEKDAYElements extends AbstractElementFinder.AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "ics.helper.HelperDSL.WEEKDAY");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cMOEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cMOMondayKeyword_0_0 = (Keyword)cMOEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cTUEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cTUTuesdayKeyword_1_0 = (Keyword)cTUEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cWEEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cWEWednesdayKeyword_2_0 = (Keyword)cWEEnumLiteralDeclaration_2.eContents().get(0);
+		private final EnumLiteralDeclaration cTHEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
+		private final Keyword cTHThursdayKeyword_3_0 = (Keyword)cTHEnumLiteralDeclaration_3.eContents().get(0);
+		private final EnumLiteralDeclaration cFREnumLiteralDeclaration_4 = (EnumLiteralDeclaration)cAlternatives.eContents().get(4);
+		private final Keyword cFRFridayKeyword_4_0 = (Keyword)cFREnumLiteralDeclaration_4.eContents().get(0);
+		private final EnumLiteralDeclaration cSAEnumLiteralDeclaration_5 = (EnumLiteralDeclaration)cAlternatives.eContents().get(5);
+		private final Keyword cSASaturdayKeyword_5_0 = (Keyword)cSAEnumLiteralDeclaration_5.eContents().get(0);
+		private final EnumLiteralDeclaration cSUEnumLiteralDeclaration_6 = (EnumLiteralDeclaration)cAlternatives.eContents().get(6);
+		private final Keyword cSUSundayKeyword_6_0 = (Keyword)cSUEnumLiteralDeclaration_6.eContents().get(0);
+		
+		// // Example: "on Monday,Wednesday,Friday"
+		//enum WEEKDAY:
+		//    MO = 'Monday' |
+		//    TU = 'Tuesday' |
+		//    WE = 'Wednesday' |
+		//    TH = 'Thursday' |
+		//    FR = 'Friday' |
+		//    SA = 'Saturday' |
+		//    SU = 'Sunday'
+		//;
+		public EnumRule getRule() { return rule; }
+		
+		//MO = 'Monday' |
+		//TU = 'Tuesday' |
+		//WE = 'Wednesday' |
+		//TH = 'Thursday' |
+		//FR = 'Friday' |
+		//SA = 'Saturday' |
+		//SU = 'Sunday'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//MO = 'Monday'
+		public EnumLiteralDeclaration getMOEnumLiteralDeclaration_0() { return cMOEnumLiteralDeclaration_0; }
+		
+		//'Monday'
+		public Keyword getMOMondayKeyword_0_0() { return cMOMondayKeyword_0_0; }
+		
+		//TU = 'Tuesday'
+		public EnumLiteralDeclaration getTUEnumLiteralDeclaration_1() { return cTUEnumLiteralDeclaration_1; }
+		
+		//'Tuesday'
+		public Keyword getTUTuesdayKeyword_1_0() { return cTUTuesdayKeyword_1_0; }
+		
+		//WE = 'Wednesday'
+		public EnumLiteralDeclaration getWEEnumLiteralDeclaration_2() { return cWEEnumLiteralDeclaration_2; }
+		
+		//'Wednesday'
+		public Keyword getWEWednesdayKeyword_2_0() { return cWEWednesdayKeyword_2_0; }
+		
+		//TH = 'Thursday'
+		public EnumLiteralDeclaration getTHEnumLiteralDeclaration_3() { return cTHEnumLiteralDeclaration_3; }
+		
+		//'Thursday'
+		public Keyword getTHThursdayKeyword_3_0() { return cTHThursdayKeyword_3_0; }
+		
+		//FR = 'Friday'
+		public EnumLiteralDeclaration getFREnumLiteralDeclaration_4() { return cFREnumLiteralDeclaration_4; }
+		
+		//'Friday'
+		public Keyword getFRFridayKeyword_4_0() { return cFRFridayKeyword_4_0; }
+		
+		//SA = 'Saturday'
+		public EnumLiteralDeclaration getSAEnumLiteralDeclaration_5() { return cSAEnumLiteralDeclaration_5; }
+		
+		//'Saturday'
+		public Keyword getSASaturdayKeyword_5_0() { return cSASaturdayKeyword_5_0; }
+		
+		//SU = 'Sunday'
+		public EnumLiteralDeclaration getSUEnumLiteralDeclaration_6() { return cSUEnumLiteralDeclaration_6; }
+		
+		//'Sunday'
+		public Keyword getSUSundayKeyword_6_0() { return cSUSundayKeyword_6_0; }
+	}
 	
 	private final ModelElements pModel;
 	private final CommandElements pCommand;
@@ -562,6 +650,7 @@ public class HelperDSLGrammarAccess extends AbstractElementFinder.AbstractGramma
 	private final EventElements pEvent;
 	private final RecurRuleElements eRecurRule;
 	private final DaysOfWeekElements pDaysOfWeek;
+	private final WEEKDAYElements eWEEKDAY;
 	private final LoadAllICSCommandElements pLoadAllICSCommand;
 	private final ScheduleElements pSchedule;
 	private final SplitCommandElements pSplitCommand;
@@ -583,6 +672,7 @@ public class HelperDSLGrammarAccess extends AbstractElementFinder.AbstractGramma
 		this.pEvent = new EventElements();
 		this.eRecurRule = new RecurRuleElements();
 		this.pDaysOfWeek = new DaysOfWeekElements();
+		this.eWEEKDAY = new WEEKDAYElements();
 		this.pLoadAllICSCommand = new LoadAllICSCommandElements();
 		this.pSchedule = new ScheduleElements();
 		this.pSplitCommand = new SplitCommandElements();
@@ -656,7 +746,7 @@ public class HelperDSLGrammarAccess extends AbstractElementFinder.AbstractGramma
 	//    ('at' location=STRING)?
 	//    ('description' description=STRING)?
 	//    ('link' link=STRING)?
-	//    ('recur' recur=RecurRule)?;
+	//    ('recur' recur=RecurRule (daysOfWeek=DaysOfWeek)?)?;
 	public EventElements getEventAccess() {
 		return pEvent;
 	}
@@ -679,7 +769,7 @@ public class HelperDSLGrammarAccess extends AbstractElementFinder.AbstractGramma
 		return getRecurRuleAccess().getRule();
 	}
 	
-	//DaysOfWeek: day=ID (',' day=ID)*;
+	//DaysOfWeek: days+=WEEKDAY (',' days+=WEEKDAY)*;
 	public DaysOfWeekElements getDaysOfWeekAccess() {
 		return pDaysOfWeek;
 	}
@@ -689,6 +779,23 @@ public class HelperDSLGrammarAccess extends AbstractElementFinder.AbstractGramma
 	}
 	
 	// // Example: "on Monday,Wednesday,Friday"
+	//enum WEEKDAY:
+	//    MO = 'Monday' |
+	//    TU = 'Tuesday' |
+	//    WE = 'Wednesday' |
+	//    TH = 'Thursday' |
+	//    FR = 'Friday' |
+	//    SA = 'Saturday' |
+	//    SU = 'Sunday'
+	//;
+	public WEEKDAYElements getWEEKDAYAccess() {
+		return eWEEKDAY;
+	}
+	
+	public EnumRule getWEEKDAYRule() {
+		return getWEEKDAYAccess().getRule();
+	}
+	
 	//LoadAllICSCommand:
 	//    'loadAllICS';
 	public LoadAllICSCommandElements getLoadAllICSCommandAccess() {

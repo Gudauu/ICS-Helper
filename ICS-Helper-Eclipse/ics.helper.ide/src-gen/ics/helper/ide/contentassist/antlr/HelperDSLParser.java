@@ -35,6 +35,7 @@ public class HelperDSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getModifyCommandAccess().getAlternatives_1(), "rule__ModifyCommand__Alternatives_1");
 			builder.put(grammarAccess.getModifyCommandAccess().getAlternatives_3(), "rule__ModifyCommand__Alternatives_3");
 			builder.put(grammarAccess.getRecurRuleAccess().getAlternatives(), "rule__RecurRule__Alternatives");
+			builder.put(grammarAccess.getWEEKDAYAccess().getAlternatives(), "rule__WEEKDAY__Alternatives");
 			builder.put(grammarAccess.getCreateCommandAccess().getGroup(), "rule__CreateCommand__Group__0");
 			builder.put(grammarAccess.getEventAccess().getGroup(), "rule__Event__Group__0");
 			builder.put(grammarAccess.getEventAccess().getGroup_6(), "rule__Event__Group_6__0");
@@ -61,8 +62,9 @@ public class HelperDSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getEventAccess().getDescriptionAssignment_7_1(), "rule__Event__DescriptionAssignment_7_1");
 			builder.put(grammarAccess.getEventAccess().getLinkAssignment_8_1(), "rule__Event__LinkAssignment_8_1");
 			builder.put(grammarAccess.getEventAccess().getRecurAssignment_9_1(), "rule__Event__RecurAssignment_9_1");
-			builder.put(grammarAccess.getDaysOfWeekAccess().getDayAssignment_0(), "rule__DaysOfWeek__DayAssignment_0");
-			builder.put(grammarAccess.getDaysOfWeekAccess().getDayAssignment_1_1(), "rule__DaysOfWeek__DayAssignment_1_1");
+			builder.put(grammarAccess.getEventAccess().getDaysOfWeekAssignment_9_2(), "rule__Event__DaysOfWeekAssignment_9_2");
+			builder.put(grammarAccess.getDaysOfWeekAccess().getDaysAssignment_0(), "rule__DaysOfWeek__DaysAssignment_0");
+			builder.put(grammarAccess.getDaysOfWeekAccess().getDaysAssignment_1_1(), "rule__DaysOfWeek__DaysAssignment_1_1");
 			builder.put(grammarAccess.getScheduleAccess().getNameAssignment(), "rule__Schedule__NameAssignment");
 			builder.put(grammarAccess.getSplitCommandAccess().getScheduleAssignment_1(), "rule__SplitCommand__ScheduleAssignment_1");
 			builder.put(grammarAccess.getSplitCommandAccess().getCriteriaAssignment_3(), "rule__SplitCommand__CriteriaAssignment_3");

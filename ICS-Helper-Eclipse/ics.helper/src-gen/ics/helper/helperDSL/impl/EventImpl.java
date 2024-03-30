@@ -3,13 +3,16 @@
  */
 package ics.helper.helperDSL.impl;
 
+import ics.helper.helperDSL.DaysOfWeek;
 import ics.helper.helperDSL.Event;
 import ics.helper.helperDSL.HelperDSLPackage;
 import ics.helper.helperDSL.RecurRule;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -29,6 +32,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link ics.helper.helperDSL.impl.EventImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link ics.helper.helperDSL.impl.EventImpl#getLink <em>Link</em>}</li>
  *   <li>{@link ics.helper.helperDSL.impl.EventImpl#getRecur <em>Recur</em>}</li>
+ *   <li>{@link ics.helper.helperDSL.impl.EventImpl#getDaysOfWeek <em>Days Of Week</em>}</li>
  * </ul>
  *
  * @generated
@@ -174,6 +178,16 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
    * @ordered
    */
   protected RecurRule recur = RECUR_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getDaysOfWeek() <em>Days Of Week</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDaysOfWeek()
+   * @generated
+   * @ordered
+   */
+  protected DaysOfWeek daysOfWeek;
 
   /**
    * <!-- begin-user-doc -->
@@ -377,6 +391,72 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
    * @generated
    */
   @Override
+  public DaysOfWeek getDaysOfWeek()
+  {
+    return daysOfWeek;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetDaysOfWeek(DaysOfWeek newDaysOfWeek, NotificationChain msgs)
+  {
+    DaysOfWeek oldDaysOfWeek = daysOfWeek;
+    daysOfWeek = newDaysOfWeek;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, HelperDSLPackage.EVENT__DAYS_OF_WEEK, oldDaysOfWeek, newDaysOfWeek);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setDaysOfWeek(DaysOfWeek newDaysOfWeek)
+  {
+    if (newDaysOfWeek != daysOfWeek)
+    {
+      NotificationChain msgs = null;
+      if (daysOfWeek != null)
+        msgs = ((InternalEObject)daysOfWeek).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - HelperDSLPackage.EVENT__DAYS_OF_WEEK, null, msgs);
+      if (newDaysOfWeek != null)
+        msgs = ((InternalEObject)newDaysOfWeek).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - HelperDSLPackage.EVENT__DAYS_OF_WEEK, null, msgs);
+      msgs = basicSetDaysOfWeek(newDaysOfWeek, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, HelperDSLPackage.EVENT__DAYS_OF_WEEK, newDaysOfWeek, newDaysOfWeek));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case HelperDSLPackage.EVENT__DAYS_OF_WEEK:
+        return basicSetDaysOfWeek(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
@@ -395,6 +475,8 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
         return getLink();
       case HelperDSLPackage.EVENT__RECUR:
         return getRecur();
+      case HelperDSLPackage.EVENT__DAYS_OF_WEEK:
+        return getDaysOfWeek();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -429,6 +511,9 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
         return;
       case HelperDSLPackage.EVENT__RECUR:
         setRecur((RecurRule)newValue);
+        return;
+      case HelperDSLPackage.EVENT__DAYS_OF_WEEK:
+        setDaysOfWeek((DaysOfWeek)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -465,6 +550,9 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
       case HelperDSLPackage.EVENT__RECUR:
         setRecur(RECUR_EDEFAULT);
         return;
+      case HelperDSLPackage.EVENT__DAYS_OF_WEEK:
+        setDaysOfWeek((DaysOfWeek)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -493,6 +581,8 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
         return LINK_EDEFAULT == null ? link != null : !LINK_EDEFAULT.equals(link);
       case HelperDSLPackage.EVENT__RECUR:
         return recur != RECUR_EDEFAULT;
+      case HelperDSLPackage.EVENT__DAYS_OF_WEEK:
+        return daysOfWeek != null;
     }
     return super.eIsSet(featureID);
   }

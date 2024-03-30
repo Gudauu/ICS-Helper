@@ -13,6 +13,15 @@
       <genEnumLiterals ecoreEnumLiteral="HelperDSL.ecore#//RecurRule/YEARLY"/>
       <genEnumLiterals ecoreEnumLiteral="HelperDSL.ecore#//RecurRule/BYDAY"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="HelperDSL.ecore#//WEEKDAY">
+      <genEnumLiterals ecoreEnumLiteral="HelperDSL.ecore#//WEEKDAY/MO"/>
+      <genEnumLiterals ecoreEnumLiteral="HelperDSL.ecore#//WEEKDAY/TU"/>
+      <genEnumLiterals ecoreEnumLiteral="HelperDSL.ecore#//WEEKDAY/WE"/>
+      <genEnumLiterals ecoreEnumLiteral="HelperDSL.ecore#//WEEKDAY/TH"/>
+      <genEnumLiterals ecoreEnumLiteral="HelperDSL.ecore#//WEEKDAY/FR"/>
+      <genEnumLiterals ecoreEnumLiteral="HelperDSL.ecore#//WEEKDAY/SA"/>
+      <genEnumLiterals ecoreEnumLiteral="HelperDSL.ecore#//WEEKDAY/SU"/>
+    </genEnums>
     <genClasses ecoreClass="HelperDSL.ecore#//Model">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference HelperDSL.ecore#//Model/commands"/>
     </genClasses>
@@ -29,9 +38,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute HelperDSL.ecore#//Event/description"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute HelperDSL.ecore#//Event/link"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute HelperDSL.ecore#//Event/recur"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference HelperDSL.ecore#//Event/daysOfWeek"/>
     </genClasses>
     <genClasses ecoreClass="HelperDSL.ecore#//DaysOfWeek">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute HelperDSL.ecore#//DaysOfWeek/day"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute HelperDSL.ecore#//DaysOfWeek/days"/>
     </genClasses>
     <genClasses ecoreClass="HelperDSL.ecore#//Schedule">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute HelperDSL.ecore#//Schedule/name"/>
