@@ -12,6 +12,7 @@ import ics.helper.helperDSL.MergeCommand;
 import ics.helper.helperDSL.Model;
 import ics.helper.helperDSL.ModifyCommand;
 import ics.helper.helperDSL.Person;
+import ics.helper.helperDSL.Reminder;
 import ics.helper.helperDSL.Schedule;
 import ics.helper.helperDSL.SplitCommand;
 import ics.helper.services.HelperDSLGrammarAccess;
@@ -60,6 +61,9 @@ public class HelperDSLSemanticSequencer extends AbstractDelegatingSemanticSequen
 				return; 
 			case HelperDSLPackage.PERSON:
 				sequence_Person(context, (Person) semanticObject); 
+				return; 
+			case HelperDSLPackage.REMINDER:
+				sequence_Reminder(context, (Reminder) semanticObject); 
 				return; 
 			case HelperDSLPackage.SCHEDULE:
 				sequence_Schedule(context, (Schedule) semanticObject); 
@@ -113,9 +117,11 @@ public class HelperDSLSemanticSequencer extends AbstractDelegatingSemanticSequen
 	 *         endTime=STRING 
 	 *         location=STRING? 
 	 *         description=STRING? 
+	 *         (recur=RecurRule daysOfWeek=DaysOfWeek?)? 
 	 *         link=STRING? 
 	 *         organizer=Person? 
-	 *         (recur=RecurRule daysOfWeek=DaysOfWeek?)?
+	 *         invitees+=Person* 
+	 *         reminder=Reminder?
 	 *     )
 	 * </pre>
 	 */
@@ -188,6 +194,20 @@ public class HelperDSLSemanticSequencer extends AbstractDelegatingSemanticSequen
 		feeder.accept(grammarAccess.getPersonAccess().getNameSTRINGTerminalRuleCall_1_0(), semanticObject.getName());
 		feeder.accept(grammarAccess.getPersonAccess().getEmailSTRINGTerminalRuleCall_3_0(), semanticObject.getEmail());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Reminder returns Reminder
+	 *
+	 * Constraint:
+	 *     (time=INT title=STRING?)
+	 * </pre>
+	 */
+	protected void sequence_Reminder(ISerializationContext context, Reminder semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

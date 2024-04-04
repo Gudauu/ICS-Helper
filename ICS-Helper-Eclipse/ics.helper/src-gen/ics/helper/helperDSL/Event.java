@@ -3,6 +3,8 @@
  */
 package ics.helper.helperDSL;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -19,10 +21,12 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link ics.helper.helperDSL.Event#getEndTime <em>End Time</em>}</li>
  *   <li>{@link ics.helper.helperDSL.Event#getLocation <em>Location</em>}</li>
  *   <li>{@link ics.helper.helperDSL.Event#getDescription <em>Description</em>}</li>
- *   <li>{@link ics.helper.helperDSL.Event#getLink <em>Link</em>}</li>
- *   <li>{@link ics.helper.helperDSL.Event#getOrganizer <em>Organizer</em>}</li>
  *   <li>{@link ics.helper.helperDSL.Event#getRecur <em>Recur</em>}</li>
  *   <li>{@link ics.helper.helperDSL.Event#getDaysOfWeek <em>Days Of Week</em>}</li>
+ *   <li>{@link ics.helper.helperDSL.Event#getLink <em>Link</em>}</li>
+ *   <li>{@link ics.helper.helperDSL.Event#getOrganizer <em>Organizer</em>}</li>
+ *   <li>{@link ics.helper.helperDSL.Event#getInvitees <em>Invitees</em>}</li>
+ *   <li>{@link ics.helper.helperDSL.Event#getReminder <em>Reminder</em>}</li>
  * </ul>
  *
  * @see ics.helper.helperDSL.HelperDSLPackage#getEvent()
@@ -142,50 +146,6 @@ public interface Event extends EObject
   void setDescription(String value);
 
   /**
-   * Returns the value of the '<em><b>Link</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Link</em>' attribute.
-   * @see #setLink(String)
-   * @see ics.helper.helperDSL.HelperDSLPackage#getEvent_Link()
-   * @model
-   * @generated
-   */
-  String getLink();
-
-  /**
-   * Sets the value of the '{@link ics.helper.helperDSL.Event#getLink <em>Link</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Link</em>' attribute.
-   * @see #getLink()
-   * @generated
-   */
-  void setLink(String value);
-
-  /**
-   * Returns the value of the '<em><b>Organizer</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Organizer</em>' containment reference.
-   * @see #setOrganizer(Person)
-   * @see ics.helper.helperDSL.HelperDSLPackage#getEvent_Organizer()
-   * @model containment="true"
-   * @generated
-   */
-  Person getOrganizer();
-
-  /**
-   * Sets the value of the '{@link ics.helper.helperDSL.Event#getOrganizer <em>Organizer</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Organizer</em>' containment reference.
-   * @see #getOrganizer()
-   * @generated
-   */
-  void setOrganizer(Person value);
-
-  /**
    * Returns the value of the '<em><b>Recur</b></em>' attribute.
    * The literals are from the enumeration {@link ics.helper.helperDSL.RecurRule}.
    * <!-- begin-user-doc -->
@@ -231,5 +191,83 @@ public interface Event extends EObject
    * @generated
    */
   void setDaysOfWeek(DaysOfWeek value);
+
+  /**
+   * Returns the value of the '<em><b>Link</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Link</em>' attribute.
+   * @see #setLink(String)
+   * @see ics.helper.helperDSL.HelperDSLPackage#getEvent_Link()
+   * @model
+   * @generated
+   */
+  String getLink();
+
+  /**
+   * Sets the value of the '{@link ics.helper.helperDSL.Event#getLink <em>Link</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Link</em>' attribute.
+   * @see #getLink()
+   * @generated
+   */
+  void setLink(String value);
+
+  /**
+   * Returns the value of the '<em><b>Organizer</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Organizer</em>' containment reference.
+   * @see #setOrganizer(Person)
+   * @see ics.helper.helperDSL.HelperDSLPackage#getEvent_Organizer()
+   * @model containment="true"
+   * @generated
+   */
+  Person getOrganizer();
+
+  /**
+   * Sets the value of the '{@link ics.helper.helperDSL.Event#getOrganizer <em>Organizer</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Organizer</em>' containment reference.
+   * @see #getOrganizer()
+   * @generated
+   */
+  void setOrganizer(Person value);
+
+  /**
+   * Returns the value of the '<em><b>Invitees</b></em>' containment reference list.
+   * The list contents are of type {@link ics.helper.helperDSL.Person}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Invitees</em>' containment reference list.
+   * @see ics.helper.helperDSL.HelperDSLPackage#getEvent_Invitees()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Person> getInvitees();
+
+  /**
+   * Returns the value of the '<em><b>Reminder</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Reminder</em>' containment reference.
+   * @see #setReminder(Reminder)
+   * @see ics.helper.helperDSL.HelperDSLPackage#getEvent_Reminder()
+   * @model containment="true"
+   * @generated
+   */
+  Reminder getReminder();
+
+  /**
+   * Sets the value of the '{@link ics.helper.helperDSL.Event#getReminder <em>Reminder</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Reminder</em>' containment reference.
+   * @see #getReminder()
+   * @generated
+   */
+  void setReminder(Reminder value);
 
 } // Event

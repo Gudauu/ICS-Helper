@@ -14,6 +14,7 @@ import ics.helper.helperDSL.Model;
 import ics.helper.helperDSL.ModifyCommand;
 import ics.helper.helperDSL.Person;
 import ics.helper.helperDSL.RecurRule;
+import ics.helper.helperDSL.Reminder;
 import ics.helper.helperDSL.Schedule;
 import ics.helper.helperDSL.SplitCommand;
 
@@ -60,6 +61,13 @@ public class HelperDSLPackageImpl extends EPackageImpl implements HelperDSLPacka
    * @generated
    */
   private EClass eventEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass reminderEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -317,7 +325,7 @@ public class HelperDSLPackageImpl extends EPackageImpl implements HelperDSLPacka
    * @generated
    */
   @Override
-  public EAttribute getEvent_Link()
+  public EAttribute getEvent_Recur()
   {
     return (EAttribute)eventEClass.getEStructuralFeatures().get(5);
   }
@@ -328,7 +336,7 @@ public class HelperDSLPackageImpl extends EPackageImpl implements HelperDSLPacka
    * @generated
    */
   @Override
-  public EReference getEvent_Organizer()
+  public EReference getEvent_DaysOfWeek()
   {
     return (EReference)eventEClass.getEStructuralFeatures().get(6);
   }
@@ -339,7 +347,7 @@ public class HelperDSLPackageImpl extends EPackageImpl implements HelperDSLPacka
    * @generated
    */
   @Override
-  public EAttribute getEvent_Recur()
+  public EAttribute getEvent_Link()
   {
     return (EAttribute)eventEClass.getEStructuralFeatures().get(7);
   }
@@ -350,9 +358,64 @@ public class HelperDSLPackageImpl extends EPackageImpl implements HelperDSLPacka
    * @generated
    */
   @Override
-  public EReference getEvent_DaysOfWeek()
+  public EReference getEvent_Organizer()
   {
     return (EReference)eventEClass.getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getEvent_Invitees()
+  {
+    return (EReference)eventEClass.getEStructuralFeatures().get(9);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getEvent_Reminder()
+  {
+    return (EReference)eventEClass.getEStructuralFeatures().get(10);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getReminder()
+  {
+    return reminderEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getReminder_Time()
+  {
+    return (EAttribute)reminderEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getReminder_Title()
+  {
+    return (EAttribute)reminderEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -621,10 +684,16 @@ public class HelperDSLPackageImpl extends EPackageImpl implements HelperDSLPacka
     createEAttribute(eventEClass, EVENT__END_TIME);
     createEAttribute(eventEClass, EVENT__LOCATION);
     createEAttribute(eventEClass, EVENT__DESCRIPTION);
-    createEAttribute(eventEClass, EVENT__LINK);
-    createEReference(eventEClass, EVENT__ORGANIZER);
     createEAttribute(eventEClass, EVENT__RECUR);
     createEReference(eventEClass, EVENT__DAYS_OF_WEEK);
+    createEAttribute(eventEClass, EVENT__LINK);
+    createEReference(eventEClass, EVENT__ORGANIZER);
+    createEReference(eventEClass, EVENT__INVITEES);
+    createEReference(eventEClass, EVENT__REMINDER);
+
+    reminderEClass = createEClass(REMINDER);
+    createEAttribute(reminderEClass, REMINDER__TIME);
+    createEAttribute(reminderEClass, REMINDER__TITLE);
 
     personEClass = createEClass(PERSON);
     createEAttribute(personEClass, PERSON__NAME);
@@ -705,10 +774,16 @@ public class HelperDSLPackageImpl extends EPackageImpl implements HelperDSLPacka
     initEAttribute(getEvent_EndTime(), ecorePackage.getEString(), "endTime", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getEvent_Location(), ecorePackage.getEString(), "location", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getEvent_Description(), ecorePackage.getEString(), "description", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getEvent_Link(), ecorePackage.getEString(), "link", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getEvent_Organizer(), this.getPerson(), null, "organizer", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getEvent_Recur(), this.getRecurRule(), "recur", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getEvent_DaysOfWeek(), this.getDaysOfWeek(), null, "daysOfWeek", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getEvent_Link(), ecorePackage.getEString(), "link", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEvent_Organizer(), this.getPerson(), null, "organizer", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEvent_Invitees(), this.getPerson(), null, "invitees", null, 0, -1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEvent_Reminder(), this.getReminder(), null, "reminder", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(reminderEClass, Reminder.class, "Reminder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getReminder_Time(), ecorePackage.getEInt(), "time", null, 0, 1, Reminder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getReminder_Title(), ecorePackage.getEString(), "title", null, 0, 1, Reminder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(personEClass, Person.class, "Person", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getPerson_Name(), ecorePackage.getEString(), "name", null, 0, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -354,65 +354,16 @@ ruleEvent returns [EObject current=null]
 			)
 		)?
 		(
-			otherlv_10='link'
+			otherlv_10='recur'
 			{
-				newLeafNode(otherlv_10, grammarAccess.getEventAccess().getLinkKeyword_8_0());
-			}
-			(
-				(
-					lv_link_11_0=RULE_STRING
-					{
-						newLeafNode(lv_link_11_0, grammarAccess.getEventAccess().getLinkSTRINGTerminalRuleCall_8_1_0());
-					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getEventRule());
-						}
-						setWithLastConsumed(
-							$current,
-							"link",
-							lv_link_11_0,
-							"org.eclipse.xtext.common.Terminals.STRING");
-					}
-				)
-			)
-		)?
-		(
-			otherlv_12='organizer'
-			{
-				newLeafNode(otherlv_12, grammarAccess.getEventAccess().getOrganizerKeyword_9_0());
+				newLeafNode(otherlv_10, grammarAccess.getEventAccess().getRecurKeyword_8_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getEventAccess().getOrganizerPersonParserRuleCall_9_1_0());
+						newCompositeNode(grammarAccess.getEventAccess().getRecurRecurRuleEnumRuleCall_8_1_0());
 					}
-					lv_organizer_13_0=rulePerson
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getEventRule());
-						}
-						set(
-							$current,
-							"organizer",
-							lv_organizer_13_0,
-							"ics.helper.HelperDSL.Person");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-		)?
-		(
-			otherlv_14='recur'
-			{
-				newLeafNode(otherlv_14, grammarAccess.getEventAccess().getRecurKeyword_10_0());
-			}
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getEventAccess().getRecurRecurRuleEnumRuleCall_10_1_0());
-					}
-					lv_recur_15_0=ruleRecurRule
+					lv_recur_11_0=ruleRecurRule
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getEventRule());
@@ -420,7 +371,7 @@ ruleEvent returns [EObject current=null]
 						set(
 							$current,
 							"recur",
-							lv_recur_15_0,
+							lv_recur_11_0,
 							"ics.helper.HelperDSL.RecurRule");
 						afterParserOrEnumRuleCall();
 					}
@@ -429,9 +380,9 @@ ruleEvent returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getEventAccess().getDaysOfWeekDaysOfWeekParserRuleCall_10_2_0());
+						newCompositeNode(grammarAccess.getEventAccess().getDaysOfWeekDaysOfWeekParserRuleCall_8_2_0());
 					}
-					lv_daysOfWeek_16_0=ruleDaysOfWeek
+					lv_daysOfWeek_12_0=ruleDaysOfWeek
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getEventRule());
@@ -439,12 +390,184 @@ ruleEvent returns [EObject current=null]
 						set(
 							$current,
 							"daysOfWeek",
-							lv_daysOfWeek_16_0,
+							lv_daysOfWeek_12_0,
 							"ics.helper.HelperDSL.DaysOfWeek");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)?
+		)?
+		(
+			otherlv_13='link'
+			{
+				newLeafNode(otherlv_13, grammarAccess.getEventAccess().getLinkKeyword_9_0());
+			}
+			(
+				(
+					lv_link_14_0=RULE_STRING
+					{
+						newLeafNode(lv_link_14_0, grammarAccess.getEventAccess().getLinkSTRINGTerminalRuleCall_9_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getEventRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"link",
+							lv_link_14_0,
+							"org.eclipse.xtext.common.Terminals.STRING");
+					}
+				)
+			)
+		)?
+		(
+			otherlv_15='organizer'
+			{
+				newLeafNode(otherlv_15, grammarAccess.getEventAccess().getOrganizerKeyword_10_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getEventAccess().getOrganizerPersonParserRuleCall_10_1_0());
+					}
+					lv_organizer_16_0=rulePerson
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getEventRule());
+						}
+						set(
+							$current,
+							"organizer",
+							lv_organizer_16_0,
+							"ics.helper.HelperDSL.Person");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)?
+		(
+			otherlv_17='invitees'
+			{
+				newLeafNode(otherlv_17, grammarAccess.getEventAccess().getInviteesKeyword_11_0());
+			}
+			otherlv_18='{'
+			{
+				newLeafNode(otherlv_18, grammarAccess.getEventAccess().getLeftCurlyBracketKeyword_11_1());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getEventAccess().getInviteesPersonParserRuleCall_11_2_0());
+					}
+					lv_invitees_19_0=rulePerson
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getEventRule());
+						}
+						add(
+							$current,
+							"invitees",
+							lv_invitees_19_0,
+							"ics.helper.HelperDSL.Person");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)+
+			otherlv_20='}'
+			{
+				newLeafNode(otherlv_20, grammarAccess.getEventAccess().getRightCurlyBracketKeyword_11_3());
+			}
+		)?
+		(
+			otherlv_21='reminder'
+			{
+				newLeafNode(otherlv_21, grammarAccess.getEventAccess().getReminderKeyword_12_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getEventAccess().getReminderReminderParserRuleCall_12_1_0());
+					}
+					lv_reminder_22_0=ruleReminder
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getEventRule());
+						}
+						set(
+							$current,
+							"reminder",
+							lv_reminder_22_0,
+							"ics.helper.HelperDSL.Reminder");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)?
+	)
+;
+
+// Entry rule entryRuleReminder
+entryRuleReminder returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getReminderRule()); }
+	iv_ruleReminder=ruleReminder
+	{ $current=$iv_ruleReminder.current; }
+	EOF;
+
+// Rule Reminder
+ruleReminder returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='time'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getReminderAccess().getTimeKeyword_0());
+		}
+		(
+			(
+				lv_time_1_0=RULE_INT
+				{
+					newLeafNode(lv_time_1_0, grammarAccess.getReminderAccess().getTimeINTTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getReminderRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"time",
+						lv_time_1_0,
+						"org.eclipse.xtext.common.Terminals.INT");
+				}
+			)
+		)
+		(
+			otherlv_2='title'
+			{
+				newLeafNode(otherlv_2, grammarAccess.getReminderAccess().getTitleKeyword_2_0());
+			}
+			(
+				(
+					lv_title_3_0=RULE_STRING
+					{
+						newLeafNode(lv_title_3_0, grammarAccess.getReminderAccess().getTitleSTRINGTerminalRuleCall_2_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getReminderRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"title",
+							lv_title_3_0,
+							"org.eclipse.xtext.common.Terminals.STRING");
+					}
+				)
+			)
 		)?
 	)
 ;

@@ -135,19 +135,29 @@ public class HelperDSLGrammarAccess extends AbstractElementFinder.AbstractGramma
 		private final Assignment cDescriptionAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
 		private final RuleCall cDescriptionSTRINGTerminalRuleCall_7_1_0 = (RuleCall)cDescriptionAssignment_7_1.eContents().get(0);
 		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
-		private final Keyword cLinkKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
-		private final Assignment cLinkAssignment_8_1 = (Assignment)cGroup_8.eContents().get(1);
-		private final RuleCall cLinkSTRINGTerminalRuleCall_8_1_0 = (RuleCall)cLinkAssignment_8_1.eContents().get(0);
+		private final Keyword cRecurKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
+		private final Assignment cRecurAssignment_8_1 = (Assignment)cGroup_8.eContents().get(1);
+		private final RuleCall cRecurRecurRuleEnumRuleCall_8_1_0 = (RuleCall)cRecurAssignment_8_1.eContents().get(0);
+		private final Assignment cDaysOfWeekAssignment_8_2 = (Assignment)cGroup_8.eContents().get(2);
+		private final RuleCall cDaysOfWeekDaysOfWeekParserRuleCall_8_2_0 = (RuleCall)cDaysOfWeekAssignment_8_2.eContents().get(0);
 		private final Group cGroup_9 = (Group)cGroup.eContents().get(9);
-		private final Keyword cOrganizerKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
-		private final Assignment cOrganizerAssignment_9_1 = (Assignment)cGroup_9.eContents().get(1);
-		private final RuleCall cOrganizerPersonParserRuleCall_9_1_0 = (RuleCall)cOrganizerAssignment_9_1.eContents().get(0);
+		private final Keyword cLinkKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
+		private final Assignment cLinkAssignment_9_1 = (Assignment)cGroup_9.eContents().get(1);
+		private final RuleCall cLinkSTRINGTerminalRuleCall_9_1_0 = (RuleCall)cLinkAssignment_9_1.eContents().get(0);
 		private final Group cGroup_10 = (Group)cGroup.eContents().get(10);
-		private final Keyword cRecurKeyword_10_0 = (Keyword)cGroup_10.eContents().get(0);
-		private final Assignment cRecurAssignment_10_1 = (Assignment)cGroup_10.eContents().get(1);
-		private final RuleCall cRecurRecurRuleEnumRuleCall_10_1_0 = (RuleCall)cRecurAssignment_10_1.eContents().get(0);
-		private final Assignment cDaysOfWeekAssignment_10_2 = (Assignment)cGroup_10.eContents().get(2);
-		private final RuleCall cDaysOfWeekDaysOfWeekParserRuleCall_10_2_0 = (RuleCall)cDaysOfWeekAssignment_10_2.eContents().get(0);
+		private final Keyword cOrganizerKeyword_10_0 = (Keyword)cGroup_10.eContents().get(0);
+		private final Assignment cOrganizerAssignment_10_1 = (Assignment)cGroup_10.eContents().get(1);
+		private final RuleCall cOrganizerPersonParserRuleCall_10_1_0 = (RuleCall)cOrganizerAssignment_10_1.eContents().get(0);
+		private final Group cGroup_11 = (Group)cGroup.eContents().get(11);
+		private final Keyword cInviteesKeyword_11_0 = (Keyword)cGroup_11.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_11_1 = (Keyword)cGroup_11.eContents().get(1);
+		private final Assignment cInviteesAssignment_11_2 = (Assignment)cGroup_11.eContents().get(2);
+		private final RuleCall cInviteesPersonParserRuleCall_11_2_0 = (RuleCall)cInviteesAssignment_11_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_11_3 = (Keyword)cGroup_11.eContents().get(3);
+		private final Group cGroup_12 = (Group)cGroup.eContents().get(12);
+		private final Keyword cReminderKeyword_12_0 = (Keyword)cGroup_12.eContents().get(0);
+		private final Assignment cReminderAssignment_12_1 = (Assignment)cGroup_12.eContents().get(1);
+		private final RuleCall cReminderReminderParserRuleCall_12_1_0 = (RuleCall)cReminderAssignment_12_1.eContents().get(0);
 		
 		//Event:
 		//    'event' name=ID
@@ -155,9 +165,11 @@ public class HelperDSLGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//    'end' endTime=STRING
 		//    ('at' location=STRING)?
 		//    ('description' description=STRING)?
+		//    ('recur' recur=RecurRule (daysOfWeek=DaysOfWeek)?)?
 		//    ('link' link=STRING)?
 		//    ('organizer' organizer=Person)?
-		//    ('recur' recur=RecurRule (daysOfWeek=DaysOfWeek)?)?;
+		//    ('invitees' '{' invitees+=Person+ '}')?
+		//    ('reminder' reminder=Reminder)?;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'event' name=ID
@@ -165,9 +177,11 @@ public class HelperDSLGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//'end' endTime=STRING
 		//('at' location=STRING)?
 		//('description' description=STRING)?
+		//('recur' recur=RecurRule (daysOfWeek=DaysOfWeek)?)?
 		//('link' link=STRING)?
 		//('organizer' organizer=Person)?
-		//('recur' recur=RecurRule (daysOfWeek=DaysOfWeek)?)?
+		//('invitees' '{' invitees+=Person+ '}')?
+		//('reminder' reminder=Reminder)?
 		public Group getGroup() { return cGroup; }
 		
 		//'event'
@@ -221,47 +235,119 @@ public class HelperDSLGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//STRING
 		public RuleCall getDescriptionSTRINGTerminalRuleCall_7_1_0() { return cDescriptionSTRINGTerminalRuleCall_7_1_0; }
 		
-		//('link' link=STRING)?
+		//('recur' recur=RecurRule (daysOfWeek=DaysOfWeek)?)?
 		public Group getGroup_8() { return cGroup_8; }
 		
-		//'link'
-		public Keyword getLinkKeyword_8_0() { return cLinkKeyword_8_0; }
-		
-		//link=STRING
-		public Assignment getLinkAssignment_8_1() { return cLinkAssignment_8_1; }
-		
-		//STRING
-		public RuleCall getLinkSTRINGTerminalRuleCall_8_1_0() { return cLinkSTRINGTerminalRuleCall_8_1_0; }
-		
-		//('organizer' organizer=Person)?
-		public Group getGroup_9() { return cGroup_9; }
-		
-		//'organizer'
-		public Keyword getOrganizerKeyword_9_0() { return cOrganizerKeyword_9_0; }
-		
-		//organizer=Person
-		public Assignment getOrganizerAssignment_9_1() { return cOrganizerAssignment_9_1; }
-		
-		//Person
-		public RuleCall getOrganizerPersonParserRuleCall_9_1_0() { return cOrganizerPersonParserRuleCall_9_1_0; }
-		
-		//('recur' recur=RecurRule (daysOfWeek=DaysOfWeek)?)?
-		public Group getGroup_10() { return cGroup_10; }
-		
 		//'recur'
-		public Keyword getRecurKeyword_10_0() { return cRecurKeyword_10_0; }
+		public Keyword getRecurKeyword_8_0() { return cRecurKeyword_8_0; }
 		
 		//recur=RecurRule
-		public Assignment getRecurAssignment_10_1() { return cRecurAssignment_10_1; }
+		public Assignment getRecurAssignment_8_1() { return cRecurAssignment_8_1; }
 		
 		//RecurRule
-		public RuleCall getRecurRecurRuleEnumRuleCall_10_1_0() { return cRecurRecurRuleEnumRuleCall_10_1_0; }
+		public RuleCall getRecurRecurRuleEnumRuleCall_8_1_0() { return cRecurRecurRuleEnumRuleCall_8_1_0; }
 		
 		//(daysOfWeek=DaysOfWeek)?
-		public Assignment getDaysOfWeekAssignment_10_2() { return cDaysOfWeekAssignment_10_2; }
+		public Assignment getDaysOfWeekAssignment_8_2() { return cDaysOfWeekAssignment_8_2; }
 		
 		//DaysOfWeek
-		public RuleCall getDaysOfWeekDaysOfWeekParserRuleCall_10_2_0() { return cDaysOfWeekDaysOfWeekParserRuleCall_10_2_0; }
+		public RuleCall getDaysOfWeekDaysOfWeekParserRuleCall_8_2_0() { return cDaysOfWeekDaysOfWeekParserRuleCall_8_2_0; }
+		
+		//('link' link=STRING)?
+		public Group getGroup_9() { return cGroup_9; }
+		
+		//'link'
+		public Keyword getLinkKeyword_9_0() { return cLinkKeyword_9_0; }
+		
+		//link=STRING
+		public Assignment getLinkAssignment_9_1() { return cLinkAssignment_9_1; }
+		
+		//STRING
+		public RuleCall getLinkSTRINGTerminalRuleCall_9_1_0() { return cLinkSTRINGTerminalRuleCall_9_1_0; }
+		
+		//('organizer' organizer=Person)?
+		public Group getGroup_10() { return cGroup_10; }
+		
+		//'organizer'
+		public Keyword getOrganizerKeyword_10_0() { return cOrganizerKeyword_10_0; }
+		
+		//organizer=Person
+		public Assignment getOrganizerAssignment_10_1() { return cOrganizerAssignment_10_1; }
+		
+		//Person
+		public RuleCall getOrganizerPersonParserRuleCall_10_1_0() { return cOrganizerPersonParserRuleCall_10_1_0; }
+		
+		//('invitees' '{' invitees+=Person+ '}')?
+		public Group getGroup_11() { return cGroup_11; }
+		
+		//'invitees'
+		public Keyword getInviteesKeyword_11_0() { return cInviteesKeyword_11_0; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_11_1() { return cLeftCurlyBracketKeyword_11_1; }
+		
+		//invitees+=Person+
+		public Assignment getInviteesAssignment_11_2() { return cInviteesAssignment_11_2; }
+		
+		//Person
+		public RuleCall getInviteesPersonParserRuleCall_11_2_0() { return cInviteesPersonParserRuleCall_11_2_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_11_3() { return cRightCurlyBracketKeyword_11_3; }
+		
+		//('reminder' reminder=Reminder)?
+		public Group getGroup_12() { return cGroup_12; }
+		
+		//'reminder'
+		public Keyword getReminderKeyword_12_0() { return cReminderKeyword_12_0; }
+		
+		//reminder=Reminder
+		public Assignment getReminderAssignment_12_1() { return cReminderAssignment_12_1; }
+		
+		//Reminder
+		public RuleCall getReminderReminderParserRuleCall_12_1_0() { return cReminderReminderParserRuleCall_12_1_0; }
+	}
+	public class ReminderElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ics.helper.HelperDSL.Reminder");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cTimeKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cTimeAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cTimeINTTerminalRuleCall_1_0 = (RuleCall)cTimeAssignment_1.eContents().get(0);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cTitleKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cTitleAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cTitleSTRINGTerminalRuleCall_2_1_0 = (RuleCall)cTitleAssignment_2_1.eContents().get(0);
+		
+		//Reminder:
+		//    'time' time=INT
+		//    ('title' title=STRING)?
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'time' time=INT
+		//('title' title=STRING)?
+		public Group getGroup() { return cGroup; }
+		
+		//'time'
+		public Keyword getTimeKeyword_0() { return cTimeKeyword_0; }
+		
+		//time=INT
+		public Assignment getTimeAssignment_1() { return cTimeAssignment_1; }
+		
+		//INT
+		public RuleCall getTimeINTTerminalRuleCall_1_0() { return cTimeINTTerminalRuleCall_1_0; }
+		
+		//('title' title=STRING)?
+		public Group getGroup_2() { return cGroup_2; }
+		
+		//'title'
+		public Keyword getTitleKeyword_2_0() { return cTitleKeyword_2_0; }
+		
+		//title=STRING
+		public Assignment getTitleAssignment_2_1() { return cTitleAssignment_2_1; }
+		
+		//STRING
+		public RuleCall getTitleSTRINGTerminalRuleCall_2_1_0() { return cTitleSTRINGTerminalRuleCall_2_1_0; }
 	}
 	public class PersonElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ics.helper.HelperDSL.Person");
@@ -704,6 +790,7 @@ public class HelperDSLGrammarAccess extends AbstractElementFinder.AbstractGramma
 	private final CommandElements pCommand;
 	private final CreateCommandElements pCreateCommand;
 	private final EventElements pEvent;
+	private final ReminderElements pReminder;
 	private final PersonElements pPerson;
 	private final RecurRuleElements eRecurRule;
 	private final DaysOfWeekElements pDaysOfWeek;
@@ -727,6 +814,7 @@ public class HelperDSLGrammarAccess extends AbstractElementFinder.AbstractGramma
 		this.pCommand = new CommandElements();
 		this.pCreateCommand = new CreateCommandElements();
 		this.pEvent = new EventElements();
+		this.pReminder = new ReminderElements();
 		this.pPerson = new PersonElements();
 		this.eRecurRule = new RecurRuleElements();
 		this.pDaysOfWeek = new DaysOfWeekElements();
@@ -803,15 +891,29 @@ public class HelperDSLGrammarAccess extends AbstractElementFinder.AbstractGramma
 	//    'end' endTime=STRING
 	//    ('at' location=STRING)?
 	//    ('description' description=STRING)?
+	//    ('recur' recur=RecurRule (daysOfWeek=DaysOfWeek)?)?
 	//    ('link' link=STRING)?
 	//    ('organizer' organizer=Person)?
-	//    ('recur' recur=RecurRule (daysOfWeek=DaysOfWeek)?)?;
+	//    ('invitees' '{' invitees+=Person+ '}')?
+	//    ('reminder' reminder=Reminder)?;
 	public EventElements getEventAccess() {
 		return pEvent;
 	}
 	
 	public ParserRule getEventRule() {
 		return getEventAccess().getRule();
+	}
+	
+	//Reminder:
+	//    'time' time=INT
+	//    ('title' title=STRING)?
+	//;
+	public ReminderElements getReminderAccess() {
+		return pReminder;
+	}
+	
+	public ParserRule getReminderRule() {
+		return getReminderAccess().getRule();
 	}
 	
 	//Person:

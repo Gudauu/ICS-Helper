@@ -60,6 +60,15 @@ public interface HelperDSLFactory extends EFactory
   Event createEvent();
 
   /**
+   * Returns a new object of class '<em>Reminder</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Reminder</em>'.
+   * @generated
+   */
+  Reminder createReminder();
+
+  /**
    * Returns a new object of class '<em>Person</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

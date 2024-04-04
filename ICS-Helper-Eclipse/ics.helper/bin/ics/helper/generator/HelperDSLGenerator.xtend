@@ -17,6 +17,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.ZoneId;
 import java.time.format.DateTimeParseException;
 import ics.helper.helperDSL.WEEKDAY
+import ics.helper.helperDSL.Person
 
 /**
  * Generates ICS files from your model files on save.
@@ -54,9 +55,27 @@ class HelperDSLGenerator extends AbstractGenerator {
 		    if (event.organizer !== null) {
 		        icsContent.append("ORGANIZER;CN=" + event.organizer.name + ":mailto:" + event.organizer.email + "\n")
 		    }
+		    if (event.invitees !== null) {
+                for (person : event.invitees) {
+                    icsContent.append(generateAttendeeField(person) + "\n")
+                }
+            }
             if (event.recur !== null) {
                 icsContent.append(generateRecurRule(event) + "\n")
             }
+            if (event.reminder != 0) {
+                icsContent.append("BEGIN:VALARM\n")
+                icsContent.append("TRIGGER:-PT" + event.reminder.time + "M\n")
+                icsContent.append("ACTION:DISPLAY\n")
+                if (event.reminder.title !== null){
+                	icsContent.append("DESCRIPTION:" + event.reminder.title +"\n")
+                }else{
+                	icsContent.append("DESCRIPTION: Reminder about " + event.name +"\n")
+                }
+                
+                icsContent.append("END:VALARM\n")
+            }
+
             icsContent.append("END:VEVENT\n")
         }
         
@@ -65,6 +84,10 @@ class HelperDSLGenerator extends AbstractGenerator {
         // Generate the ICS file in the 'ics-gen' directory
         val fileName = "ics-gen/" + command.name + ".ics"
         fsa.generateFile(fileName, icsContent.toString)
+    }
+    
+    def String generateAttendeeField(Person person) {
+        '''ATTENDEE;CN="«person.name»":MAILTO:«person.email»'''
     }
     
     def String generateRecurRule(Event event) {

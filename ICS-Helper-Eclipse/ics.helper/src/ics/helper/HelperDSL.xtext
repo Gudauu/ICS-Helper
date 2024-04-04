@@ -19,10 +19,16 @@ Event:
     'end' endTime=STRING 
     ('at' location=STRING)?
     ('description' description=STRING)?
+    ('recur' recur=RecurRule (daysOfWeek=DaysOfWeek)?)?
     ('link' link=STRING)?
     ('organizer' organizer=Person)?
-    ('recur' recur=RecurRule (daysOfWeek=DaysOfWeek)?)?;
+    ('invitees' '{' invitees+=Person+ '}')?
+    ('reminder' reminder=Reminder)?;
 
+Reminder:
+	'time' time=INT
+	('title' title=STRING)?
+;
 
 Person:
 	'name' name=STRING

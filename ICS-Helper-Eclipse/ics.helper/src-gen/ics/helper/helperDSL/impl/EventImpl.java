@@ -8,15 +8,23 @@ import ics.helper.helperDSL.Event;
 import ics.helper.helperDSL.HelperDSLPackage;
 import ics.helper.helperDSL.Person;
 import ics.helper.helperDSL.RecurRule;
+import ics.helper.helperDSL.Reminder;
+
+import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,10 +39,12 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link ics.helper.helperDSL.impl.EventImpl#getEndTime <em>End Time</em>}</li>
  *   <li>{@link ics.helper.helperDSL.impl.EventImpl#getLocation <em>Location</em>}</li>
  *   <li>{@link ics.helper.helperDSL.impl.EventImpl#getDescription <em>Description</em>}</li>
- *   <li>{@link ics.helper.helperDSL.impl.EventImpl#getLink <em>Link</em>}</li>
- *   <li>{@link ics.helper.helperDSL.impl.EventImpl#getOrganizer <em>Organizer</em>}</li>
  *   <li>{@link ics.helper.helperDSL.impl.EventImpl#getRecur <em>Recur</em>}</li>
  *   <li>{@link ics.helper.helperDSL.impl.EventImpl#getDaysOfWeek <em>Days Of Week</em>}</li>
+ *   <li>{@link ics.helper.helperDSL.impl.EventImpl#getLink <em>Link</em>}</li>
+ *   <li>{@link ics.helper.helperDSL.impl.EventImpl#getOrganizer <em>Organizer</em>}</li>
+ *   <li>{@link ics.helper.helperDSL.impl.EventImpl#getInvitees <em>Invitees</em>}</li>
+ *   <li>{@link ics.helper.helperDSL.impl.EventImpl#getReminder <em>Reminder</em>}</li>
  * </ul>
  *
  * @generated
@@ -142,6 +152,36 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
   protected String description = DESCRIPTION_EDEFAULT;
 
   /**
+   * The default value of the '{@link #getRecur() <em>Recur</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRecur()
+   * @generated
+   * @ordered
+   */
+  protected static final RecurRule RECUR_EDEFAULT = RecurRule.DAILY;
+
+  /**
+   * The cached value of the '{@link #getRecur() <em>Recur</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRecur()
+   * @generated
+   * @ordered
+   */
+  protected RecurRule recur = RECUR_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getDaysOfWeek() <em>Days Of Week</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDaysOfWeek()
+   * @generated
+   * @ordered
+   */
+  protected DaysOfWeek daysOfWeek;
+
+  /**
    * The default value of the '{@link #getLink() <em>Link</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -172,34 +212,24 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
   protected Person organizer;
 
   /**
-   * The default value of the '{@link #getRecur() <em>Recur</em>}' attribute.
+   * The cached value of the '{@link #getInvitees() <em>Invitees</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRecur()
+   * @see #getInvitees()
    * @generated
    * @ordered
    */
-  protected static final RecurRule RECUR_EDEFAULT = RecurRule.DAILY;
+  protected EList<Person> invitees;
 
   /**
-   * The cached value of the '{@link #getRecur() <em>Recur</em>}' attribute.
+   * The cached value of the '{@link #getReminder() <em>Reminder</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRecur()
+   * @see #getReminder()
    * @generated
    * @ordered
    */
-  protected RecurRule recur = RECUR_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getDaysOfWeek() <em>Days Of Week</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getDaysOfWeek()
-   * @generated
-   * @ordered
-   */
-  protected DaysOfWeek daysOfWeek;
+  protected Reminder reminder;
 
   /**
    * <!-- begin-user-doc -->
@@ -353,81 +383,6 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
    * @generated
    */
   @Override
-  public String getLink()
-  {
-    return link;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setLink(String newLink)
-  {
-    String oldLink = link;
-    link = newLink;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, HelperDSLPackage.EVENT__LINK, oldLink, link));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Person getOrganizer()
-  {
-    return organizer;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetOrganizer(Person newOrganizer, NotificationChain msgs)
-  {
-    Person oldOrganizer = organizer;
-    organizer = newOrganizer;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, HelperDSLPackage.EVENT__ORGANIZER, oldOrganizer, newOrganizer);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setOrganizer(Person newOrganizer)
-  {
-    if (newOrganizer != organizer)
-    {
-      NotificationChain msgs = null;
-      if (organizer != null)
-        msgs = ((InternalEObject)organizer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - HelperDSLPackage.EVENT__ORGANIZER, null, msgs);
-      if (newOrganizer != null)
-        msgs = ((InternalEObject)newOrganizer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - HelperDSLPackage.EVENT__ORGANIZER, null, msgs);
-      msgs = basicSetOrganizer(newOrganizer, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, HelperDSLPackage.EVENT__ORGANIZER, newOrganizer, newOrganizer));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public RecurRule getRecur()
   {
     return recur;
@@ -503,14 +458,158 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
    * @generated
    */
   @Override
+  public String getLink()
+  {
+    return link;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setLink(String newLink)
+  {
+    String oldLink = link;
+    link = newLink;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, HelperDSLPackage.EVENT__LINK, oldLink, link));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Person getOrganizer()
+  {
+    return organizer;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetOrganizer(Person newOrganizer, NotificationChain msgs)
+  {
+    Person oldOrganizer = organizer;
+    organizer = newOrganizer;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, HelperDSLPackage.EVENT__ORGANIZER, oldOrganizer, newOrganizer);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setOrganizer(Person newOrganizer)
+  {
+    if (newOrganizer != organizer)
+    {
+      NotificationChain msgs = null;
+      if (organizer != null)
+        msgs = ((InternalEObject)organizer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - HelperDSLPackage.EVENT__ORGANIZER, null, msgs);
+      if (newOrganizer != null)
+        msgs = ((InternalEObject)newOrganizer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - HelperDSLPackage.EVENT__ORGANIZER, null, msgs);
+      msgs = basicSetOrganizer(newOrganizer, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, HelperDSLPackage.EVENT__ORGANIZER, newOrganizer, newOrganizer));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<Person> getInvitees()
+  {
+    if (invitees == null)
+    {
+      invitees = new EObjectContainmentEList<Person>(Person.class, this, HelperDSLPackage.EVENT__INVITEES);
+    }
+    return invitees;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Reminder getReminder()
+  {
+    return reminder;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetReminder(Reminder newReminder, NotificationChain msgs)
+  {
+    Reminder oldReminder = reminder;
+    reminder = newReminder;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, HelperDSLPackage.EVENT__REMINDER, oldReminder, newReminder);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setReminder(Reminder newReminder)
+  {
+    if (newReminder != reminder)
+    {
+      NotificationChain msgs = null;
+      if (reminder != null)
+        msgs = ((InternalEObject)reminder).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - HelperDSLPackage.EVENT__REMINDER, null, msgs);
+      if (newReminder != null)
+        msgs = ((InternalEObject)newReminder).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - HelperDSLPackage.EVENT__REMINDER, null, msgs);
+      msgs = basicSetReminder(newReminder, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, HelperDSLPackage.EVENT__REMINDER, newReminder, newReminder));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
     {
-      case HelperDSLPackage.EVENT__ORGANIZER:
-        return basicSetOrganizer(null, msgs);
       case HelperDSLPackage.EVENT__DAYS_OF_WEEK:
         return basicSetDaysOfWeek(null, msgs);
+      case HelperDSLPackage.EVENT__ORGANIZER:
+        return basicSetOrganizer(null, msgs);
+      case HelperDSLPackage.EVENT__INVITEES:
+        return ((InternalEList<?>)getInvitees()).basicRemove(otherEnd, msgs);
+      case HelperDSLPackage.EVENT__REMINDER:
+        return basicSetReminder(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -535,14 +634,18 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
         return getLocation();
       case HelperDSLPackage.EVENT__DESCRIPTION:
         return getDescription();
-      case HelperDSLPackage.EVENT__LINK:
-        return getLink();
-      case HelperDSLPackage.EVENT__ORGANIZER:
-        return getOrganizer();
       case HelperDSLPackage.EVENT__RECUR:
         return getRecur();
       case HelperDSLPackage.EVENT__DAYS_OF_WEEK:
         return getDaysOfWeek();
+      case HelperDSLPackage.EVENT__LINK:
+        return getLink();
+      case HelperDSLPackage.EVENT__ORGANIZER:
+        return getOrganizer();
+      case HelperDSLPackage.EVENT__INVITEES:
+        return getInvitees();
+      case HelperDSLPackage.EVENT__REMINDER:
+        return getReminder();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -552,6 +655,7 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -572,17 +676,24 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
       case HelperDSLPackage.EVENT__DESCRIPTION:
         setDescription((String)newValue);
         return;
+      case HelperDSLPackage.EVENT__RECUR:
+        setRecur((RecurRule)newValue);
+        return;
+      case HelperDSLPackage.EVENT__DAYS_OF_WEEK:
+        setDaysOfWeek((DaysOfWeek)newValue);
+        return;
       case HelperDSLPackage.EVENT__LINK:
         setLink((String)newValue);
         return;
       case HelperDSLPackage.EVENT__ORGANIZER:
         setOrganizer((Person)newValue);
         return;
-      case HelperDSLPackage.EVENT__RECUR:
-        setRecur((RecurRule)newValue);
+      case HelperDSLPackage.EVENT__INVITEES:
+        getInvitees().clear();
+        getInvitees().addAll((Collection<? extends Person>)newValue);
         return;
-      case HelperDSLPackage.EVENT__DAYS_OF_WEEK:
-        setDaysOfWeek((DaysOfWeek)newValue);
+      case HelperDSLPackage.EVENT__REMINDER:
+        setReminder((Reminder)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -613,17 +724,23 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
       case HelperDSLPackage.EVENT__DESCRIPTION:
         setDescription(DESCRIPTION_EDEFAULT);
         return;
+      case HelperDSLPackage.EVENT__RECUR:
+        setRecur(RECUR_EDEFAULT);
+        return;
+      case HelperDSLPackage.EVENT__DAYS_OF_WEEK:
+        setDaysOfWeek((DaysOfWeek)null);
+        return;
       case HelperDSLPackage.EVENT__LINK:
         setLink(LINK_EDEFAULT);
         return;
       case HelperDSLPackage.EVENT__ORGANIZER:
         setOrganizer((Person)null);
         return;
-      case HelperDSLPackage.EVENT__RECUR:
-        setRecur(RECUR_EDEFAULT);
+      case HelperDSLPackage.EVENT__INVITEES:
+        getInvitees().clear();
         return;
-      case HelperDSLPackage.EVENT__DAYS_OF_WEEK:
-        setDaysOfWeek((DaysOfWeek)null);
+      case HelperDSLPackage.EVENT__REMINDER:
+        setReminder((Reminder)null);
         return;
     }
     super.eUnset(featureID);
@@ -649,14 +766,18 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
         return LOCATION_EDEFAULT == null ? location != null : !LOCATION_EDEFAULT.equals(location);
       case HelperDSLPackage.EVENT__DESCRIPTION:
         return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
-      case HelperDSLPackage.EVENT__LINK:
-        return LINK_EDEFAULT == null ? link != null : !LINK_EDEFAULT.equals(link);
-      case HelperDSLPackage.EVENT__ORGANIZER:
-        return organizer != null;
       case HelperDSLPackage.EVENT__RECUR:
         return recur != RECUR_EDEFAULT;
       case HelperDSLPackage.EVENT__DAYS_OF_WEEK:
         return daysOfWeek != null;
+      case HelperDSLPackage.EVENT__LINK:
+        return LINK_EDEFAULT == null ? link != null : !LINK_EDEFAULT.equals(link);
+      case HelperDSLPackage.EVENT__ORGANIZER:
+        return organizer != null;
+      case HelperDSLPackage.EVENT__INVITEES:
+        return invitees != null && !invitees.isEmpty();
+      case HelperDSLPackage.EVENT__REMINDER:
+        return reminder != null;
     }
     return super.eIsSet(featureID);
   }
@@ -682,10 +803,10 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
     result.append(location);
     result.append(", description: ");
     result.append(description);
-    result.append(", link: ");
-    result.append(link);
     result.append(", recur: ");
     result.append(recur);
+    result.append(", link: ");
+    result.append(link);
     result.append(')');
     return result.toString();
   }

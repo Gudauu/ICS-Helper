@@ -3,12 +3,14 @@
  */
 package ics.helper.generator;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import ics.helper.helperDSL.CreateCommand;
 import ics.helper.helperDSL.DaysOfWeek;
 import ics.helper.helperDSL.Event;
 import ics.helper.helperDSL.Person;
 import ics.helper.helperDSL.RecurRule;
+import ics.helper.helperDSL.Reminder;
 import ics.helper.helperDSL.WEEKDAY;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -17,6 +19,7 @@ import java.time.format.DateTimeParseException;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
@@ -99,12 +102,46 @@ public class HelperDSLGenerator extends AbstractGenerator {
           String _plus_15 = (_plus_14 + "\n");
           icsContent.append(_plus_15);
         }
-        RecurRule _recur = event.getRecur();
-        boolean _tripleNotEquals_4 = (_recur != null);
+        EList<Person> _invitees = event.getInvitees();
+        boolean _tripleNotEquals_4 = (_invitees != null);
         if (_tripleNotEquals_4) {
+          EList<Person> _invitees_1 = event.getInvitees();
+          for (final Person person : _invitees_1) {
+            String _generateAttendeeField = this.generateAttendeeField(person);
+            String _plus_16 = (_generateAttendeeField + "\n");
+            icsContent.append(_plus_16);
+          }
+        }
+        RecurRule _recur = event.getRecur();
+        boolean _tripleNotEquals_5 = (_recur != null);
+        if (_tripleNotEquals_5) {
           String _generateRecurRule = this.generateRecurRule(event);
-          String _plus_16 = (_generateRecurRule + "\n");
-          icsContent.append(_plus_16);
+          String _plus_17 = (_generateRecurRule + "\n");
+          icsContent.append(_plus_17);
+        }
+        Reminder _reminder = event.getReminder();
+        boolean _notEquals = (!Objects.equal(_reminder, Integer.valueOf(0)));
+        if (_notEquals) {
+          icsContent.append("BEGIN:VALARM\n");
+          int _time = event.getReminder().getTime();
+          String _plus_18 = ("TRIGGER:-PT" + Integer.valueOf(_time));
+          String _plus_19 = (_plus_18 + "M\n");
+          icsContent.append(_plus_19);
+          icsContent.append("ACTION:DISPLAY\n");
+          String _title = event.getReminder().getTitle();
+          boolean _tripleNotEquals_6 = (_title != null);
+          if (_tripleNotEquals_6) {
+            String _title_1 = event.getReminder().getTitle();
+            String _plus_20 = ("DESCRIPTION:" + _title_1);
+            String _plus_21 = (_plus_20 + "\n");
+            icsContent.append(_plus_21);
+          } else {
+            String _name_2 = event.getName();
+            String _plus_22 = ("DESCRIPTION: Reminder about " + _name_2);
+            String _plus_23 = (_plus_22 + "\n");
+            icsContent.append(_plus_23);
+          }
+          icsContent.append("END:VALARM\n");
         }
         icsContent.append("END:VEVENT\n");
       }
@@ -114,6 +151,17 @@ public class HelperDSLGenerator extends AbstractGenerator {
     String _plus = ("ics-gen/" + _name);
     final String fileName = (_plus + ".ics");
     fsa.generateFile(fileName, icsContent.toString());
+  }
+
+  public String generateAttendeeField(final Person person) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("ATTENDEE;CN=\"");
+    String _name = person.getName();
+    _builder.append(_name);
+    _builder.append("\":MAILTO:");
+    String _email = person.getEmail();
+    _builder.append(_email);
+    return _builder.toString();
   }
 
   public String generateRecurRule(final Event event) {

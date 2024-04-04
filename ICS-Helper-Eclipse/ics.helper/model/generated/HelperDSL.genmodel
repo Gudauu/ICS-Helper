@@ -36,10 +36,16 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute HelperDSL.ecore#//Event/endTime"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute HelperDSL.ecore#//Event/location"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute HelperDSL.ecore#//Event/description"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute HelperDSL.ecore#//Event/link"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference HelperDSL.ecore#//Event/organizer"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute HelperDSL.ecore#//Event/recur"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference HelperDSL.ecore#//Event/daysOfWeek"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute HelperDSL.ecore#//Event/link"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference HelperDSL.ecore#//Event/organizer"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference HelperDSL.ecore#//Event/invitees"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference HelperDSL.ecore#//Event/reminder"/>
+    </genClasses>
+    <genClasses ecoreClass="HelperDSL.ecore#//Reminder">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute HelperDSL.ecore#//Reminder/time"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute HelperDSL.ecore#//Reminder/title"/>
     </genClasses>
     <genClasses ecoreClass="HelperDSL.ecore#//Person">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute HelperDSL.ecore#//Person/name"/>

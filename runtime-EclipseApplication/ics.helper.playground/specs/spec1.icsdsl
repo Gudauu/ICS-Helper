@@ -3,17 +3,23 @@ create schedule easter_dinner {
 	start '2024-03-31 14:30' 
 	end '2024-03-31 15:00' 
 	at '417 Heaven St'
+	recur weekly
 	link 'https://gudauu.github.io'
 	organizer name 'GilChrist Chris' email 'GilChrist@gmail.com'
-	recur weekly
+	invitees {
+		name 'student1' email 'studen1@gmail.com'
+		name 'student2' email 'studen2@gmail.com'
+		name 'gudaudoge' email 'gudaudoge@gmail.com'
+	}
+	reminder time 100 title 'Someone is picking u up!'
 	
 	
 	event dinner 
 	start '2024-03-31 15:10' 
 	end '2024-03-31 16:00' 
 	description 'yummy yummy eat eat eat'
-	link '12345'
-	organizer name 'Alice' email "alice@gmail.com"
 	recur on Wednesday,Sunday,Monday
-	
+	link '12345'
+	organizer name 'Alice' email "alicePaul@gmail.com"
+	reminder time 15
 }

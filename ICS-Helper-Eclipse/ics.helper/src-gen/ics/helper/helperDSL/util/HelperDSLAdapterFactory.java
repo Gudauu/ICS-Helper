@@ -96,6 +96,11 @@ public class HelperDSLAdapterFactory extends AdapterFactoryImpl
         return createEventAdapter();
       }
       @Override
+      public Adapter caseReminder(Reminder object)
+      {
+        return createReminderAdapter();
+      }
+      @Override
       public Adapter casePerson(Person object)
       {
         return createPersonAdapter();
@@ -203,6 +208,21 @@ public class HelperDSLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createEventAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link ics.helper.helperDSL.Reminder <em>Reminder</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see ics.helper.helperDSL.Reminder
+   * @generated
+   */
+  public Adapter createReminderAdapter()
   {
     return null;
   }

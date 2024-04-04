@@ -102,6 +102,13 @@ public class HelperDSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case HelperDSLPackage.REMINDER:
+      {
+        Reminder reminder = (Reminder)theEObject;
+        T result = caseReminder(reminder);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case HelperDSLPackage.PERSON:
       {
         Person person = (Person)theEObject;
@@ -211,6 +218,22 @@ public class HelperDSLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseEvent(Event object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Reminder</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Reminder</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseReminder(Reminder object)
   {
     return null;
   }

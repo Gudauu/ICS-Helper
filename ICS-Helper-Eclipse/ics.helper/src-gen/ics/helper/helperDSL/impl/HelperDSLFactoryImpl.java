@@ -70,6 +70,7 @@ public class HelperDSLFactoryImpl extends EFactoryImpl implements HelperDSLFacto
       case HelperDSLPackage.COMMAND: return createCommand();
       case HelperDSLPackage.CREATE_COMMAND: return createCreateCommand();
       case HelperDSLPackage.EVENT: return createEvent();
+      case HelperDSLPackage.REMINDER: return createReminder();
       case HelperDSLPackage.PERSON: return createPerson();
       case HelperDSLPackage.DAYS_OF_WEEK: return createDaysOfWeek();
       case HelperDSLPackage.SCHEDULE: return createSchedule();
@@ -165,6 +166,18 @@ public class HelperDSLFactoryImpl extends EFactoryImpl implements HelperDSLFacto
   {
     EventImpl event = new EventImpl();
     return event;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Reminder createReminder()
+  {
+    ReminderImpl reminder = new ReminderImpl();
+    return reminder;
   }
 
   /**
