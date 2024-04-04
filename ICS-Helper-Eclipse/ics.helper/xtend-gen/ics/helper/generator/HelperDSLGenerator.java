@@ -7,6 +7,7 @@ import com.google.common.collect.Iterables;
 import ics.helper.helperDSL.CreateCommand;
 import ics.helper.helperDSL.DaysOfWeek;
 import ics.helper.helperDSL.Event;
+import ics.helper.helperDSL.Person;
 import ics.helper.helperDSL.RecurRule;
 import ics.helper.helperDSL.WEEKDAY;
 import java.time.LocalDateTime;
@@ -83,16 +84,27 @@ public class HelperDSLGenerator extends AbstractGenerator {
         boolean _tripleNotEquals_2 = (_link != null);
         if (_tripleNotEquals_2) {
           String _link_1 = event.getLink();
-          String _plus_10 = ("LINK:" + _link_1);
+          String _plus_10 = ("URI:" + _link_1);
           String _plus_11 = (_plus_10 + "\n");
           icsContent.append(_plus_11);
         }
-        RecurRule _recur = event.getRecur();
-        boolean _tripleNotEquals_3 = (_recur != null);
+        Person _organizer = event.getOrganizer();
+        boolean _tripleNotEquals_3 = (_organizer != null);
         if (_tripleNotEquals_3) {
+          String _name_1 = event.getOrganizer().getName();
+          String _plus_12 = ("ORGANIZER;CN=" + _name_1);
+          String _plus_13 = (_plus_12 + ":mailto:");
+          String _email = event.getOrganizer().getEmail();
+          String _plus_14 = (_plus_13 + _email);
+          String _plus_15 = (_plus_14 + "\n");
+          icsContent.append(_plus_15);
+        }
+        RecurRule _recur = event.getRecur();
+        boolean _tripleNotEquals_4 = (_recur != null);
+        if (_tripleNotEquals_4) {
           String _generateRecurRule = this.generateRecurRule(event);
-          String _plus_12 = (_generateRecurRule + "\n");
-          icsContent.append(_plus_12);
+          String _plus_16 = (_generateRecurRule + "\n");
+          icsContent.append(_plus_16);
         }
         icsContent.append("END:VEVENT\n");
       }

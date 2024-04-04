@@ -102,6 +102,13 @@ public class HelperDSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case HelperDSLPackage.PERSON:
+      {
+        Person person = (Person)theEObject;
+        T result = casePerson(person);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case HelperDSLPackage.DAYS_OF_WEEK:
       {
         DaysOfWeek daysOfWeek = (DaysOfWeek)theEObject;
@@ -204,6 +211,22 @@ public class HelperDSLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseEvent(Event object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Person</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Person</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePerson(Person object)
   {
     return null;
   }

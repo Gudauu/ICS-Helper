@@ -11,6 +11,7 @@ import ics.helper.helperDSL.HelperDSLPackage;
 import ics.helper.helperDSL.MergeCommand;
 import ics.helper.helperDSL.Model;
 import ics.helper.helperDSL.ModifyCommand;
+import ics.helper.helperDSL.Person;
 import ics.helper.helperDSL.Schedule;
 import ics.helper.helperDSL.SplitCommand;
 import ics.helper.services.HelperDSLGrammarAccess;
@@ -56,6 +57,9 @@ public class HelperDSLSemanticSequencer extends AbstractDelegatingSemanticSequen
 				return; 
 			case HelperDSLPackage.MODIFY_COMMAND:
 				sequence_ModifyCommand(context, (ModifyCommand) semanticObject); 
+				return; 
+			case HelperDSLPackage.PERSON:
+				sequence_Person(context, (Person) semanticObject); 
 				return; 
 			case HelperDSLPackage.SCHEDULE:
 				sequence_Schedule(context, (Schedule) semanticObject); 
@@ -110,6 +114,7 @@ public class HelperDSLSemanticSequencer extends AbstractDelegatingSemanticSequen
 	 *         location=STRING? 
 	 *         description=STRING? 
 	 *         link=STRING? 
+	 *         organizer=Person? 
 	 *         (recur=RecurRule daysOfWeek=DaysOfWeek?)?
 	 *     )
 	 * </pre>
@@ -160,6 +165,29 @@ public class HelperDSLSemanticSequencer extends AbstractDelegatingSemanticSequen
 	 */
 	protected void sequence_ModifyCommand(ISerializationContext context, ModifyCommand semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Person returns Person
+	 *
+	 * Constraint:
+	 *     (name=STRING email=STRING)
+	 * </pre>
+	 */
+	protected void sequence_Person(ISerializationContext context, Person semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, HelperDSLPackage.Literals.PERSON__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, HelperDSLPackage.Literals.PERSON__NAME));
+			if (transientValues.isValueTransient(semanticObject, HelperDSLPackage.Literals.PERSON__EMAIL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, HelperDSLPackage.Literals.PERSON__EMAIL));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getPersonAccess().getNameSTRINGTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getPersonAccess().getEmailSTRINGTerminalRuleCall_3_0(), semanticObject.getEmail());
+		feeder.finish();
 	}
 	
 	

@@ -6,6 +6,7 @@ package ics.helper.helperDSL.impl;
 import ics.helper.helperDSL.DaysOfWeek;
 import ics.helper.helperDSL.Event;
 import ics.helper.helperDSL.HelperDSLPackage;
+import ics.helper.helperDSL.Person;
 import ics.helper.helperDSL.RecurRule;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -31,6 +32,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link ics.helper.helperDSL.impl.EventImpl#getLocation <em>Location</em>}</li>
  *   <li>{@link ics.helper.helperDSL.impl.EventImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link ics.helper.helperDSL.impl.EventImpl#getLink <em>Link</em>}</li>
+ *   <li>{@link ics.helper.helperDSL.impl.EventImpl#getOrganizer <em>Organizer</em>}</li>
  *   <li>{@link ics.helper.helperDSL.impl.EventImpl#getRecur <em>Recur</em>}</li>
  *   <li>{@link ics.helper.helperDSL.impl.EventImpl#getDaysOfWeek <em>Days Of Week</em>}</li>
  * </ul>
@@ -158,6 +160,16 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
    * @ordered
    */
   protected String link = LINK_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getOrganizer() <em>Organizer</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getOrganizer()
+   * @generated
+   * @ordered
+   */
+  protected Person organizer;
 
   /**
    * The default value of the '{@link #getRecur() <em>Recur</em>}' attribute.
@@ -366,6 +378,56 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
    * @generated
    */
   @Override
+  public Person getOrganizer()
+  {
+    return organizer;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetOrganizer(Person newOrganizer, NotificationChain msgs)
+  {
+    Person oldOrganizer = organizer;
+    organizer = newOrganizer;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, HelperDSLPackage.EVENT__ORGANIZER, oldOrganizer, newOrganizer);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setOrganizer(Person newOrganizer)
+  {
+    if (newOrganizer != organizer)
+    {
+      NotificationChain msgs = null;
+      if (organizer != null)
+        msgs = ((InternalEObject)organizer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - HelperDSLPackage.EVENT__ORGANIZER, null, msgs);
+      if (newOrganizer != null)
+        msgs = ((InternalEObject)newOrganizer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - HelperDSLPackage.EVENT__ORGANIZER, null, msgs);
+      msgs = basicSetOrganizer(newOrganizer, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, HelperDSLPackage.EVENT__ORGANIZER, newOrganizer, newOrganizer));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public RecurRule getRecur()
   {
     return recur;
@@ -445,6 +507,8 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
   {
     switch (featureID)
     {
+      case HelperDSLPackage.EVENT__ORGANIZER:
+        return basicSetOrganizer(null, msgs);
       case HelperDSLPackage.EVENT__DAYS_OF_WEEK:
         return basicSetDaysOfWeek(null, msgs);
     }
@@ -473,6 +537,8 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
         return getDescription();
       case HelperDSLPackage.EVENT__LINK:
         return getLink();
+      case HelperDSLPackage.EVENT__ORGANIZER:
+        return getOrganizer();
       case HelperDSLPackage.EVENT__RECUR:
         return getRecur();
       case HelperDSLPackage.EVENT__DAYS_OF_WEEK:
@@ -508,6 +574,9 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
         return;
       case HelperDSLPackage.EVENT__LINK:
         setLink((String)newValue);
+        return;
+      case HelperDSLPackage.EVENT__ORGANIZER:
+        setOrganizer((Person)newValue);
         return;
       case HelperDSLPackage.EVENT__RECUR:
         setRecur((RecurRule)newValue);
@@ -547,6 +616,9 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
       case HelperDSLPackage.EVENT__LINK:
         setLink(LINK_EDEFAULT);
         return;
+      case HelperDSLPackage.EVENT__ORGANIZER:
+        setOrganizer((Person)null);
+        return;
       case HelperDSLPackage.EVENT__RECUR:
         setRecur(RECUR_EDEFAULT);
         return;
@@ -579,6 +651,8 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
         return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
       case HelperDSLPackage.EVENT__LINK:
         return LINK_EDEFAULT == null ? link != null : !LINK_EDEFAULT.equals(link);
+      case HelperDSLPackage.EVENT__ORGANIZER:
+        return organizer != null;
       case HelperDSLPackage.EVENT__RECUR:
         return recur != RECUR_EDEFAULT;
       case HelperDSLPackage.EVENT__DAYS_OF_WEEK:

@@ -1,0 +1,125 @@
+﻿@namespace(uri="final",prefix="flowchart")
+
+package final;
+
+
+
+
+
+class ICSFile {
+
+    attr String fileName;
+
+    attr String fileContent;
+
+    ref schedule[*] schedules;
+
+}
+
+
+
+class schedule {
+
+    attr String name;
+
+    attr String description;
+
+    ref Event[*] events;
+
+    attr boolean recurring;
+
+    attr int priority;
+
+    ref Person[*] attendees;
+
+    ref Reminder[*] reminders;
+
+}
+
+
+
+class Event {
+
+    attr String title;
+
+    attr String description;
+
+    attr String location;
+
+    ref Person organizer;
+
+    ref Reminder[*] reminders;
+
+    attr String[*] attendees;
+
+}
+
+class Reminder{
+
+	attr String message;
+
+	attr Date reminderDate;
+
+	ref Event event;
+
+}
+
+class Person{
+
+	attr String name;
+
+	attr String email;
+
+}
+
+class Attendee {
+
+    attr String name;
+
+    attr String email;
+
+    attr String role;
+
+    ref Event[] eventsAttending;
+
+}
+
+class Attachment {
+
+    attr String name;
+
+    attr String type;
+
+    attr byte[] content;
+
+    ref Event event;
+
+}
+
+
+
+class Operation {
+
+    attr String name;
+
+    attr String description;
+
+    attr OperationType type;
+
+}
+
+
+
+enum OperationType {
+
+    CREATE=1;
+
+    SPLIT = 2;
+
+    MERGE = 3;
+
+    MODIFY = 4;
+
+    DELAY =5;
+
+}

@@ -261,9 +261,9 @@ ruleEvent returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_2='from'
+		otherlv_2='start'
 		{
-			newLeafNode(otherlv_2, grammarAccess.getEventAccess().getFromKeyword_2());
+			newLeafNode(otherlv_2, grammarAccess.getEventAccess().getStartKeyword_2());
 		}
 		(
 			(
@@ -283,9 +283,9 @@ ruleEvent returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_4='to'
+		otherlv_4='end'
 		{
-			newLeafNode(otherlv_4, grammarAccess.getEventAccess().getToKeyword_4());
+			newLeafNode(otherlv_4, grammarAccess.getEventAccess().getEndKeyword_4());
 		}
 		(
 			(
@@ -378,16 +378,41 @@ ruleEvent returns [EObject current=null]
 			)
 		)?
 		(
-			otherlv_12='recur'
+			otherlv_12='organizer'
 			{
-				newLeafNode(otherlv_12, grammarAccess.getEventAccess().getRecurKeyword_9_0());
+				newLeafNode(otherlv_12, grammarAccess.getEventAccess().getOrganizerKeyword_9_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getEventAccess().getRecurRecurRuleEnumRuleCall_9_1_0());
+						newCompositeNode(grammarAccess.getEventAccess().getOrganizerPersonParserRuleCall_9_1_0());
 					}
-					lv_recur_13_0=ruleRecurRule
+					lv_organizer_13_0=rulePerson
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getEventRule());
+						}
+						set(
+							$current,
+							"organizer",
+							lv_organizer_13_0,
+							"ics.helper.HelperDSL.Person");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)?
+		(
+			otherlv_14='recur'
+			{
+				newLeafNode(otherlv_14, grammarAccess.getEventAccess().getRecurKeyword_10_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getEventAccess().getRecurRecurRuleEnumRuleCall_10_1_0());
+					}
+					lv_recur_15_0=ruleRecurRule
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getEventRule());
@@ -395,7 +420,7 @@ ruleEvent returns [EObject current=null]
 						set(
 							$current,
 							"recur",
-							lv_recur_13_0,
+							lv_recur_15_0,
 							"ics.helper.HelperDSL.RecurRule");
 						afterParserOrEnumRuleCall();
 					}
@@ -404,9 +429,9 @@ ruleEvent returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getEventAccess().getDaysOfWeekDaysOfWeekParserRuleCall_9_2_0());
+						newCompositeNode(grammarAccess.getEventAccess().getDaysOfWeekDaysOfWeekParserRuleCall_10_2_0());
 					}
-					lv_daysOfWeek_14_0=ruleDaysOfWeek
+					lv_daysOfWeek_16_0=ruleDaysOfWeek
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getEventRule());
@@ -414,13 +439,76 @@ ruleEvent returns [EObject current=null]
 						set(
 							$current,
 							"daysOfWeek",
-							lv_daysOfWeek_14_0,
+							lv_daysOfWeek_16_0,
 							"ics.helper.HelperDSL.DaysOfWeek");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)?
 		)?
+	)
+;
+
+// Entry rule entryRulePerson
+entryRulePerson returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getPersonRule()); }
+	iv_rulePerson=rulePerson
+	{ $current=$iv_rulePerson.current; }
+	EOF;
+
+// Rule Person
+rulePerson returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='name'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getPersonAccess().getNameKeyword_0());
+		}
+		(
+			(
+				lv_name_1_0=RULE_STRING
+				{
+					newLeafNode(lv_name_1_0, grammarAccess.getPersonAccess().getNameSTRINGTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getPersonRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"name",
+						lv_name_1_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
+				}
+			)
+		)
+		otherlv_2='email'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getPersonAccess().getEmailKeyword_2());
+		}
+		(
+			(
+				lv_email_3_0=RULE_STRING
+				{
+					newLeafNode(lv_email_3_0, grammarAccess.getPersonAccess().getEmailSTRINGTerminalRuleCall_3_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getPersonRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"email",
+						lv_email_3_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
+				}
+			)
+		)
 	)
 ;
 

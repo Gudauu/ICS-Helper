@@ -49,8 +49,11 @@ class HelperDSLGenerator extends AbstractGenerator {
                 icsContent.append("DESCRIPTION:" + event.description + "\n")
             }
             if (event.link !== null) {
-                icsContent.append("LINK:" + event.link + "\n")
-            }
+		        icsContent.append("URI:" + event.link + "\n") // Use URL for linking
+		    }
+		    if (event.organizer !== null) {
+		        icsContent.append("ORGANIZER;CN=" + event.organizer.name + ":mailto:" + event.organizer.email + "\n")
+		    }
             if (event.recur !== null) {
                 icsContent.append(generateRecurRule(event) + "\n")
             }

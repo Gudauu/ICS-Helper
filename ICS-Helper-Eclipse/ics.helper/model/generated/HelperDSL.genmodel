@@ -37,8 +37,13 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute HelperDSL.ecore#//Event/location"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute HelperDSL.ecore#//Event/description"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute HelperDSL.ecore#//Event/link"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference HelperDSL.ecore#//Event/organizer"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute HelperDSL.ecore#//Event/recur"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference HelperDSL.ecore#//Event/daysOfWeek"/>
+    </genClasses>
+    <genClasses ecoreClass="HelperDSL.ecore#//Person">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute HelperDSL.ecore#//Person/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute HelperDSL.ecore#//Person/email"/>
     </genClasses>
     <genClasses ecoreClass="HelperDSL.ecore#//DaysOfWeek">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute HelperDSL.ecore#//DaysOfWeek/days"/>

@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link ics.helper.helperDSL.Event#getLocation <em>Location</em>}</li>
  *   <li>{@link ics.helper.helperDSL.Event#getDescription <em>Description</em>}</li>
  *   <li>{@link ics.helper.helperDSL.Event#getLink <em>Link</em>}</li>
+ *   <li>{@link ics.helper.helperDSL.Event#getOrganizer <em>Organizer</em>}</li>
  *   <li>{@link ics.helper.helperDSL.Event#getRecur <em>Recur</em>}</li>
  *   <li>{@link ics.helper.helperDSL.Event#getDaysOfWeek <em>Days Of Week</em>}</li>
  * </ul>
@@ -161,6 +162,28 @@ public interface Event extends EObject
    * @generated
    */
   void setLink(String value);
+
+  /**
+   * Returns the value of the '<em><b>Organizer</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Organizer</em>' containment reference.
+   * @see #setOrganizer(Person)
+   * @see ics.helper.helperDSL.HelperDSLPackage#getEvent_Organizer()
+   * @model containment="true"
+   * @generated
+   */
+  Person getOrganizer();
+
+  /**
+   * Sets the value of the '{@link ics.helper.helperDSL.Event#getOrganizer <em>Organizer</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Organizer</em>' containment reference.
+   * @see #getOrganizer()
+   * @generated
+   */
+  void setOrganizer(Person value);
 
   /**
    * Returns the value of the '<em><b>Recur</b></em>' attribute.

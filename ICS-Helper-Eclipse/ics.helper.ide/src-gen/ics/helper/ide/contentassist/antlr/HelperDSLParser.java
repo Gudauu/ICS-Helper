@@ -42,6 +42,8 @@ public class HelperDSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getEventAccess().getGroup_7(), "rule__Event__Group_7__0");
 			builder.put(grammarAccess.getEventAccess().getGroup_8(), "rule__Event__Group_8__0");
 			builder.put(grammarAccess.getEventAccess().getGroup_9(), "rule__Event__Group_9__0");
+			builder.put(grammarAccess.getEventAccess().getGroup_10(), "rule__Event__Group_10__0");
+			builder.put(grammarAccess.getPersonAccess().getGroup(), "rule__Person__Group__0");
 			builder.put(grammarAccess.getDaysOfWeekAccess().getGroup(), "rule__DaysOfWeek__Group__0");
 			builder.put(grammarAccess.getDaysOfWeekAccess().getGroup_1(), "rule__DaysOfWeek__Group_1__0");
 			builder.put(grammarAccess.getSplitCommandAccess().getGroup(), "rule__SplitCommand__Group__0");
@@ -61,8 +63,11 @@ public class HelperDSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getEventAccess().getLocationAssignment_6_1(), "rule__Event__LocationAssignment_6_1");
 			builder.put(grammarAccess.getEventAccess().getDescriptionAssignment_7_1(), "rule__Event__DescriptionAssignment_7_1");
 			builder.put(grammarAccess.getEventAccess().getLinkAssignment_8_1(), "rule__Event__LinkAssignment_8_1");
-			builder.put(grammarAccess.getEventAccess().getRecurAssignment_9_1(), "rule__Event__RecurAssignment_9_1");
-			builder.put(grammarAccess.getEventAccess().getDaysOfWeekAssignment_9_2(), "rule__Event__DaysOfWeekAssignment_9_2");
+			builder.put(grammarAccess.getEventAccess().getOrganizerAssignment_9_1(), "rule__Event__OrganizerAssignment_9_1");
+			builder.put(grammarAccess.getEventAccess().getRecurAssignment_10_1(), "rule__Event__RecurAssignment_10_1");
+			builder.put(grammarAccess.getEventAccess().getDaysOfWeekAssignment_10_2(), "rule__Event__DaysOfWeekAssignment_10_2");
+			builder.put(grammarAccess.getPersonAccess().getNameAssignment_1(), "rule__Person__NameAssignment_1");
+			builder.put(grammarAccess.getPersonAccess().getEmailAssignment_3(), "rule__Person__EmailAssignment_3");
 			builder.put(grammarAccess.getDaysOfWeekAccess().getDaysAssignment_0(), "rule__DaysOfWeek__DaysAssignment_0");
 			builder.put(grammarAccess.getDaysOfWeekAccess().getDaysAssignment_1_1(), "rule__DaysOfWeek__DaysAssignment_1_1");
 			builder.put(grammarAccess.getScheduleAccess().getNameAssignment(), "rule__Schedule__NameAssignment");

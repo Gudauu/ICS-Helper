@@ -207,13 +207,22 @@ public interface HelperDSLPackage extends EPackage
   int EVENT__LINK = 5;
 
   /**
+   * The feature id for the '<em><b>Organizer</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EVENT__ORGANIZER = 6;
+
+  /**
    * The feature id for the '<em><b>Recur</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EVENT__RECUR = 6;
+  int EVENT__RECUR = 7;
 
   /**
    * The feature id for the '<em><b>Days Of Week</b></em>' containment reference.
@@ -222,7 +231,7 @@ public interface HelperDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EVENT__DAYS_OF_WEEK = 7;
+  int EVENT__DAYS_OF_WEEK = 8;
 
   /**
    * The number of structural features of the '<em>Event</em>' class.
@@ -231,7 +240,44 @@ public interface HelperDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EVENT_FEATURE_COUNT = 8;
+  int EVENT_FEATURE_COUNT = 9;
+
+  /**
+   * The meta object id for the '{@link ics.helper.helperDSL.impl.PersonImpl <em>Person</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see ics.helper.helperDSL.impl.PersonImpl
+   * @see ics.helper.helperDSL.impl.HelperDSLPackageImpl#getPerson()
+   * @generated
+   */
+  int PERSON = 4;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PERSON__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Email</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PERSON__EMAIL = 1;
+
+  /**
+   * The number of structural features of the '<em>Person</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PERSON_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link ics.helper.helperDSL.impl.DaysOfWeekImpl <em>Days Of Week</em>}' class.
@@ -241,7 +287,7 @@ public interface HelperDSLPackage extends EPackage
    * @see ics.helper.helperDSL.impl.HelperDSLPackageImpl#getDaysOfWeek()
    * @generated
    */
-  int DAYS_OF_WEEK = 4;
+  int DAYS_OF_WEEK = 5;
 
   /**
    * The feature id for the '<em><b>Days</b></em>' attribute list.
@@ -269,7 +315,7 @@ public interface HelperDSLPackage extends EPackage
    * @see ics.helper.helperDSL.impl.HelperDSLPackageImpl#getSchedule()
    * @generated
    */
-  int SCHEDULE = 5;
+  int SCHEDULE = 6;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -297,7 +343,7 @@ public interface HelperDSLPackage extends EPackage
    * @see ics.helper.helperDSL.impl.HelperDSLPackageImpl#getSplitCommand()
    * @generated
    */
-  int SPLIT_COMMAND = 6;
+  int SPLIT_COMMAND = 7;
 
   /**
    * The feature id for the '<em><b>Schedule</b></em>' reference.
@@ -334,7 +380,7 @@ public interface HelperDSLPackage extends EPackage
    * @see ics.helper.helperDSL.impl.HelperDSLPackageImpl#getMergeCommand()
    * @generated
    */
-  int MERGE_COMMAND = 7;
+  int MERGE_COMMAND = 8;
 
   /**
    * The feature id for the '<em><b>Schedules</b></em>' reference list.
@@ -371,7 +417,7 @@ public interface HelperDSLPackage extends EPackage
    * @see ics.helper.helperDSL.impl.HelperDSLPackageImpl#getModifyCommand()
    * @generated
    */
-  int MODIFY_COMMAND = 8;
+  int MODIFY_COMMAND = 9;
 
   /**
    * The feature id for the '<em><b>Schedule</b></em>' reference.
@@ -426,7 +472,7 @@ public interface HelperDSLPackage extends EPackage
    * @see ics.helper.helperDSL.impl.HelperDSLPackageImpl#getRecurRule()
    * @generated
    */
-  int RECUR_RULE = 9;
+  int RECUR_RULE = 10;
 
   /**
    * The meta object id for the '{@link ics.helper.helperDSL.WEEKDAY <em>WEEKDAY</em>}' enum.
@@ -436,7 +482,7 @@ public interface HelperDSLPackage extends EPackage
    * @see ics.helper.helperDSL.impl.HelperDSLPackageImpl#getWEEKDAY()
    * @generated
    */
-  int WEEKDAY = 10;
+  int WEEKDAY = 11;
 
 
   /**
@@ -579,6 +625,17 @@ public interface HelperDSLPackage extends EPackage
   EAttribute getEvent_Link();
 
   /**
+   * Returns the meta object for the containment reference '{@link ics.helper.helperDSL.Event#getOrganizer <em>Organizer</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Organizer</em>'.
+   * @see ics.helper.helperDSL.Event#getOrganizer()
+   * @see #getEvent()
+   * @generated
+   */
+  EReference getEvent_Organizer();
+
+  /**
    * Returns the meta object for the attribute '{@link ics.helper.helperDSL.Event#getRecur <em>Recur</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -599,6 +656,38 @@ public interface HelperDSLPackage extends EPackage
    * @generated
    */
   EReference getEvent_DaysOfWeek();
+
+  /**
+   * Returns the meta object for class '{@link ics.helper.helperDSL.Person <em>Person</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Person</em>'.
+   * @see ics.helper.helperDSL.Person
+   * @generated
+   */
+  EClass getPerson();
+
+  /**
+   * Returns the meta object for the attribute '{@link ics.helper.helperDSL.Person#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see ics.helper.helperDSL.Person#getName()
+   * @see #getPerson()
+   * @generated
+   */
+  EAttribute getPerson_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link ics.helper.helperDSL.Person#getEmail <em>Email</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Email</em>'.
+   * @see ics.helper.helperDSL.Person#getEmail()
+   * @see #getPerson()
+   * @generated
+   */
+  EAttribute getPerson_Email();
 
   /**
    * Returns the meta object for class '{@link ics.helper.helperDSL.DaysOfWeek <em>Days Of Week</em>}'.
@@ -916,6 +1005,14 @@ public interface HelperDSLPackage extends EPackage
     EAttribute EVENT__LINK = eINSTANCE.getEvent_Link();
 
     /**
+     * The meta object literal for the '<em><b>Organizer</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EVENT__ORGANIZER = eINSTANCE.getEvent_Organizer();
+
+    /**
      * The meta object literal for the '<em><b>Recur</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -930,6 +1027,32 @@ public interface HelperDSLPackage extends EPackage
      * @generated
      */
     EReference EVENT__DAYS_OF_WEEK = eINSTANCE.getEvent_DaysOfWeek();
+
+    /**
+     * The meta object literal for the '{@link ics.helper.helperDSL.impl.PersonImpl <em>Person</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see ics.helper.helperDSL.impl.PersonImpl
+     * @see ics.helper.helperDSL.impl.HelperDSLPackageImpl#getPerson()
+     * @generated
+     */
+    EClass PERSON = eINSTANCE.getPerson();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PERSON__NAME = eINSTANCE.getPerson_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Email</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PERSON__EMAIL = eINSTANCE.getPerson_Email();
 
     /**
      * The meta object literal for the '{@link ics.helper.helperDSL.impl.DaysOfWeekImpl <em>Days Of Week</em>}' class.
