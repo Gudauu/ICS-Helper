@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalHelperDSLParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'create'", "'schedule'", "'{'", "'}'", "'event'", "'start'", "'end'", "'at'", "'description'", "'recur'", "'link'", "'organizer'", "'invitees'", "'reminder'", "'time'", "'title'", "'name'", "'email'", "','", "'split'", "'by'", "'merge'", "'into'", "'modify'", "'set'", "'owner'", "'location'", "'daily'", "'weekly'", "'monthly'", "'yearly'", "'on'", "'Monday'", "'Tuesday'", "'Wednesday'", "'Thursday'", "'Friday'", "'Saturday'", "'Sunday'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'create'", "'schedule'", "'{'", "'}'", "'event'", "'start'", "'end'", "'at'", "'description'", "'recur'", "'link'", "'organizer'", "'invitees'", "'reminder'", "'time'", "'title'", "'name'", "'email'", "','", "'split'", "'by'", "'merge'", "'into'", "'modify'", "'set'", "'owner'", "'location'", "'daily'", "'weekly'", "'monthly'", "'yearly'", "'weekly on'", "'Monday'", "'Tuesday'", "'Wednesday'", "'Thursday'", "'Friday'", "'Saturday'", "'Sunday'"
     };
     public static final int T__19=19;
     public static final int T__15=15;
@@ -2311,7 +2311,7 @@ public class InternalHelperDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleRecurRule"
-    // InternalHelperDSL.g:972:1: ruleRecurRule returns [Enumerator current=null] : ( (enumLiteral_0= 'daily' ) | (enumLiteral_1= 'weekly' ) | (enumLiteral_2= 'monthly' ) | (enumLiteral_3= 'yearly' ) | (enumLiteral_4= 'on' ) ) ;
+    // InternalHelperDSL.g:972:1: ruleRecurRule returns [Enumerator current=null] : ( (enumLiteral_0= 'daily' ) | (enumLiteral_1= 'weekly' ) | (enumLiteral_2= 'monthly' ) | (enumLiteral_3= 'yearly' ) | (enumLiteral_4= 'weekly on' ) ) ;
     public final Enumerator ruleRecurRule() throws RecognitionException {
         Enumerator current = null;
 
@@ -2325,10 +2325,10 @@ public class InternalHelperDSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalHelperDSL.g:978:2: ( ( (enumLiteral_0= 'daily' ) | (enumLiteral_1= 'weekly' ) | (enumLiteral_2= 'monthly' ) | (enumLiteral_3= 'yearly' ) | (enumLiteral_4= 'on' ) ) )
-            // InternalHelperDSL.g:979:2: ( (enumLiteral_0= 'daily' ) | (enumLiteral_1= 'weekly' ) | (enumLiteral_2= 'monthly' ) | (enumLiteral_3= 'yearly' ) | (enumLiteral_4= 'on' ) )
+            // InternalHelperDSL.g:978:2: ( ( (enumLiteral_0= 'daily' ) | (enumLiteral_1= 'weekly' ) | (enumLiteral_2= 'monthly' ) | (enumLiteral_3= 'yearly' ) | (enumLiteral_4= 'weekly on' ) ) )
+            // InternalHelperDSL.g:979:2: ( (enumLiteral_0= 'daily' ) | (enumLiteral_1= 'weekly' ) | (enumLiteral_2= 'monthly' ) | (enumLiteral_3= 'yearly' ) | (enumLiteral_4= 'weekly on' ) )
             {
-            // InternalHelperDSL.g:979:2: ( (enumLiteral_0= 'daily' ) | (enumLiteral_1= 'weekly' ) | (enumLiteral_2= 'monthly' ) | (enumLiteral_3= 'yearly' ) | (enumLiteral_4= 'on' ) )
+            // InternalHelperDSL.g:979:2: ( (enumLiteral_0= 'daily' ) | (enumLiteral_1= 'weekly' ) | (enumLiteral_2= 'monthly' ) | (enumLiteral_3= 'yearly' ) | (enumLiteral_4= 'weekly on' ) )
             int alt18=5;
             switch ( input.LA(1) ) {
             case 38:
@@ -2433,10 +2433,10 @@ public class InternalHelperDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // InternalHelperDSL.g:1012:3: (enumLiteral_4= 'on' )
+                    // InternalHelperDSL.g:1012:3: (enumLiteral_4= 'weekly on' )
                     {
-                    // InternalHelperDSL.g:1012:3: (enumLiteral_4= 'on' )
-                    // InternalHelperDSL.g:1013:4: enumLiteral_4= 'on'
+                    // InternalHelperDSL.g:1012:3: (enumLiteral_4= 'weekly on' )
+                    // InternalHelperDSL.g:1013:4: enumLiteral_4= 'weekly on'
                     {
                     enumLiteral_4=(Token)match(input,42,FOLLOW_2); 
 

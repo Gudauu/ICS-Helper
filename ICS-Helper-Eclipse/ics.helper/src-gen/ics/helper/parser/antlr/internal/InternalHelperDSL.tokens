@@ -22,7 +22,6 @@
 'modify'=34
 'monthly'=40
 'name'=27
-'on'=42
 'organizer'=22
 'owner'=36
 'recur'=20
@@ -33,6 +32,7 @@
 'start'=16
 'time'=25
 'title'=26
+'weekly on'=42
 'weekly'=39
 'yearly'=41
 '{'=13

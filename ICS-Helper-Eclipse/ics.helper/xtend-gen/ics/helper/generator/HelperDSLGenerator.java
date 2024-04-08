@@ -10,7 +10,6 @@ import ics.helper.helperDSL.DaysOfWeek;
 import ics.helper.helperDSL.Event;
 import ics.helper.helperDSL.Person;
 import ics.helper.helperDSL.RecurRule;
-import ics.helper.helperDSL.Reminder;
 import ics.helper.helperDSL.WEEKDAY;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -119,9 +118,7 @@ public class HelperDSLGenerator extends AbstractGenerator {
           String _plus_17 = (_generateRecurRule + "\n");
           icsContent.append(_plus_17);
         }
-        Reminder _reminder = event.getReminder();
-        boolean _notEquals = (!Objects.equal(_reminder, Integer.valueOf(0)));
-        if (_notEquals) {
+        if (((event.getReminder() != null) && (!Objects.equal(event.getReminder(), Integer.valueOf(0))))) {
           icsContent.append("BEGIN:VALARM\n");
           int _time = event.getReminder().getTime();
           String _plus_18 = ("TRIGGER:-PT" + Integer.valueOf(_time));

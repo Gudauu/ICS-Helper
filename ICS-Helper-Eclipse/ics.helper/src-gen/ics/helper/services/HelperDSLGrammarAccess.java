@@ -421,17 +421,6 @@ public class HelperDSLGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//WEEKDAY
 		public RuleCall getDaysWEEKDAYEnumRuleCall_1_1_0() { return cDaysWEEKDAYEnumRuleCall_1_1_0; }
 	}
-	public class LoadAllICSCommandElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ics.helper.HelperDSL.LoadAllICSCommand");
-		private final Keyword cLoadAllICSKeyword = (Keyword)rule.eContents().get(1);
-		
-		//LoadAllICSCommand:
-		//    'loadAllICS';
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'loadAllICS'
-		public Keyword getLoadAllICSKeyword() { return cLoadAllICSKeyword; }
-	}
 	public class ScheduleElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ics.helper.HelperDSL.Schedule");
 		private final Assignment cNameAssignment = (Assignment)rule.eContents().get(1);
@@ -657,21 +646,21 @@ public class HelperDSLGrammarAccess extends AbstractElementFinder.AbstractGramma
 		private final EnumLiteralDeclaration cYEARLYEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
 		private final Keyword cYEARLYYearlyKeyword_3_0 = (Keyword)cYEARLYEnumLiteralDeclaration_3.eContents().get(0);
 		private final EnumLiteralDeclaration cBYDAYEnumLiteralDeclaration_4 = (EnumLiteralDeclaration)cAlternatives.eContents().get(4);
-		private final Keyword cBYDAYOnKeyword_4_0 = (Keyword)cBYDAYEnumLiteralDeclaration_4.eContents().get(0);
+		private final Keyword cBYDAYWeeklyOnKeyword_4_0 = (Keyword)cBYDAYEnumLiteralDeclaration_4.eContents().get(0);
 		
 		//enum RecurRule:
 		//    DAILY = 'daily' |
 		//    WEEKLY = 'weekly' |
 		//    MONTHLY = 'monthly' |
 		//    YEARLY = 'yearly'|
-		//    BYDAY = 'on';
+		//    BYDAY = 'weekly on';
 		public EnumRule getRule() { return rule; }
 		
 		//DAILY = 'daily' |
 		//WEEKLY = 'weekly' |
 		//MONTHLY = 'monthly' |
 		//YEARLY = 'yearly'|
-		//BYDAY = 'on'
+		//BYDAY = 'weekly on'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//DAILY = 'daily'
@@ -698,11 +687,11 @@ public class HelperDSLGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//'yearly'
 		public Keyword getYEARLYYearlyKeyword_3_0() { return cYEARLYYearlyKeyword_3_0; }
 		
-		//BYDAY = 'on'
+		//BYDAY = 'weekly on'
 		public EnumLiteralDeclaration getBYDAYEnumLiteralDeclaration_4() { return cBYDAYEnumLiteralDeclaration_4; }
 		
-		//'on'
-		public Keyword getBYDAYOnKeyword_4_0() { return cBYDAYOnKeyword_4_0; }
+		//'weekly on'
+		public Keyword getBYDAYWeeklyOnKeyword_4_0() { return cBYDAYWeeklyOnKeyword_4_0; }
 	}
 	public class WEEKDAYElements extends AbstractElementFinder.AbstractEnumRuleElementFinder {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "ics.helper.HelperDSL.WEEKDAY");
@@ -795,7 +784,6 @@ public class HelperDSLGrammarAccess extends AbstractElementFinder.AbstractGramma
 	private final RecurRuleElements eRecurRule;
 	private final DaysOfWeekElements pDaysOfWeek;
 	private final WEEKDAYElements eWEEKDAY;
-	private final LoadAllICSCommandElements pLoadAllICSCommand;
 	private final ScheduleElements pSchedule;
 	private final SplitCommandElements pSplitCommand;
 	private final MergeCommandElements pMergeCommand;
@@ -819,7 +807,6 @@ public class HelperDSLGrammarAccess extends AbstractElementFinder.AbstractGramma
 		this.eRecurRule = new RecurRuleElements();
 		this.pDaysOfWeek = new DaysOfWeekElements();
 		this.eWEEKDAY = new WEEKDAYElements();
-		this.pLoadAllICSCommand = new LoadAllICSCommandElements();
 		this.pSchedule = new ScheduleElements();
 		this.pSplitCommand = new SplitCommandElements();
 		this.pMergeCommand = new MergeCommandElements();
@@ -933,7 +920,7 @@ public class HelperDSLGrammarAccess extends AbstractElementFinder.AbstractGramma
 	//    WEEKLY = 'weekly' |
 	//    MONTHLY = 'monthly' |
 	//    YEARLY = 'yearly'|
-	//    BYDAY = 'on';
+	//    BYDAY = 'weekly on';
 	public RecurRuleElements getRecurRuleAccess() {
 		return eRecurRule;
 	}
@@ -967,16 +954,6 @@ public class HelperDSLGrammarAccess extends AbstractElementFinder.AbstractGramma
 	
 	public EnumRule getWEEKDAYRule() {
 		return getWEEKDAYAccess().getRule();
-	}
-	
-	//LoadAllICSCommand:
-	//    'loadAllICS';
-	public LoadAllICSCommandElements getLoadAllICSCommandAccess() {
-		return pLoadAllICSCommand;
-	}
-	
-	public ParserRule getLoadAllICSCommandRule() {
-		return getLoadAllICSCommandAccess().getRule();
 	}
 	
 	//Schedule:

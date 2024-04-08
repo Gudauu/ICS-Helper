@@ -68,7 +68,7 @@ public enum RecurRule implements Enumerator
    * @generated
    * @ordered
    */
-  BYDAY(4, "BYDAY", "on");
+  BYDAY(4, "BYDAY", "weekly on");
 
   /**
    * The '<em><b>DAILY</b></em>' literal value.
@@ -119,7 +119,7 @@ public enum RecurRule implements Enumerator
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #BYDAY
-   * @model literal="on"
+   * @model literal="weekly on"
    * @generated
    * @ordered
    */

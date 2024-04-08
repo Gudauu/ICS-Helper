@@ -443,7 +443,7 @@ rule__RecurRule__Alternatives
 	|
 	(
 		{ before(grammarAccess.getRecurRuleAccess().getBYDAYEnumLiteralDeclaration_4()); }
-		('on')
+		('weekly on')
 		{ after(grammarAccess.getRecurRuleAccess().getBYDAYEnumLiteralDeclaration_4()); }
 	)
 ;

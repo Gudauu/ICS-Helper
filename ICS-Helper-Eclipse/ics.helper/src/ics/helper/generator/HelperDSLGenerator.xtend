@@ -63,7 +63,7 @@ class HelperDSLGenerator extends AbstractGenerator {
             if (event.recur !== null) {
                 icsContent.append(generateRecurRule(event) + "\n")
             }
-            if (event.reminder != 0) {
+            if (event.reminder !== null && event.reminder != 0) {
                 icsContent.append("BEGIN:VALARM\n")
                 icsContent.append("TRIGGER:-PT" + event.reminder.time + "M\n")
                 icsContent.append("ACTION:DISPLAY\n")

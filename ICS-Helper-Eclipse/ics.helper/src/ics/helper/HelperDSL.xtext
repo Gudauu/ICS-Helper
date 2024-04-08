@@ -39,7 +39,7 @@ enum RecurRule:
     WEEKLY = 'weekly' |
     MONTHLY = 'monthly' |
     YEARLY = 'yearly'|
-    BYDAY = 'on';
+    BYDAY = 'weekly on';
 
 DaysOfWeek: days+=WEEKDAY (',' days+=WEEKDAY)*; // Example: "on Monday,Wednesday,Friday"
 
@@ -53,9 +53,6 @@ enum WEEKDAY:
 	SU = 'Sunday'
 ;
  
-LoadAllICSCommand:
-    'loadAllICS';
-
 Schedule:
 	name=ID;
 

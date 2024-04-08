@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalHelperDSLParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'daily'", "'weekly'", "'monthly'", "'yearly'", "'on'", "'Monday'", "'Tuesday'", "'Wednesday'", "'Thursday'", "'Friday'", "'Saturday'", "'Sunday'", "'create'", "'schedule'", "'{'", "'}'", "'event'", "'start'", "'end'", "'at'", "'description'", "'recur'", "'link'", "'organizer'", "'invitees'", "'reminder'", "'time'", "'title'", "'name'", "'email'", "','", "'split'", "'by'", "'merge'", "'into'", "'modify'", "'set'", "'owner'", "'location'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'daily'", "'weekly'", "'monthly'", "'yearly'", "'weekly on'", "'Monday'", "'Tuesday'", "'Wednesday'", "'Thursday'", "'Friday'", "'Saturday'", "'Sunday'", "'create'", "'schedule'", "'{'", "'}'", "'event'", "'start'", "'end'", "'at'", "'description'", "'recur'", "'link'", "'organizer'", "'invitees'", "'reminder'", "'time'", "'title'", "'name'", "'email'", "','", "'split'", "'by'", "'merge'", "'into'", "'modify'", "'set'", "'owner'", "'location'"
     };
     public static final int T__19=19;
     public static final int T__15=15;
@@ -1337,13 +1337,13 @@ public class InternalHelperDSLParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__RecurRule__Alternatives"
-    // InternalHelperDSL.g:415:1: rule__RecurRule__Alternatives : ( ( ( 'daily' ) ) | ( ( 'weekly' ) ) | ( ( 'monthly' ) ) | ( ( 'yearly' ) ) | ( ( 'on' ) ) );
+    // InternalHelperDSL.g:415:1: rule__RecurRule__Alternatives : ( ( ( 'daily' ) ) | ( ( 'weekly' ) ) | ( ( 'monthly' ) ) | ( ( 'yearly' ) ) | ( ( 'weekly on' ) ) );
     public final void rule__RecurRule__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalHelperDSL.g:419:1: ( ( ( 'daily' ) ) | ( ( 'weekly' ) ) | ( ( 'monthly' ) ) | ( ( 'yearly' ) ) | ( ( 'on' ) ) )
+            // InternalHelperDSL.g:419:1: ( ( ( 'daily' ) ) | ( ( 'weekly' ) ) | ( ( 'monthly' ) ) | ( ( 'yearly' ) ) | ( ( 'weekly on' ) ) )
             int alt5=5;
             switch ( input.LA(1) ) {
             case 11:
@@ -1464,14 +1464,14 @@ public class InternalHelperDSLParser extends AbstractInternalContentAssistParser
                     }
                     break;
                 case 5 :
-                    // InternalHelperDSL.g:444:2: ( ( 'on' ) )
+                    // InternalHelperDSL.g:444:2: ( ( 'weekly on' ) )
                     {
-                    // InternalHelperDSL.g:444:2: ( ( 'on' ) )
-                    // InternalHelperDSL.g:445:3: ( 'on' )
+                    // InternalHelperDSL.g:444:2: ( ( 'weekly on' ) )
+                    // InternalHelperDSL.g:445:3: ( 'weekly on' )
                     {
                      before(grammarAccess.getRecurRuleAccess().getBYDAYEnumLiteralDeclaration_4()); 
-                    // InternalHelperDSL.g:446:3: ( 'on' )
-                    // InternalHelperDSL.g:446:4: 'on'
+                    // InternalHelperDSL.g:446:3: ( 'weekly on' )
+                    // InternalHelperDSL.g:446:4: 'weekly on'
                     {
                     match(input,15,FOLLOW_2); 
 

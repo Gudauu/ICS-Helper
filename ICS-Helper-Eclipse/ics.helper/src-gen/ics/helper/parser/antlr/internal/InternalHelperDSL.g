@@ -1010,7 +1010,7 @@ ruleRecurRule returns [Enumerator current=null]
 		)
 		    |
 		(
-			enumLiteral_4='on'
+			enumLiteral_4='weekly on'
 			{
 				$current = grammarAccess.getRecurRuleAccess().getBYDAYEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
 				newLeafNode(enumLiteral_4, grammarAccess.getRecurRuleAccess().getBYDAYEnumLiteralDeclaration_4());

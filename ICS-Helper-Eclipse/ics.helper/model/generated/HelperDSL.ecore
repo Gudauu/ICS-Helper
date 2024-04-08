@@ -41,7 +41,7 @@
     <eLiterals name="WEEKLY" value="1" literal="weekly"/>
     <eLiterals name="MONTHLY" value="2" literal="monthly"/>
     <eLiterals name="YEARLY" value="3" literal="yearly"/>
-    <eLiterals name="BYDAY" value="4" literal="on"/>
+    <eLiterals name="BYDAY" value="4" literal="weekly on"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DaysOfWeek">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="days" unique="false" upperBound="-1"
