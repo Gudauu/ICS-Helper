@@ -126,7 +126,70 @@ This metamodel analysis and class diagram form the basis for the subsequent deve
 
 \newpage
 \section{Defining and Implementing Syntax}
-Shutong's part
+We choose Xtext to implement the syntax and generate editor accordingly for the below reasons:
+
+\begin{itemize}
+    \item Xtext, as a text-based tool, provide flexible syntax control.
+    \item Consider the use case of our dsl, usability in a text-based environment is a must.
+    \item Better integration with other platforms and tools.
+\end{itemize}
+
+\subsection{Syntax}
+Aiming to be user-friendly and intuitive, the syntax of ICS Helper DSL is designed to be concise and natural-language-like. 
+The following sections outline the syntax elements and examples of the DSL.
+\subsubsection{Basic Syntax}
+\begin{verbatim}
+    'create' 'schedule' UNIQUE_NAME '{'
+        one or more Event
+    '}'
+\end{verbatim}
+
+Where \texttt{Event} is defined as follows:
+
+\begin{verbatim}
+    'event' UNIQUE_NAME
+    'start' YYYY-MM-DD HH:MM:SS
+    'end' YYYY-MM-DD HH:MM:SS
+    (OPTIONAL FIELDS)
+\end{verbatim}
+OPTIONAL FIELDS include: \texttt{location}, \texttt{description}, \texttt{organizer}, \texttt{invitees}, \texttt{recurrence rule}, \texttt{reminder rule}, \texttt{link}. 
+Please refer to our documentation for more details.
+
+\subsubsection{example}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{editor_example.png}
+    \caption{Example Editor Screenshot}
+    \label{fig:class-diagram}
+\end{figure}
+
+\begin{verbatim}
+    create schedule CAS703{
+        event class1 
+        start '2024-04-12 12:30'
+        end '2024-04-12 14:30'
+        invitees {
+            name 'Taylor Timson' email 'tayTim@examplemail.com'
+            name 'Gilman Wood' email 'GilmanWood@gmail.com'
+        }
+        reminder time 15 title 'go to class 703!!!'
+    }
+\end{verbatim}
+
+\subsection{Discussion}
+Our syntax design using Xtext comes with the following advantages:
+\begin{itemize}
+    \item Friendly syntax that is easy to understand and use.
+    \item Editor that provides syntax highlighting, auto-completion, and error checking.
+    \item Portability and integration with other tools (as our project is shipped as a plugin). 
+\end{itemize}
+At the same time, it comes with the following limitations:
+\begin{itemize}
+    \item Dependence on the Eclipse environment.
+    \item Grammar limitations: like the need to follow the time format exactly, which hinders easy-usage.
+    \item Higher learning curve compared to graphical editors.
+\end{itemize}
+
 
 \newpage
 \section{Validation constraints implementation}
