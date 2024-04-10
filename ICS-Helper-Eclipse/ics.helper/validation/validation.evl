@@ -1,0 +1,62 @@
+context ICSFile {
+
+    constraint FileNameNotNullOrEmpty {
+        check: self.fileName <> null and self.fileName.size() > 0
+        message: 'The file name cannot be null or empty.'
+    }
+    
+    constraint FileContentNotNullOrEmpty {
+        check: self.fileContent <> null and self.fileContent.size() > 0
+        message: 'The file content cannot be null or empty.'
+    }
+    
+}
+
+context schedule {
+
+    constraint NameNotNullOrEmpty {
+        check: self.name <> null and self.name.size() > 0
+        message: 'The schedule name cannot be null or empty.'
+    }
+}
+
+context Event {
+    constraint StartDateNotInPast {
+        check: self.startDate >= Date.now()
+        message: 'The start date cannot be in the past.'
+    }
+    constraint EndDateNotBeforeStartDate {
+        check: self.endDate >= self.startDate
+        message: 'The end date for event cannot be before its start date.'
+    }
+}
+
+// Reminder should before Event startDate
+context Reminder {
+    constraint ReminderBeforeEventStart {
+        check: self.reminderDate.before(self.event.startDate)
+        message: 'Reminder date for event must be before the event\'s start date.'
+    }
+}
+
+context Person {
+    constraint NameNotEmptyOrNull {
+        check: self.name <> null and self.name.size() > 0
+        message: 'A person\'s name cannot be null or empty.'
+    }
+	constraint EmailIsUnique {
+        check: Person.allInstances()->select(p | p.email = self.email)->size() = 1 //select the email attribute matches the email of the current instance (self)
+        message: 'The email "' + self.email + '" is not unique.'
+    }
+}
+
+context Invitees {
+    constraint NameNotEmptyOrNull {
+        check: self.name <> null and self.name.size() > 0
+        message: 'A Invitees\'s name cannot be null or empty.'
+    }
+	constraint EmailIsUnique {
+        check: Invitees.allInstances()->select(i | i.email = self.email)->size() = 1 //select the email attribute matches the email of the current instance (self)
+        message: 'The email "' + self.email + '" is not unique.'
+    }
+}
