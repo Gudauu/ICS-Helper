@@ -76,7 +76,7 @@ Right now the only way to manipulate ICS files (other than writing the protocol 
         \item granular control(e.g. split and merge of events across schedules)
     \end{itemize}
 
-To tackle this, we propose the idea of `ICS Helper`, which is a DSL dealing with ICS files. It offers:
+To tackle this, we propose the idea of ``ICS Helper'', which is a DSL dealing with ICS files. It offers:
     \begin{itemize}
         \item human-friendly syntax for ICS creation (write in plain text and compile to ICS)
         \item model validation (e.g. time conflict, missing fields)
@@ -134,7 +134,7 @@ The following class diagram visually represents the structure and relationships 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{class.png}
+    \includegraphics[width=0.8\textwidth]{class.png}
     \caption{Class Diagram of the ICS Helper DSL Metamodel}
     \label{fig:class-diagram}
 \end{figure}
@@ -178,7 +178,7 @@ Please refer to \href{https://github.com/Gudauu/ICS-Helper}{our documentation} f
 \subsubsection{Example}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{editor_example.png}
+    \includegraphics[width=0.7\textwidth]{editor_example.png}
     \caption{Example Editor Screenshot}
     \label{fig:class-diagram}
 \end{figure}
@@ -220,19 +220,19 @@ To validate aspects of the model that couldn't be expressed in the metamodel its
 \begin{enumerate}
     \item \textbf{Not null or empty constraints:}
     \begin{itemize}
-        \item Schedule Class: The name of the schedule must not be null or empty.
-        \item Organizer Class: The name of the organizers must not be null or empty.
-        \item Invitee Class: The name of the invitees must not be null or empty.
-        \item Event Class: The name of the event must not be null or empty.
+        \item \texttt{Schedule}: The name of the schedule must not be null or empty.
+        \item \texttt{Organizer}: The name of the organizers must not be null or empty.
+        \item \texttt{Invitee}: The name of the invitees must not be null or empty.
+        \item \texttt{Event}: The name of the event must not be null or empty.
     \end{itemize}
     \item \textbf{Unique constraints:}
     \begin{itemize}
-        \item Organizer Class: The email addresses of the organizers must not be duplicated.
-        \item Invitee Class: The email addresses of invitees must not be duplicated.
+        \item \texttt{Organizer}: The email addresses of the organizers must not be duplicated.
+        \item \texttt{Invitee}: The email addresses of invitees must not be duplicated.
     \end{itemize}
     \item \textbf{Time constraints:}
     \begin{itemize}
-        \item Event Class: The event's start time must not be later than its end time.
+        \item \texttt{Event}: The event's start time must not be later than its end time.
     \end{itemize}
 \end{enumerate}
 \subsection{Xtext editor validation}
