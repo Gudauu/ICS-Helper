@@ -1,0 +1,21 @@
+context Person {
+	
+	constraint OnlyWorld {
+		
+		check : self.name == "Potato"
+		
+		message : "Was expecting Potato but found " + self.name + " instead"
+		
+		fix {
+		
+			title : "Change to Potato"
+			
+			do {
+				self.name = "Potato";
+			}
+			
+		}
+		
+	}
+
+}

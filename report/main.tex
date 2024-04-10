@@ -40,8 +40,7 @@
 \maketitle
 
 \begin{abstract}
-    \noindent
-    An ICS (iCalendar) file is a universal calendar format utilized by mainstream email and various calendar apps such as Microsoft Outlook, Google Calendar, and Apple Calendar. Importing an ICS file into calendar apps allows for the addition of new schedules comprising one or more events. Currently, the process of manipulating ICS files involves editing schedules within calendar apps and then exporting them. To address this time-consuming task, we propose ICS Helper, a Domain-specific Language (DSL) designed for handling ICS files. The primary features of ICS Helper include generating schedules outside of calendar applications, managing massive schedules and events, and automating workflow processes. With its user-friendly syntax, ICS Helper enables users to manage their schedules more effectively.
+    An ICS (iCalendar) file is a universal calendar format utilized by mainstream email and various calendar apps such as Microsoft Outlook, Google Calendar, and Apple Calendar. Importing an ICS file into calendar apps allows for the addition of new schedules comprising one or more events. Currently, the process of manipulating ICS files involves editing schedules within calendar apps and then exporting them. To address this time-consuming task, we propose ICS Helper, a Domain-specific Language (DSL) designed for handling ICS files. It's a text based tool kit that allow users to generate schedules outside of calendar applications, and provides integration possibility as an Eclipse plugin. With its user-friendly syntax, ICS Helper enables users to manage their schedules more effectively. 
 \end{abstract}
 
 \vspace{2.5cm}
@@ -63,9 +62,30 @@
 
 \section{Introduction}
 \label{sec:intro}
+An ICS file is a calendar file saved in a universal calendar format used by mainstream email and calendar apps, including Microsoft Outlook, Google Calendar, and Apple Calendar. 
 
-**will modify the content in the future\\
-    An ICS (iCalendar) file is a universal calendar format utilized by mainstream email and various calendar apps such as Microsoft Outlook, Google Calendar, and Apple Calendar. Importing an ICS file into calendar apps allows for the addition of new schedules comprising one or more events. Currently, the process of manipulating ICS files involves editing schedules within calendar apps and then exporting them. To address this time-consuming task, we propose ICS Helper, a Domain-specific Language (DSL) designed for handling ICS files. The primary features of ICS Helper include generating schedules outside of calendar applications, managing massive schedules and events, and automating workflow processes. With its user-friendly syntax, ICS Helper enables users to manage their schedules more effectively.
+By importing ICS file into calendar apps, a new schedule(composed of one or more events) can be added. People can subscribe to schedules by url. 
+
+Right now the only way to manipulate ICS files (other than writing the protocol by hand) is to edit schedules inside calendar apps / helpers, and then export, which hinders:
+
+    \begin{itemize}
+        \item easy creation of schedules outside the app environment
+        \item mass operation (e.g. delay 100 events by an hour) 
+        \item programmable access (e.g. work flow automation)
+        \item granular control(e.g. split and merge of events across schedules)
+    \end{itemize}
+
+
+To tackle this, we propose the idea of `ICS Helper`, which is a DSL dealing with ICS files. It offers:
+    \begin{itemize}
+        \item human-friendly syntax for ICS creation (write in plain text & compile to ICS)
+        \item model validation (e.g. time conflict, missing fields)
+        \item integration options with other tools as a plugin
+    \end{itemize}
+
+While it doesn't solve all the problems mentioned, it provides a good starting point for further development.
+
+The DSL will be implemented using \texttt{Xtext}, and the project will be shipped as a plugin for Eclipse.
 \newpage
 \section{Metamodel Definition and Analysis}
 
@@ -126,10 +146,10 @@ This metamodel analysis and class diagram form the basis for the subsequent deve
 
 \newpage
 \section{Defining and Implementing Syntax}
-We choose Xtext to implement the syntax and generate editor accordingly for the below reasons:
+We choose \texttt{Xtext} to implement the syntax and generate editor accordingly for the below reasons:
 
 \begin{itemize}
-    \item Xtext, as a text-based tool, provide flexible syntax control.
+    \item \texttt{Xtext}, as a text-based tool, provide flexible syntax control.
     \item Consider the use case of our dsl, usability in a text-based environment is a must.
     \item Better integration with other platforms and tools.
 \end{itemize}
@@ -177,7 +197,7 @@ Please refer to our documentation for more details.
 \end{verbatim}
 
 \subsection{Discussion}
-Our syntax design using Xtext comes with the following advantages:
+Our syntax design using \texttt{Xtext} comes with the following advantages:
 \begin{itemize}
     \item Friendly syntax that is easy to understand and use.
     \item Editor that provides syntax highlighting, auto-completion, and error checking.
@@ -204,19 +224,60 @@ Following lists the implementation of each constraints using Epsilon Validation 
 
 \newpage
 \section{Model management operation implementation}
-Ahila
-% Uncomment following to add an acknowledgement section
-% \section*{Acknowledgements}
+Since the goal of our DSL is to generate ICS files, we implemented the model-to-text transformation operation. 
 
-% Thanks again to \textbf{Person 1} and \textbf{Affiliation A} for their financial support.
+The operation takes an .icsdsl file (our DSL file) as input and generates a corresponding .ics file as output, which can be further imported into calendar applications.
 
-% ----------
-% Bibliography
-% ----------
+\subsection{Implementation}
 
-% Uncomment the following and add your references into biblio.bib file
-% \bibliography{./biblio.bib}
-% \bibliographystyle{abbrv}
+The operation is implemented using \texttt{Xtend}, a statically-typed programming language that compiles to Java. 
+\texttt{Xtend} is used in accordance with \texttt{Xtext} to provide seamless code translation and execution. 
+
+The operation reads the .icsdsl file, then for each \texttt{CreateCommand}, read the values assigned to each mandatory and optional field, and translate them into the corresponding .ics format.
+
+For instance, the below \texttt{Xtend} code translates the \texttt{organizer} field.
+\begin{verbatim}
+    if (event.organizer !== null) {
+        icsContent.append("ORGANIZER;CN=" + 
+        event.organizer.name + ":mailto:" 
+        + event.organizer.email + "\n")
+    }
+\end{verbatim}
+
+\subsection{Example}
+The example ICS snippet shown in 3.1.2 will be transformed into CAS703.ics with content below:
+\begin{verbatim}
+    BEGIN:VCALENDAR
+    VERSION:2.0
+    PRODID:-//hacksw/handcal//NONSGML v1.0//EN
+    BEGIN:VEVENT
+    SUMMARY:class1
+    DTSTART:20240412T123000Z
+    DTEND:20240412T143000Z
+    ATTENDEE;CN="Taylor Timson":MAILTO:tayTim@examplemail.com
+    ATTENDEE;CN="Gilman Wood":MAILTO:GilmanWood@gmail.com
+    RRULE:FREQ=DAILY
+    BEGIN:VALARM
+    TRIGGER:-PT12M
+    ACTION:DISPLAY
+    DESCRIPTION:class 703!!!
+    END:VALARM
+    END:VEVENT
+    END:VCALENDAR
+\end{verbatim}
+
+\subsection{Limitations and future work}
+One limitation in the model transformation (and subsequently affecting the syntax definition) would be the strict syntax requirements.  
+
+For instance, the time should be specified in exactly 'YYYY-MM-DD HH:MM:SS' format, which might be inconvenient.
+
+This can be easily (but time-consumingly) solved by supporting more time formats in the \texttt{Xtend} transformation code.
+
+
+
+
+
+\newpage
 
 \section{References}
 

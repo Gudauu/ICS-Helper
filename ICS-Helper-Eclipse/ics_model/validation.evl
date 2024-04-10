@@ -1,0 +1,27 @@
+context Event {
+    constraint StartDateNotInPast {
+        check: self.startDate >= Date.now()
+        message: 'The start date cannot be in the past.'
+    }
+    constraint EndDateNotBeforeStartDate {
+        check: self.endTime >= self.startTime
+        message: 'The end date for event cannot be before its start date.'
+    }
+}
+
+// Reminder should before Event startDate
+context Reminder {
+
+}
+
+context Person {
+    constraint NameNotEmptyOrNull {
+        check: self.name <> null and self.name.size() > 0
+        message: 'A person\'s name cannot be null or empty.'
+    }
+	constraint EmailIsUnique {
+        check: Person.allInstances()->select(p | p.email = self.email)->size() = 1 //select the email attribute matches the email of the current instance (self)
+        message: 'The email "' + self.email + '" is not unique.'
+    }
+}
+
