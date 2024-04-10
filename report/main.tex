@@ -221,15 +221,15 @@ To validate aspects of the model that couldn't be expressed in the metamodel its
 \begin{enumerate}
     \item \textbf{Not null or empty constraints:}
     \begin{itemize}
-        \item ICSFile Class: The name and content of the ICSFile must not be null or empty.
         \item Schedule Class: The name of the schedule must not be null or empty.
-        \item Person Class: The name of the person must not be null or empty.
-        \item Invitees Class: The name of the invitees must not be null or empty.
+        \item Organizer Class: The name of the organizers must not be null or empty.
+        \item Invitee Class: The name of the invitees must not be null or empty.
+        \item Event Class: The name of the event must not be null or empty.
     \end{itemize}
     \item \textbf{Unique constraints:}
     \begin{itemize}
-        \item Person Class: The email address of a person must not be duplicated.
-        \item Invitees Class: The email address of invitees must not be duplicated.
+        \item Organizer Class: The email address of the organizers must not be duplicated.
+        \item Invitee Class: The email address of invitees must not be duplicated.
     \end{itemize}
     \item \textbf{Time constraints:}
     \begin{itemize}
