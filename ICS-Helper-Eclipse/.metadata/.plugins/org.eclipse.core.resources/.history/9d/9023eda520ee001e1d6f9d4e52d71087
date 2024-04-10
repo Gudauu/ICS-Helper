@@ -1,9 +1,0 @@
-grammar ics.helper.HelperDSL with org.eclipse.xtext.common.Terminals
-
-generate helperDSL "http://www.helper.ics/HelperDSL"
-
-Model:
-	greetings+=Greeting*;
-	
-Greeting:
-	'Hello' name=ID '!';

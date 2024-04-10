@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalHelperDSLParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'daily'", "'weekly'", "'monthly'", "'yearly'", "'weekly on'", "'Monday'", "'Tuesday'", "'Wednesday'", "'Thursday'", "'Friday'", "'Saturday'", "'Sunday'", "'create'", "'schedule'", "'{'", "'}'", "'event'", "'start'", "'end'", "'at'", "'description'", "'recur'", "'link'", "'organizer'", "'invitees'", "'reminder'", "'time'", "'title'", "'name'", "'email'", "','", "'split'", "'by'", "'merge'", "'into'", "'modify'", "'set'", "'owner'", "'location'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'daily'", "'weekly'", "'monthly'", "'yearly'", "'weekly on'", "'Monday'", "'Tuesday'", "'Wednesday'", "'Thursday'", "'Friday'", "'Saturday'", "'Sunday'", "'create'", "'schedule'", "'{'", "'}'", "'event'", "'start'", "'end'", "'location'", "'description'", "'recur'", "'link'", "'organizer'", "'invitees'", "'reminder'", "'time'", "'title'", "'name'", "'email'", "','", "'split'", "'by'", "'merge'", "'into'", "'modify'", "'set'", "'owner'"
     };
     public static final int T__19=19;
     public static final int T__15=15;
@@ -62,7 +62,6 @@ public class InternalHelperDSLParser extends AbstractInternalContentAssistParser
     public static final int RULE_WS=9;
     public static final int RULE_ANY_OTHER=10;
     public static final int T__48=48;
-    public static final int T__49=49;
     public static final int T__44=44;
     public static final int T__45=45;
     public static final int T__46=46;
@@ -1231,7 +1230,7 @@ public class InternalHelperDSLParser extends AbstractInternalContentAssistParser
                 alt4=2;
                 }
                 break;
-            case 49:
+            case 30:
                 {
                 alt4=3;
                 }
@@ -3387,21 +3386,21 @@ public class InternalHelperDSLParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__Event__Group_6__0__Impl"
-    // InternalHelperDSL.g:1030:1: rule__Event__Group_6__0__Impl : ( 'at' ) ;
+    // InternalHelperDSL.g:1030:1: rule__Event__Group_6__0__Impl : ( 'location' ) ;
     public final void rule__Event__Group_6__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalHelperDSL.g:1034:1: ( ( 'at' ) )
-            // InternalHelperDSL.g:1035:1: ( 'at' )
+            // InternalHelperDSL.g:1034:1: ( ( 'location' ) )
+            // InternalHelperDSL.g:1035:1: ( 'location' )
             {
-            // InternalHelperDSL.g:1035:1: ( 'at' )
-            // InternalHelperDSL.g:1036:2: 'at'
+            // InternalHelperDSL.g:1035:1: ( 'location' )
+            // InternalHelperDSL.g:1036:2: 'location'
             {
-             before(grammarAccess.getEventAccess().getAtKeyword_6_0()); 
+             before(grammarAccess.getEventAccess().getLocationKeyword_6_0()); 
             match(input,30,FOLLOW_2); 
-             after(grammarAccess.getEventAccess().getAtKeyword_6_0()); 
+             after(grammarAccess.getEventAccess().getLocationKeyword_6_0()); 
 
             }
 
@@ -7451,7 +7450,7 @@ public class InternalHelperDSLParser extends AbstractInternalContentAssistParser
             // InternalHelperDSL.g:2400:2: 'location'
             {
              before(grammarAccess.getModifyCommandAccess().getLocationKeyword_3_2_0()); 
-            match(input,49,FOLLOW_2); 
+            match(input,30,FOLLOW_2); 
              after(grammarAccess.getModifyCommandAccess().getLocationKeyword_3_2_0()); 
 
             }
@@ -8772,6 +8771,6 @@ public class InternalHelperDSLParser extends AbstractInternalContentAssistParser
     public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000000000000012L});
     public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0000000009000000L});
     public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000800000000000L});
-    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0003002000000000L});
+    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0001002040000000L});
 
 }

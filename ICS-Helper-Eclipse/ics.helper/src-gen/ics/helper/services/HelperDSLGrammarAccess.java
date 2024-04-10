@@ -127,7 +127,7 @@ public class HelperDSLGrammarAccess extends AbstractElementFinder.AbstractGramma
 		private final Assignment cEndTimeAssignment_5 = (Assignment)cGroup.eContents().get(5);
 		private final RuleCall cEndTimeSTRINGTerminalRuleCall_5_0 = (RuleCall)cEndTimeAssignment_5.eContents().get(0);
 		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
-		private final Keyword cAtKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
+		private final Keyword cLocationKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
 		private final Assignment cLocationAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
 		private final RuleCall cLocationSTRINGTerminalRuleCall_6_1_0 = (RuleCall)cLocationAssignment_6_1.eContents().get(0);
 		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
@@ -163,7 +163,7 @@ public class HelperDSLGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//    'event' name=ID
 		//    'start' startTime=STRING
 		//    'end' endTime=STRING
-		//    ('at' location=STRING)?
+		//    ('location' location=STRING)?
 		//    ('description' description=STRING)?
 		//    ('recur' recur=RecurRule (daysOfWeek=DaysOfWeek)?)?
 		//    ('link' link=STRING)?
@@ -175,7 +175,7 @@ public class HelperDSLGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//'event' name=ID
 		//'start' startTime=STRING
 		//'end' endTime=STRING
-		//('at' location=STRING)?
+		//('location' location=STRING)?
 		//('description' description=STRING)?
 		//('recur' recur=RecurRule (daysOfWeek=DaysOfWeek)?)?
 		//('link' link=STRING)?
@@ -211,11 +211,11 @@ public class HelperDSLGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//STRING
 		public RuleCall getEndTimeSTRINGTerminalRuleCall_5_0() { return cEndTimeSTRINGTerminalRuleCall_5_0; }
 		
-		//('at' location=STRING)?
+		//('location' location=STRING)?
 		public Group getGroup_6() { return cGroup_6; }
 		
-		//'at'
-		public Keyword getAtKeyword_6_0() { return cAtKeyword_6_0; }
+		//'location'
+		public Keyword getLocationKeyword_6_0() { return cLocationKeyword_6_0; }
 		
 		//location=STRING
 		public Assignment getLocationAssignment_6_1() { return cLocationAssignment_6_1; }
@@ -876,7 +876,7 @@ public class HelperDSLGrammarAccess extends AbstractElementFinder.AbstractGramma
 	//    'event' name=ID
 	//    'start' startTime=STRING
 	//    'end' endTime=STRING
-	//    ('at' location=STRING)?
+	//    ('location' location=STRING)?
 	//    ('description' description=STRING)?
 	//    ('recur' recur=RecurRule (daysOfWeek=DaysOfWeek)?)?
 	//    ('link' link=STRING)?

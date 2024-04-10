@@ -13,11 +13,12 @@ CreateCommand:
         events+=Event*
     '}';
 
+  
 Event:
     'event' name=ID 
     'start' startTime=STRING 
     'end' endTime=STRING 
-    ('at' location=STRING)?
+    ('location' location=STRING)?
     ('description' description=STRING)?
     ('recur' recur=RecurRule (daysOfWeek=DaysOfWeek)?)?
     ('link' link=STRING)?
@@ -31,9 +32,10 @@ Reminder:
 ;
 
 Person:
-	'name' name=STRING
-	'email' email=STRING
+    'name' name=STRING 
+    'email' email=STRING
 ;
+
 enum RecurRule:
     DAILY = 'daily' |
     WEEKLY = 'weekly' |

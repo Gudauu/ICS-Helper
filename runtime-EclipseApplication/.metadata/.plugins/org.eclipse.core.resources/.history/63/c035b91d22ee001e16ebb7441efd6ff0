@@ -1,6 +1,0 @@
-create eater_dinner {
-	event pickup from '2024-03-31 14:30' to '2024-03-31 15:00' 
-	at 'streetlight church' 
-	description 'wait for some guy to pick us up'
-	link 'abcdefg'
-}

@@ -1,3 +1,1 @@
 INDEX VERSION 1.134
-file:/home/gudau/Documents/work/School/year5/fall/courses/winter_2024/CAS703/project/ics/ICS-Helper-Eclipse/.metadata/.plugins/org.eclipse.jdt.core/1865797976.index
-meta_index

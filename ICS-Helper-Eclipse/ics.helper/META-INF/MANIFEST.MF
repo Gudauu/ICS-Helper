@@ -7,6 +7,8 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-SymbolicName: ics.helper; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext,
+ org.eclipse.epsilon.evl.emf.validation,
+ org.eclipse.epsilon.evl.engine,
  org.eclipse.xtext.xbase,
  org.eclipse.equinox.common;bundle-version="3.16.0",
  org.eclipse.emf.ecore,

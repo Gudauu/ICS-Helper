@@ -306,9 +306,9 @@ ruleEvent returns [EObject current=null]
 			)
 		)
 		(
-			otherlv_6='at'
+			otherlv_6='location'
 			{
-				newLeafNode(otherlv_6, grammarAccess.getEventAccess().getAtKeyword_6_0());
+				newLeafNode(otherlv_6, grammarAccess.getEventAccess().getLocationKeyword_6_0());
 			}
 			(
 				(

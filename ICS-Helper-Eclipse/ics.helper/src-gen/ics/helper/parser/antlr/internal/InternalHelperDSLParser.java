@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalHelperDSLParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'create'", "'schedule'", "'{'", "'}'", "'event'", "'start'", "'end'", "'at'", "'description'", "'recur'", "'link'", "'organizer'", "'invitees'", "'reminder'", "'time'", "'title'", "'name'", "'email'", "','", "'split'", "'by'", "'merge'", "'into'", "'modify'", "'set'", "'owner'", "'location'", "'daily'", "'weekly'", "'monthly'", "'yearly'", "'weekly on'", "'Monday'", "'Tuesday'", "'Wednesday'", "'Thursday'", "'Friday'", "'Saturday'", "'Sunday'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'create'", "'schedule'", "'{'", "'}'", "'event'", "'start'", "'end'", "'location'", "'description'", "'recur'", "'link'", "'organizer'", "'invitees'", "'reminder'", "'time'", "'title'", "'name'", "'email'", "','", "'split'", "'by'", "'merge'", "'into'", "'modify'", "'set'", "'owner'", "'daily'", "'weekly'", "'monthly'", "'yearly'", "'weekly on'", "'Monday'", "'Tuesday'", "'Wednesday'", "'Thursday'", "'Friday'", "'Saturday'", "'Sunday'"
     };
     public static final int T__19=19;
     public static final int T__15=15;
@@ -62,7 +62,6 @@ public class InternalHelperDSLParser extends AbstractInternalAntlrParser {
     public static final int RULE_WS=9;
     public static final int RULE_ANY_OTHER=10;
     public static final int T__48=48;
-    public static final int T__49=49;
     public static final int T__44=44;
     public static final int T__45=45;
     public static final int T__46=46;
@@ -621,7 +620,7 @@ public class InternalHelperDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEvent"
-    // InternalHelperDSL.g:234:1: ruleEvent returns [EObject current=null] : (otherlv_0= 'event' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'start' ( (lv_startTime_3_0= RULE_STRING ) ) otherlv_4= 'end' ( (lv_endTime_5_0= RULE_STRING ) ) (otherlv_6= 'at' ( (lv_location_7_0= RULE_STRING ) ) )? (otherlv_8= 'description' ( (lv_description_9_0= RULE_STRING ) ) )? (otherlv_10= 'recur' ( (lv_recur_11_0= ruleRecurRule ) ) ( (lv_daysOfWeek_12_0= ruleDaysOfWeek ) )? )? (otherlv_13= 'link' ( (lv_link_14_0= RULE_STRING ) ) )? (otherlv_15= 'organizer' ( (lv_organizer_16_0= rulePerson ) ) )? (otherlv_17= 'invitees' otherlv_18= '{' ( (lv_invitees_19_0= rulePerson ) )+ otherlv_20= '}' )? (otherlv_21= 'reminder' ( (lv_reminder_22_0= ruleReminder ) ) )? ) ;
+    // InternalHelperDSL.g:234:1: ruleEvent returns [EObject current=null] : (otherlv_0= 'event' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'start' ( (lv_startTime_3_0= RULE_STRING ) ) otherlv_4= 'end' ( (lv_endTime_5_0= RULE_STRING ) ) (otherlv_6= 'location' ( (lv_location_7_0= RULE_STRING ) ) )? (otherlv_8= 'description' ( (lv_description_9_0= RULE_STRING ) ) )? (otherlv_10= 'recur' ( (lv_recur_11_0= ruleRecurRule ) ) ( (lv_daysOfWeek_12_0= ruleDaysOfWeek ) )? )? (otherlv_13= 'link' ( (lv_link_14_0= RULE_STRING ) ) )? (otherlv_15= 'organizer' ( (lv_organizer_16_0= rulePerson ) ) )? (otherlv_17= 'invitees' otherlv_18= '{' ( (lv_invitees_19_0= rulePerson ) )+ otherlv_20= '}' )? (otherlv_21= 'reminder' ( (lv_reminder_22_0= ruleReminder ) ) )? ) ;
     public final EObject ruleEvent() throws RecognitionException {
         EObject current = null;
 
@@ -658,11 +657,11 @@ public class InternalHelperDSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalHelperDSL.g:240:2: ( (otherlv_0= 'event' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'start' ( (lv_startTime_3_0= RULE_STRING ) ) otherlv_4= 'end' ( (lv_endTime_5_0= RULE_STRING ) ) (otherlv_6= 'at' ( (lv_location_7_0= RULE_STRING ) ) )? (otherlv_8= 'description' ( (lv_description_9_0= RULE_STRING ) ) )? (otherlv_10= 'recur' ( (lv_recur_11_0= ruleRecurRule ) ) ( (lv_daysOfWeek_12_0= ruleDaysOfWeek ) )? )? (otherlv_13= 'link' ( (lv_link_14_0= RULE_STRING ) ) )? (otherlv_15= 'organizer' ( (lv_organizer_16_0= rulePerson ) ) )? (otherlv_17= 'invitees' otherlv_18= '{' ( (lv_invitees_19_0= rulePerson ) )+ otherlv_20= '}' )? (otherlv_21= 'reminder' ( (lv_reminder_22_0= ruleReminder ) ) )? ) )
-            // InternalHelperDSL.g:241:2: (otherlv_0= 'event' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'start' ( (lv_startTime_3_0= RULE_STRING ) ) otherlv_4= 'end' ( (lv_endTime_5_0= RULE_STRING ) ) (otherlv_6= 'at' ( (lv_location_7_0= RULE_STRING ) ) )? (otherlv_8= 'description' ( (lv_description_9_0= RULE_STRING ) ) )? (otherlv_10= 'recur' ( (lv_recur_11_0= ruleRecurRule ) ) ( (lv_daysOfWeek_12_0= ruleDaysOfWeek ) )? )? (otherlv_13= 'link' ( (lv_link_14_0= RULE_STRING ) ) )? (otherlv_15= 'organizer' ( (lv_organizer_16_0= rulePerson ) ) )? (otherlv_17= 'invitees' otherlv_18= '{' ( (lv_invitees_19_0= rulePerson ) )+ otherlv_20= '}' )? (otherlv_21= 'reminder' ( (lv_reminder_22_0= ruleReminder ) ) )? )
+            // InternalHelperDSL.g:240:2: ( (otherlv_0= 'event' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'start' ( (lv_startTime_3_0= RULE_STRING ) ) otherlv_4= 'end' ( (lv_endTime_5_0= RULE_STRING ) ) (otherlv_6= 'location' ( (lv_location_7_0= RULE_STRING ) ) )? (otherlv_8= 'description' ( (lv_description_9_0= RULE_STRING ) ) )? (otherlv_10= 'recur' ( (lv_recur_11_0= ruleRecurRule ) ) ( (lv_daysOfWeek_12_0= ruleDaysOfWeek ) )? )? (otherlv_13= 'link' ( (lv_link_14_0= RULE_STRING ) ) )? (otherlv_15= 'organizer' ( (lv_organizer_16_0= rulePerson ) ) )? (otherlv_17= 'invitees' otherlv_18= '{' ( (lv_invitees_19_0= rulePerson ) )+ otherlv_20= '}' )? (otherlv_21= 'reminder' ( (lv_reminder_22_0= ruleReminder ) ) )? ) )
+            // InternalHelperDSL.g:241:2: (otherlv_0= 'event' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'start' ( (lv_startTime_3_0= RULE_STRING ) ) otherlv_4= 'end' ( (lv_endTime_5_0= RULE_STRING ) ) (otherlv_6= 'location' ( (lv_location_7_0= RULE_STRING ) ) )? (otherlv_8= 'description' ( (lv_description_9_0= RULE_STRING ) ) )? (otherlv_10= 'recur' ( (lv_recur_11_0= ruleRecurRule ) ) ( (lv_daysOfWeek_12_0= ruleDaysOfWeek ) )? )? (otherlv_13= 'link' ( (lv_link_14_0= RULE_STRING ) ) )? (otherlv_15= 'organizer' ( (lv_organizer_16_0= rulePerson ) ) )? (otherlv_17= 'invitees' otherlv_18= '{' ( (lv_invitees_19_0= rulePerson ) )+ otherlv_20= '}' )? (otherlv_21= 'reminder' ( (lv_reminder_22_0= ruleReminder ) ) )? )
             {
-            // InternalHelperDSL.g:241:2: (otherlv_0= 'event' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'start' ( (lv_startTime_3_0= RULE_STRING ) ) otherlv_4= 'end' ( (lv_endTime_5_0= RULE_STRING ) ) (otherlv_6= 'at' ( (lv_location_7_0= RULE_STRING ) ) )? (otherlv_8= 'description' ( (lv_description_9_0= RULE_STRING ) ) )? (otherlv_10= 'recur' ( (lv_recur_11_0= ruleRecurRule ) ) ( (lv_daysOfWeek_12_0= ruleDaysOfWeek ) )? )? (otherlv_13= 'link' ( (lv_link_14_0= RULE_STRING ) ) )? (otherlv_15= 'organizer' ( (lv_organizer_16_0= rulePerson ) ) )? (otherlv_17= 'invitees' otherlv_18= '{' ( (lv_invitees_19_0= rulePerson ) )+ otherlv_20= '}' )? (otherlv_21= 'reminder' ( (lv_reminder_22_0= ruleReminder ) ) )? )
-            // InternalHelperDSL.g:242:3: otherlv_0= 'event' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'start' ( (lv_startTime_3_0= RULE_STRING ) ) otherlv_4= 'end' ( (lv_endTime_5_0= RULE_STRING ) ) (otherlv_6= 'at' ( (lv_location_7_0= RULE_STRING ) ) )? (otherlv_8= 'description' ( (lv_description_9_0= RULE_STRING ) ) )? (otherlv_10= 'recur' ( (lv_recur_11_0= ruleRecurRule ) ) ( (lv_daysOfWeek_12_0= ruleDaysOfWeek ) )? )? (otherlv_13= 'link' ( (lv_link_14_0= RULE_STRING ) ) )? (otherlv_15= 'organizer' ( (lv_organizer_16_0= rulePerson ) ) )? (otherlv_17= 'invitees' otherlv_18= '{' ( (lv_invitees_19_0= rulePerson ) )+ otherlv_20= '}' )? (otherlv_21= 'reminder' ( (lv_reminder_22_0= ruleReminder ) ) )?
+            // InternalHelperDSL.g:241:2: (otherlv_0= 'event' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'start' ( (lv_startTime_3_0= RULE_STRING ) ) otherlv_4= 'end' ( (lv_endTime_5_0= RULE_STRING ) ) (otherlv_6= 'location' ( (lv_location_7_0= RULE_STRING ) ) )? (otherlv_8= 'description' ( (lv_description_9_0= RULE_STRING ) ) )? (otherlv_10= 'recur' ( (lv_recur_11_0= ruleRecurRule ) ) ( (lv_daysOfWeek_12_0= ruleDaysOfWeek ) )? )? (otherlv_13= 'link' ( (lv_link_14_0= RULE_STRING ) ) )? (otherlv_15= 'organizer' ( (lv_organizer_16_0= rulePerson ) ) )? (otherlv_17= 'invitees' otherlv_18= '{' ( (lv_invitees_19_0= rulePerson ) )+ otherlv_20= '}' )? (otherlv_21= 'reminder' ( (lv_reminder_22_0= ruleReminder ) ) )? )
+            // InternalHelperDSL.g:242:3: otherlv_0= 'event' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'start' ( (lv_startTime_3_0= RULE_STRING ) ) otherlv_4= 'end' ( (lv_endTime_5_0= RULE_STRING ) ) (otherlv_6= 'location' ( (lv_location_7_0= RULE_STRING ) ) )? (otherlv_8= 'description' ( (lv_description_9_0= RULE_STRING ) ) )? (otherlv_10= 'recur' ( (lv_recur_11_0= ruleRecurRule ) ) ( (lv_daysOfWeek_12_0= ruleDaysOfWeek ) )? )? (otherlv_13= 'link' ( (lv_link_14_0= RULE_STRING ) ) )? (otherlv_15= 'organizer' ( (lv_organizer_16_0= rulePerson ) ) )? (otherlv_17= 'invitees' otherlv_18= '{' ( (lv_invitees_19_0= rulePerson ) )+ otherlv_20= '}' )? (otherlv_21= 'reminder' ( (lv_reminder_22_0= ruleReminder ) ) )?
             {
             otherlv_0=(Token)match(input,15,FOLLOW_5); 
 
@@ -754,7 +753,7 @@ public class InternalHelperDSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalHelperDSL.g:308:3: (otherlv_6= 'at' ( (lv_location_7_0= RULE_STRING ) ) )?
+            // InternalHelperDSL.g:308:3: (otherlv_6= 'location' ( (lv_location_7_0= RULE_STRING ) ) )?
             int alt4=2;
             int LA4_0 = input.LA(1);
 
@@ -763,11 +762,11 @@ public class InternalHelperDSLParser extends AbstractInternalAntlrParser {
             }
             switch (alt4) {
                 case 1 :
-                    // InternalHelperDSL.g:309:4: otherlv_6= 'at' ( (lv_location_7_0= RULE_STRING ) )
+                    // InternalHelperDSL.g:309:4: otherlv_6= 'location' ( (lv_location_7_0= RULE_STRING ) )
                     {
                     otherlv_6=(Token)match(input,18,FOLLOW_9); 
 
-                    				newLeafNode(otherlv_6, grammarAccess.getEventAccess().getAtKeyword_6_0());
+                    				newLeafNode(otherlv_6, grammarAccess.getEventAccess().getLocationKeyword_6_0());
                     			
                     // InternalHelperDSL.g:313:4: ( (lv_location_7_0= RULE_STRING ) )
                     // InternalHelperDSL.g:314:5: (lv_location_7_0= RULE_STRING )
@@ -898,7 +897,7 @@ public class InternalHelperDSLParser extends AbstractInternalAntlrParser {
                     int alt6=2;
                     int LA6_0 = input.LA(1);
 
-                    if ( ((LA6_0>=43 && LA6_0<=49)) ) {
+                    if ( ((LA6_0>=42 && LA6_0<=48)) ) {
                         alt6=1;
                     }
                     switch (alt6) {
@@ -2128,7 +2127,7 @@ public class InternalHelperDSLParser extends AbstractInternalAntlrParser {
                 alt17=2;
                 }
                 break;
-            case 37:
+            case 18:
                 {
                 alt17=3;
                 }
@@ -2249,7 +2248,7 @@ public class InternalHelperDSLParser extends AbstractInternalAntlrParser {
                     // InternalHelperDSL.g:943:4: (otherlv_10= 'location' ( (lv_value_11_0= RULE_STRING ) ) )
                     // InternalHelperDSL.g:944:5: otherlv_10= 'location' ( (lv_value_11_0= RULE_STRING ) )
                     {
-                    otherlv_10=(Token)match(input,37,FOLLOW_9); 
+                    otherlv_10=(Token)match(input,18,FOLLOW_9); 
 
                     					newLeafNode(otherlv_10, grammarAccess.getModifyCommandAccess().getLocationKeyword_3_2_0());
                     				
@@ -2331,27 +2330,27 @@ public class InternalHelperDSLParser extends AbstractInternalAntlrParser {
             // InternalHelperDSL.g:979:2: ( (enumLiteral_0= 'daily' ) | (enumLiteral_1= 'weekly' ) | (enumLiteral_2= 'monthly' ) | (enumLiteral_3= 'yearly' ) | (enumLiteral_4= 'weekly on' ) )
             int alt18=5;
             switch ( input.LA(1) ) {
-            case 38:
+            case 37:
                 {
                 alt18=1;
                 }
                 break;
-            case 39:
+            case 38:
                 {
                 alt18=2;
                 }
                 break;
-            case 40:
+            case 39:
                 {
                 alt18=3;
                 }
                 break;
-            case 41:
+            case 40:
                 {
                 alt18=4;
                 }
                 break;
-            case 42:
+            case 41:
                 {
                 alt18=5;
                 }
@@ -2370,7 +2369,7 @@ public class InternalHelperDSLParser extends AbstractInternalAntlrParser {
                     // InternalHelperDSL.g:980:3: (enumLiteral_0= 'daily' )
                     // InternalHelperDSL.g:981:4: enumLiteral_0= 'daily'
                     {
-                    enumLiteral_0=(Token)match(input,38,FOLLOW_2); 
+                    enumLiteral_0=(Token)match(input,37,FOLLOW_2); 
 
                     				current = grammarAccess.getRecurRuleAccess().getDAILYEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_0, grammarAccess.getRecurRuleAccess().getDAILYEnumLiteralDeclaration_0());
@@ -2387,7 +2386,7 @@ public class InternalHelperDSLParser extends AbstractInternalAntlrParser {
                     // InternalHelperDSL.g:988:3: (enumLiteral_1= 'weekly' )
                     // InternalHelperDSL.g:989:4: enumLiteral_1= 'weekly'
                     {
-                    enumLiteral_1=(Token)match(input,39,FOLLOW_2); 
+                    enumLiteral_1=(Token)match(input,38,FOLLOW_2); 
 
                     				current = grammarAccess.getRecurRuleAccess().getWEEKLYEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_1, grammarAccess.getRecurRuleAccess().getWEEKLYEnumLiteralDeclaration_1());
@@ -2404,7 +2403,7 @@ public class InternalHelperDSLParser extends AbstractInternalAntlrParser {
                     // InternalHelperDSL.g:996:3: (enumLiteral_2= 'monthly' )
                     // InternalHelperDSL.g:997:4: enumLiteral_2= 'monthly'
                     {
-                    enumLiteral_2=(Token)match(input,40,FOLLOW_2); 
+                    enumLiteral_2=(Token)match(input,39,FOLLOW_2); 
 
                     				current = grammarAccess.getRecurRuleAccess().getMONTHLYEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_2, grammarAccess.getRecurRuleAccess().getMONTHLYEnumLiteralDeclaration_2());
@@ -2421,7 +2420,7 @@ public class InternalHelperDSLParser extends AbstractInternalAntlrParser {
                     // InternalHelperDSL.g:1004:3: (enumLiteral_3= 'yearly' )
                     // InternalHelperDSL.g:1005:4: enumLiteral_3= 'yearly'
                     {
-                    enumLiteral_3=(Token)match(input,41,FOLLOW_2); 
+                    enumLiteral_3=(Token)match(input,40,FOLLOW_2); 
 
                     				current = grammarAccess.getRecurRuleAccess().getYEARLYEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_3, grammarAccess.getRecurRuleAccess().getYEARLYEnumLiteralDeclaration_3());
@@ -2438,7 +2437,7 @@ public class InternalHelperDSLParser extends AbstractInternalAntlrParser {
                     // InternalHelperDSL.g:1012:3: (enumLiteral_4= 'weekly on' )
                     // InternalHelperDSL.g:1013:4: enumLiteral_4= 'weekly on'
                     {
-                    enumLiteral_4=(Token)match(input,42,FOLLOW_2); 
+                    enumLiteral_4=(Token)match(input,41,FOLLOW_2); 
 
                     				current = grammarAccess.getRecurRuleAccess().getBYDAYEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_4, grammarAccess.getRecurRuleAccess().getBYDAYEnumLiteralDeclaration_4());
@@ -2494,37 +2493,37 @@ public class InternalHelperDSLParser extends AbstractInternalAntlrParser {
             // InternalHelperDSL.g:1030:2: ( (enumLiteral_0= 'Monday' ) | (enumLiteral_1= 'Tuesday' ) | (enumLiteral_2= 'Wednesday' ) | (enumLiteral_3= 'Thursday' ) | (enumLiteral_4= 'Friday' ) | (enumLiteral_5= 'Saturday' ) | (enumLiteral_6= 'Sunday' ) )
             int alt19=7;
             switch ( input.LA(1) ) {
-            case 43:
+            case 42:
                 {
                 alt19=1;
                 }
                 break;
-            case 44:
+            case 43:
                 {
                 alt19=2;
                 }
                 break;
-            case 45:
+            case 44:
                 {
                 alt19=3;
                 }
                 break;
-            case 46:
+            case 45:
                 {
                 alt19=4;
                 }
                 break;
-            case 47:
+            case 46:
                 {
                 alt19=5;
                 }
                 break;
-            case 48:
+            case 47:
                 {
                 alt19=6;
                 }
                 break;
-            case 49:
+            case 48:
                 {
                 alt19=7;
                 }
@@ -2543,7 +2542,7 @@ public class InternalHelperDSLParser extends AbstractInternalAntlrParser {
                     // InternalHelperDSL.g:1031:3: (enumLiteral_0= 'Monday' )
                     // InternalHelperDSL.g:1032:4: enumLiteral_0= 'Monday'
                     {
-                    enumLiteral_0=(Token)match(input,43,FOLLOW_2); 
+                    enumLiteral_0=(Token)match(input,42,FOLLOW_2); 
 
                     				current = grammarAccess.getWEEKDAYAccess().getMOEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_0, grammarAccess.getWEEKDAYAccess().getMOEnumLiteralDeclaration_0());
@@ -2560,7 +2559,7 @@ public class InternalHelperDSLParser extends AbstractInternalAntlrParser {
                     // InternalHelperDSL.g:1039:3: (enumLiteral_1= 'Tuesday' )
                     // InternalHelperDSL.g:1040:4: enumLiteral_1= 'Tuesday'
                     {
-                    enumLiteral_1=(Token)match(input,44,FOLLOW_2); 
+                    enumLiteral_1=(Token)match(input,43,FOLLOW_2); 
 
                     				current = grammarAccess.getWEEKDAYAccess().getTUEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_1, grammarAccess.getWEEKDAYAccess().getTUEnumLiteralDeclaration_1());
@@ -2577,7 +2576,7 @@ public class InternalHelperDSLParser extends AbstractInternalAntlrParser {
                     // InternalHelperDSL.g:1047:3: (enumLiteral_2= 'Wednesday' )
                     // InternalHelperDSL.g:1048:4: enumLiteral_2= 'Wednesday'
                     {
-                    enumLiteral_2=(Token)match(input,45,FOLLOW_2); 
+                    enumLiteral_2=(Token)match(input,44,FOLLOW_2); 
 
                     				current = grammarAccess.getWEEKDAYAccess().getWEEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_2, grammarAccess.getWEEKDAYAccess().getWEEnumLiteralDeclaration_2());
@@ -2594,7 +2593,7 @@ public class InternalHelperDSLParser extends AbstractInternalAntlrParser {
                     // InternalHelperDSL.g:1055:3: (enumLiteral_3= 'Thursday' )
                     // InternalHelperDSL.g:1056:4: enumLiteral_3= 'Thursday'
                     {
-                    enumLiteral_3=(Token)match(input,46,FOLLOW_2); 
+                    enumLiteral_3=(Token)match(input,45,FOLLOW_2); 
 
                     				current = grammarAccess.getWEEKDAYAccess().getTHEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_3, grammarAccess.getWEEKDAYAccess().getTHEnumLiteralDeclaration_3());
@@ -2611,7 +2610,7 @@ public class InternalHelperDSLParser extends AbstractInternalAntlrParser {
                     // InternalHelperDSL.g:1063:3: (enumLiteral_4= 'Friday' )
                     // InternalHelperDSL.g:1064:4: enumLiteral_4= 'Friday'
                     {
-                    enumLiteral_4=(Token)match(input,47,FOLLOW_2); 
+                    enumLiteral_4=(Token)match(input,46,FOLLOW_2); 
 
                     				current = grammarAccess.getWEEKDAYAccess().getFREnumLiteralDeclaration_4().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_4, grammarAccess.getWEEKDAYAccess().getFREnumLiteralDeclaration_4());
@@ -2628,7 +2627,7 @@ public class InternalHelperDSLParser extends AbstractInternalAntlrParser {
                     // InternalHelperDSL.g:1071:3: (enumLiteral_5= 'Saturday' )
                     // InternalHelperDSL.g:1072:4: enumLiteral_5= 'Saturday'
                     {
-                    enumLiteral_5=(Token)match(input,48,FOLLOW_2); 
+                    enumLiteral_5=(Token)match(input,47,FOLLOW_2); 
 
                     				current = grammarAccess.getWEEKDAYAccess().getSAEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_5, grammarAccess.getWEEKDAYAccess().getSAEnumLiteralDeclaration_5());
@@ -2645,7 +2644,7 @@ public class InternalHelperDSLParser extends AbstractInternalAntlrParser {
                     // InternalHelperDSL.g:1079:3: (enumLiteral_6= 'Sunday' )
                     // InternalHelperDSL.g:1080:4: enumLiteral_6= 'Sunday'
                     {
-                    enumLiteral_6=(Token)match(input,49,FOLLOW_2); 
+                    enumLiteral_6=(Token)match(input,48,FOLLOW_2); 
 
                     				current = grammarAccess.getWEEKDAYAccess().getSUEnumLiteralDeclaration_6().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_6, grammarAccess.getWEEKDAYAccess().getSUEnumLiteralDeclaration_6());
@@ -2695,8 +2694,8 @@ public class InternalHelperDSLParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000001FC0002L});
     public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000001F80002L});
     public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000001F00002L});
-    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x000007C000000000L});
-    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0003F80001E00002L});
+    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x000003E000000000L});
+    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0001FC0001E00002L});
     public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000001E00002L});
     public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000001C00002L});
     public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000008000000L});
@@ -2708,11 +2707,11 @@ public class InternalHelperDSLParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000004000002L});
     public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000010000000L});
     public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000000020000002L});
-    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0003F80000000000L});
+    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0001FC0000000000L});
     public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000000080000000L});
     public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000000200000010L});
     public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0000000000009000L});
     public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000003002000000L});
+    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000001002040000L});
 
 }

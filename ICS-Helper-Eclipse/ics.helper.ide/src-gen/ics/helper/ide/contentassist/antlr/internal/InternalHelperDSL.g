@@ -1033,9 +1033,9 @@ rule__Event__Group_6__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getEventAccess().getAtKeyword_6_0()); }
-	'at'
-	{ after(grammarAccess.getEventAccess().getAtKeyword_6_0()); }
+	{ before(grammarAccess.getEventAccess().getLocationKeyword_6_0()); }
+	'location'
+	{ after(grammarAccess.getEventAccess().getLocationKeyword_6_0()); }
 )
 ;
 finally {
