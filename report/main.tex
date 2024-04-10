@@ -214,15 +214,38 @@ At the same time, it comes with the following limitations:
 
 \newpage
 \section{Validation constraints implementation}
-Erin's part
+To better check the correctness, this project separate the validation into two parts.
 
-Following lists the implementation of each constraints using Epsilon Validation Languag (EVL).
-\begin{itemize}
-    \item ICSFile: The file name and content cannot be null or empty.    
-    \item schedule:The schedule name cannot be null or empty.
-    \item Event:The event name cannot be null or empty. 
-\end{itemize}
+\subsection{Epsilon Validation Language (EVL)}
+\subsection{Xtext editor vaildation}
+To enhance compatibility with the Xtext editor, we use Java for runtime validation of events. Below are the constraints we have established:
+\begin{enumerate}
+    \item \textbf{Time constraints:}
+    \begin{itemize}
+        \item The event's start time cannot be later than its end time.
+        \item The event's reminder time must not be less than 0 minutes.
+    \end{itemize}
 
+    \item \textbf{Email constraints:}
+    \begin{itemize}
+        \item The emails of the organizer and invitees must follow the general email format.
+        \item The emails of the organizer and invitees cannot be null or empty.
+        \item The emails of the organizer and invitees must be unique and not repeated.
+    \end{itemize}
+
+    \item \textbf{Additional constraint:}
+    \begin{itemize}
+        \item The event link should resemble a URL, i.e., it should contain "://" to indicate it is a URL.
+    \end{itemize}
+\end{enumerate}
+
+The figure below displays some outcomes of running the validation code, checking the start and end times of the event, as well as verifying the event link.
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{xtext validation.png}
+    \caption{Xtext validation example}
+    \label{fig:enter-label}
+\end{figure}
 \newpage
 \section{Model management operation implementation}
 Since the goal of our DSL is to generate ICS files, we implemented the model-to-text transformation operation. 
