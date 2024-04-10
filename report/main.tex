@@ -217,6 +217,25 @@ At the same time, it comes with the following limitations:
 To better check the correctness, this project separate the validation into two parts.
 
 \subsection{Epsilon Validation Language (EVL)}
+To validate aspects of the model that couldn't be expressed in the metamodel itself, we use EVL (Epsilon Validation Language) constraints to achieve our goal. Below are the constraints we have set up:
+\begin{enumerate}
+    \item \textbf{Not null or empty constraints:}
+    \begin{itemize}
+        \item ICSFile Class: The name and content of the ICSFile must not be null or empty.
+        \item Schedule Class: The name of the schedule must not be null or empty.
+        \item Person Class: The name of the person must not be null or empty.
+        \item Invitees Class: The name of the invitees must not be null or empty.
+    \end{itemize}
+    \item \textbf{Unique constraints:}
+    \begin{itemize}
+        \item Person Class: The email address of a person must not be duplicated.
+        \item Invitees Class: The email address of invitees must not be duplicated.
+    \end{itemize}
+    \item \textbf{Time constraints:}
+    \begin{itemize}
+        \item Event Class: The event's start time must not be later than its end time.
+    \end{itemize}
+\end{enumerate}
 \subsection{Xtext editor vaildation}
 To enhance compatibility with the Xtext editor, we use Java for runtime validation of events. Below are the constraints we have established:
 \begin{enumerate}
@@ -239,7 +258,7 @@ To enhance compatibility with the Xtext editor, we use Java for runtime validati
     \end{itemize}
 \end{enumerate}
 
-The figure below displays some outcomes of running the validation code, checking the start and end times of the event, as well as verifying the event link.
+The figure above displays some outcomes of running the validation code, checking the start and end times of the event, as well as verifying the event link.
 \begin{figure}
     \centering
     \includegraphics[width=1\linewidth]{xtext validation.png}
