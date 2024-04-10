@@ -1,0 +1,35 @@
+@namespace(uri="vr/Schedule", prefix="main")
+package Schedule;
+
+class Schedule {
+	attr String name;
+	attr String discription;
+	val Event[*]#partOf events;
+	val Organizer owner;
+}
+
+class Location {
+	attr String address;
+}
+
+class Organizer {
+	attr String name;
+	attr String email;
+	val Location address;
+}
+
+class Invitee {
+	attr String name;
+	attr String email;
+}
+
+class Event {
+	attr String title;
+	attr String description;
+	attr EDate startdate;
+	attr EDate enddate;
+	attr String recurring;
+	val Invitee[*] attendees;
+	ref Schedule#events partOf;
+	ref Location location;
+}
