@@ -28,7 +28,7 @@
 % Variables
 % ----------
 
-\title{\textbf{ICSHelper}} % Full title of your tech report
+\title{\textbf{ICS Helper}} % Full title of your tech report
 %\runningtitle{On Image Matting} % Short title
 \author{Ahila, Pawan, Shutong Wu, Yi-Leng Chen \and [rameshra,kumarp40,wu867,cheny997]@mcmaster.ca} % Full list of authors
 %\runningauthor{Student Name 3 et al.} % Short list of authors
@@ -41,7 +41,7 @@
 \maketitle
 
 \begin{abstract}
-    An ICS (iCalendar) file is a universal calendar format utilized by mainstream email and various calendar apps such as Microsoft Outlook, Google Calendar, and Apple Calendar. Importing an ICS file into calendar apps allows for the addition of new schedules comprising one or more events. Currently, the process of manipulating ICS files involves editing schedules within calendar apps and then exporting them. To address this time-consuming task, we propose ICS Helper, a Domain-specific Language (DSL) designed for handling ICS files. It's a text based tool kit that allow users to generate schedules outside of calendar applications, and provides integration possibility as an Eclipse plugin. With its user-friendly syntax, ICS Helper enables users to manage their schedules more effectively. 
+    An ICS (iCalendar) file is a universal calendar format utilized by mainstream email and various calendar apps such as Microsoft Outlook, Google Calendar, and Apple Calendar. Importing an ICS file into calendar apps allows for the addition of new schedules comprising one or more events. Currently, the process of manipulating ICS files involves editing schedules within calendar apps and then exporting them. To address this time-consuming task, we propose ICS Helper, a Domain-specific Language (DSL) designed for handling ICS files. It's a text-based tool kit that allows users to generate schedules outside of calendar applications and provides integration possibility as an Eclipse plugin. With its user-friendly syntax, ICS Helper enables users to manage their schedules more effectively. 
 \end{abstract}
 
 \vspace{2.5cm}
@@ -65,21 +65,20 @@
 \label{sec:intro}
 An ICS file is a calendar file saved in a universal calendar format used by mainstream email and calendar apps, including Microsoft Outlook, Google Calendar, and Apple Calendar. 
 
-By importing ICS file into calendar apps, a new schedule(composed of one or more events) can be added. People can subscribe to schedules by url. 
+By importing ICS files into calendar apps, a new schedule(composed of one or more events) can be added. People can subscribe to schedules by URL. 
 
-Right now the only way to manipulate ICS files (other than writing the protocol by hand) is to edit schedules inside calendar apps / helpers, and then export, which hinders:
+Right now the only way to manipulate ICS files (other than writing the protocol by hand) is to edit schedules inside calendar apps/helpers, and then export, which hinders:
 
     \begin{itemize}
         \item easy creation of schedules outside the app environment
         \item mass operation (e.g. delay 100 events by an hour) 
-        \item programmable access (e.g. work flow automation)
+        \item programmable access (e.g. workflow automation)
         \item granular control(e.g. split and merge of events across schedules)
     \end{itemize}
 
-
 To tackle this, we propose the idea of `ICS Helper`, which is a DSL dealing with ICS files. It offers:
     \begin{itemize}
-        \item human-friendly syntax for ICS creation (write in plain text & compile to ICS)
+        \item human-friendly syntax for ICS creation (write in plain text and compile to ICS)
         \item model validation (e.g. time conflict, missing fields)
         \item integration options with other tools as a plugin
     \end{itemize}
@@ -147,11 +146,11 @@ This metamodel analysis and class diagram form the basis for the subsequent deve
 
 \newpage
 \section{Defining and Implementing Syntax}
-We choose \texttt{Xtext} to implement the syntax and generate editor accordingly for the below reasons:
+We choose Xtext to implement the syntax and generate an editor accordingly for the following reasons:
 
 \begin{itemize}
-    \item \texttt{Xtext}, as a text-based tool, provide flexible syntax control.
-    \item Consider the use case of our dsl, usability in a text-based environment is a must.
+    \item \texttt{Xtext}, as a text-based tool, provides flexible syntax control.
+    \item Consider the use case of our DSL, usability in a text-based environment is a must.
     \item Better integration with other platforms and tools.
 \end{itemize}
 
@@ -176,10 +175,10 @@ Where \texttt{Event} is defined as follows:
 OPTIONAL FIELDS include: \texttt{location}, \texttt{description}, \texttt{organizer}, \texttt{invitees}, \texttt{recurrence rule}, \texttt{reminder rule}, \texttt{link}. 
 Please refer to \href{https://github.com/Gudauu/ICS-Helper}{our documentation} for more details.
 
-\subsubsection{example}
+\subsubsection{Example}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{editor_example.png}
+    \includegraphics[width=1\textwidth]{editor_example.png}
     \caption{Example Editor Screenshot}
     \label{fig:class-diagram}
 \end{figure}
@@ -207,14 +206,14 @@ Our syntax design using \texttt{Xtext} comes with the following advantages:
 At the same time, it comes with the following limitations:
 \begin{itemize}
     \item Dependence on the Eclipse environment.
-    \item Grammar limitations: like the need to follow the time format exactly, which hinders easy-usage.
+    \item Grammar limitations: like the need to follow the time format exactly, which hinders easy usage.
     \item Higher learning curve compared to graphical editors.
 \end{itemize}
 
 
 \newpage
 \section{Validation constraints implementation}
-To better check the correctness, this project separate the validation into two parts.
+To better check the correctness, this project separates the validation into two parts.
 
 \subsection{Epsilon Validation Language (EVL)}
 To validate aspects of the model that couldn't be expressed in the metamodel itself, we use EVL (Epsilon Validation Language) constraints to achieve our goal. Below are the constraints we have set up:
@@ -228,16 +227,16 @@ To validate aspects of the model that couldn't be expressed in the metamodel its
     \end{itemize}
     \item \textbf{Unique constraints:}
     \begin{itemize}
-        \item Organizer Class: The email address of the organizers must not be duplicated.
-        \item Invitee Class: The email address of invitees must not be duplicated.
+        \item Organizer Class: The email addresses of the organizers must not be duplicated.
+        \item Invitee Class: The email addresses of invitees must not be duplicated.
     \end{itemize}
     \item \textbf{Time constraints:}
     \begin{itemize}
         \item Event Class: The event's start time must not be later than its end time.
     \end{itemize}
 \end{enumerate}
-\subsection{Xtext editor vaildation}
-To enhance compatibility with the Xtext editor, we use Java for runtime validation of events. Below are the constraints we have established:
+\subsection{Xtext editor validation}
+To enhance compatibility with the \texttt{Xtext} editor, we use Java for runtime validation of events. Below are the constraints we have established:
 \begin{enumerate}
     \item \textbf{Time constraints:}
     \begin{itemize}
@@ -254,11 +253,11 @@ To enhance compatibility with the Xtext editor, we use Java for runtime validati
 
     \item \textbf{Additional constraint:}
     \begin{itemize}
-        \item The event link should resemble a URL, i.e., it should contain "://" to indicate it is a URL.
+        \item The event link should resemble a URL, i.e., it should contain ``://'' to indicate it is a URL.
     \end{itemize}
 \end{enumerate}
 
-The figure above displays some outcomes of running the validation code, checking the start and end times of the event, as well as verifying the event link.
+The figure above displays examples of running the validation code, checking the start and end times of the event, as well as verifying the event link.
 \begin{figure}
     \centering
     \includegraphics[width=1\linewidth]{xtext validation.png}
@@ -269,14 +268,14 @@ The figure above displays some outcomes of running the validation code, checking
 \section{Model management operation implementation}
 Since the goal of our DSL is to generate ICS files, we implemented the model-to-text transformation operation. 
 
-The operation takes an .icsdsl file (our DSL file) as input and generates a corresponding .ics file as output, which can be further imported into calendar applications.
+The operation takes a .icsdsl file (our DSL file) as input and generates a corresponding .ics file as output, which can be further imported into calendar applications.
 
 \subsection{Implementation}
 
 The operation is implemented using \texttt{Xtend}, a statically-typed programming language that compiles to Java. 
 \texttt{Xtend} is used in accordance with \texttt{Xtext} to provide seamless code translation and execution. 
 
-The operation reads the .icsdsl file, then for each \texttt{CreateCommand}, read the values assigned to each mandatory and optional field, and translate them into the corresponding .ics format.
+The operation reads the .icsdsl file, then for each \texttt{CreateCommand}, reads the values assigned to each mandatory and optional field, and translates them into the corresponding .ics format.
 
 For instance, the below \texttt{Xtend} code translates the \texttt{organizer} field.
 \begin{verbatim}
@@ -312,7 +311,7 @@ The example ICS snippet shown in 3.1.2 will be transformed into CAS703.ics with 
 \subsection{Limitations and future work}
 One limitation in the model transformation (and subsequently affecting the syntax definition) would be the strict syntax requirements.  
 
-For instance, the time should be specified in exactly 'YYYY-MM-DD HH:MM:SS' format, which might be inconvenient.
+For instance, the time should be specified in exactly ``YYYY-MM-DD HH:MM:SS'' format, which might be inconvenient.
 
 This can be easily (but time-consumingly) solved by supporting more time formats in the \texttt{Xtend} transformation code.
 
