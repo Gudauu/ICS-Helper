@@ -12,97 +12,168 @@ An ICS file is a calendar file saved in a universal calendar format used by main
 We propose the idea of `ICS Helper`, which is a DSL dealing with ICS files. It offers:
 
 1) human-friendly syntax for ICS creation (write in plain text & compile to ICS)
-2) flexible operations such as split, merge and modification of schedules using imperative syntax
-3) (advanced) programmable interface (as CLI or libraries) 
-4) (advanced) subscriber list control
+2) (anticipated) flexible operations such as split, merge and modification of schedules using imperative syntax
+3) (anticipated) programmable interface (as CLI or libraries) 
+4) (anticipated) subscriber list control
 
-## Dependencies and Prerequisites
+## Dependencies
 
-1) Java Development Kit (JDK): A recent version of JDK (such as OpenJDK or Oracle JDK) is required to compile and run Java applications.
-2) Xtext Framework: Used for developing the DSL. Xtext is a framework for development of programming languages and domain-specific languages.
-3) Eclipse IDE: Typically, Xtext is used within the Eclipse IDE, which provides tools and integration for DSL development.
-4) Gradle or Maven: These are build automation tools used for managing dependencies and building Java projects. Xtext supports integration with both.
-5) Git: For version control.
-6) Basic Java and DSL Knowledge: Users should have a basic understanding of Java programming and familiarity with domain-specific languages.
+1) Eclipse IDE
+2) Xtext Framework
 
-## DSL Usage: Creating Schedules and Events
 
-### SYNTAX:
-CreateCommand:
-    'create' 'schedule' name=ID '{'
-        events+=Event*
-    '}';
-    
-Event:
-    'event' name=ID 
-    'start' startTime=STRING 
-    'end' endTime=STRING 
-    ('location' location=STRING)?
-    ('description' description=STRING)?
-    ('recur' recur=RecurRule (daysOfWeek=DaysOfWeek)?)?
-    ('link' link=STRING)?
-    ('organizer' organizer=Person)?
-    ('invitees' '{' invitees+=Person+ '}')?
-    ('reminder' reminder=Reminder)?;
+## DSL Guide: Creating Schedules and Events
 
-Reminder:
-	'time' time=INT
-	('title' title=STRING)?
-;
+`ICS Helper` allows users to define schedules, which are collections of events. Each event can have various properties, including a start and end time, location, description, recurrence rules, and associated people like organizers and invitees. Additionally, reminders can be set for events.
 
-Person:
-	'name' name=STRING
-	'email' email=STRING
-;
-enum RecurRule:
-    DAILY = 'daily' |
-    WEEKLY = 'weekly' |
-    MONTHLY = 'monthly' |
-    YEARLY = 'yearly'|
-    BYDAY = 'weekly on';
+Each `schedule` defined will be transformed into an ics file, named <schedule_name>.ics.
 
-DaysOfWeek: days+=WEEKDAY (',' days+=WEEKDAY)*; // Example: "on Monday,Wednesday,Friday"
+### Syntax
 
-enum WEEKDAY:
-	MO = 'Monday' |
-	TU = 'Tuesday' |
-	WE = 'Wednesday' |
-	TH = 'Thursday' |
-	FR = 'Friday' |
+#### Create Command
 
-### Syntax Explaination
+To define a new `schedule`:
 
-Imagine you have this magical notebook, a little like a personal assistant, that helps you plan and remember special events.
+```
+create schedule [name] {
+    [event]
+    [event]
+    ...
+}
+```
 
-#### Creating a Schedule:
-Think of this as starting a new chapter in your book. For example, if you write "create schedule: My Fun Week", it's like you're dedicating a section of your notebook just for the fun activities you have planned for a week.
+* [name]: The identifier for the schedule. Must be unique within scope.
+* [event]: event definitions. See below `event` section.
 
-#### Drawing an Event: 
-Whenever you want to note down an event, you begin with "event" and name it. Let's say "event: Birthday Party". It's like adding a new story to your chapter.
+#### event
 
-#### Timing Details: 
-Just like in a diary, you specify when things start and end. Writing "start: 10 AM, end: 1 PM" tells your magic notebook exactly when your birthday party will be happening.
+To define an `event` within a `schedule`:
 
-#### Location: 
-Adding a "location" is like drawing a small map in your notebook. So, if your event is "at the park", your notebook knows exactly where it’s set.
+```
+event [name] 
+start [startTime] 
+end [endTime] 
+[optional properties]
+```
 
-#### Describing the Event: 
-With "description", you add details to your story. "Sam's 6th Birthday" gives your notebook a bit more about what this event is all about.
+* [name]: The identifier for the event.
+* [startTime], [endTime]: Start and end times for the event, specified as strings. Should follow `YYYY-MM-DD HH-MM-SS` format.
+* [optional properties]: Zero or more of the following optional properties:
 
-#### Recurring Events: 
-Using "recur", you can tell your notebook about events that happen regularly. It's like setting up a repeating reminder, for example, "soccer game every Saturday".
+```
+location [location]
+description [description]
+recur [recurRule]
+link [link]
+organizer [person]
+invitees { [person]... }
+reminder [reminder]
+```
 
-#### Web Link: 
-If you have any online meeting link for a long-distance relative who is not able to attend the party they can attend the party using this link.
+* [description]: A text description of the event.
+* [recurRule]: The recurrence rule for the event. See below section `recurRule`.
+* [person]: See section `person`.
+* [reminder]: See section `reminder`.
 
-#### Drawing People:
-For the organizer and invitees, you can write their names. It's your way of showing who's hosting the event and who's invited.
+#### RecurRule
 
-#### Setting Reminders:
-Lastly, you can set reminders for each event. It's like your notebook gently nudging you, so you don't forget the important stuff.
+Defines the recurrence pattern for an event:
 
-#### Overall:
-The DSL, helps you to write about all your events, detailing when they are, where they are, who's coming, how many days it reoccuring and even reminds you about them. 
+```
+daily | weekly | monthly | yearly | 'weekly on' [day]
+```
+
+* [day]: One or more days of the week, separated by commas. 
+For example, defining recurring rules happening weekly on Monday and Thursday would be:
+```
+recur weekly on Monday,Thursday
+```
+
+#### person
+
+To represent a `person` involved in an event (`organizer` or `invitee`):
+
+```
+name [name] email [email]
+```
+
+* [name]: The person's name.
+* [email]: The person's email address.
+
+#### reminder
+
+To define a reminder for an event:
+
+```
+time [minutes ahead] 
+(optional) title [title]
+```
+* [minutes ahead]: Time before the event (in minutes) when the reminder should occur. Default is 30 if not specified.
+* [title]: An optional title for the reminder.
+
+
+
+### Example
+
+```
+create schedule picnic {
+	event pickup 
+	start '2024-03-30 14:30' 
+	end '2024-03-30 15:00' 
+	location '417 Heaven St'
+	recur weekly
+	link 'https://github.com/Gudauu/ICS-Helper/'
+	organizer name 'Wild Cranberry' email 'WildCran@gmail.com'
+	invitees {
+		name 'berry' email 'berryBean@gmail.com'
+		name 'potato' email 'potatoSoup@gmail.com'
+		name 'tomato' email 'tomatodoge@gmail.com'
+	}
+	reminder time 100 title 'Someone is picking u up!'
+	
+	
+	event cleanup 
+	start '2024-03-31 15:10' 
+	end '2024-03-31 16:00' 
+	description 'cleanup the mess you made!'
+	recur weekly on Wednesday,Sunday,Monday
+	link '12345'
+	organizer name 'Alice' email "alicePaul@gmail.com"
+}
+```
+This will create an ics file `picnic.ics` with the below content:
+```
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//hacksw/handcal//NONSGML v1.0//EN
+BEGIN:VEVENT
+SUMMARY:pickup
+DTSTART:20240330T143000Z
+DTEND:20240330T150000Z
+LOCATION:417 Heaven St
+URI:https://github.com/Gudauu/ICS-Helper/
+ORGANIZER;CN=Wild Cranberry:mailto:WildCran@gmail.com
+ATTENDEE;CN="berry":MAILTO:berryBean@gmail.com
+ATTENDEE;CN="potato":MAILTO:potatoSoup@gmail.com
+ATTENDEE;CN="tomato":MAILTO:tomatodoge@gmail.com
+RRULE:FREQ=WEEKLY
+BEGIN:VALARM
+TRIGGER:-PT100M
+ACTION:DISPLAY
+DESCRIPTION:Someone is picking u up!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:cleanup
+DTSTART:20240331T151000Z
+DTEND:20240331T160000Z
+DESCRIPTION:cleanup the mess you made!
+ORGANIZER;CN=Alice:mailto:alicePaul@gmail.com
+RRULE:FREQ=WEEKLY;BYDAY=WE,SU,MO
+END:VEVENT
+END:VCALENDAR
+```
+
 
 
 
