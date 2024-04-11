@@ -8374,3 +8374,16 @@ Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp
 
 !ENTRY ch.qos.logback.classic 1 0 2024-04-10 01:55:06.481
 !MESSAGE Logback config file: /home/gudau/Documents/work/School/year5/fall/courses/winter_2024/CAS703/project/ics/ICS-Helper-Eclipse/.metadata/.plugins/org.eclipse.m2e.logback/logback.2.6.0.20240217-1525.xml
+!SESSION 2024-04-10 23:33:18.826 -----------------------------------------------
+eclipse.buildId=4.31.0.20240307-1200
+java.version=17.0.10
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.dsl.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.dsl.product
+
+!ENTRY ch.qos.logback.classic 1 0 2024-04-10 23:33:22.013
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2024-04-10 23:33:26.960
+!MESSAGE Logback config file: /home/gudau/Documents/work/School/year5/fall/courses/winter_2024/CAS703/project/ics/ICS-Helper-Eclipse/.metadata/.plugins/org.eclipse.m2e.logback/logback.2.6.0.20240217-1525.xml

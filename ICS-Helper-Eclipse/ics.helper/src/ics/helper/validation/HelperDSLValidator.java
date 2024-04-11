@@ -30,7 +30,6 @@ public class HelperDSLValidator extends AbstractHelperDSLValidator {
 
     // check email pattern
     @Check
-<<<<<<< Updated upstream
     public void checkPersonEmail(Person person) {
         String email = person.getEmail();
         // email should not be empty and should match the regex pattern
@@ -81,9 +80,6 @@ public class HelperDSLValidator extends AbstractHelperDSLValidator {
 	// start time <= end time
 	@Check
 	public void checkEventTimes(Event event) {
-=======
-    public void e(Event event) {
->>>>>>> Stashed changes
         if (event.getStartTime() != null && event.getEndTime() != null) {
             // Convert STRING to LocalDateTime
             LocalDateTime startTime = LocalDateTime.parse(event.getStartTime(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
@@ -96,10 +92,6 @@ public class HelperDSLValidator extends AbstractHelperDSLValidator {
             }
         }
     }
-	@Override
-	protected void validate(EObject model, IValidationContext context, CancelIndicator indicator) {
-	}
-	
 	//reminder time > 0 mins
 	@Check
 	public void checkReminderTimePositive(Reminder reminder) {
